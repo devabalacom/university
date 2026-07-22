@@ -1,0 +1,54 @@
+---
+import Mark from "./Mark.astro";
+
+const nav = [
+  { href: "/institut/", label: "Институт" },
+  { href: "/metod/", label: "Метод" },
+  { href: "/primenenie/", label: "Применение" },
+  { href: "/publikacii/", label: "Публикации" },
+];
+
+const path = new URL(Astro.request.url).pathname;
+const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <Mark class="brand-mark" />
+      <span class="full">Институт предиктивной архитектуры систем</span>
+      <span class="short">PSAI</span>
+    </a>
+    <nav class="menu" aria-label="Основная навигация">
+      {nav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+      ))}
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Переключить тему">
+        <svg class="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="10" cy="10" r="3.6"/><path d="M10 1.6v2.1M10 16.3v2.1M18.4 10h-2.1M3.7 10H1.6M15.6 4.4l-1.5 1.5M5.9 14.1l-1.5 1.5M15.6 15.6l-1.5-1.5M5.9 5.9 4.4 4.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M17 11.3A7.3 7.3 0 1 1 8.7 3a5.8 5.8 0 0 0 8.3 8.3Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .brand .mark{color:var(--gold)}
+  .brand .short{display:inline}
+  .brand .full{display:none}
+  @media (min-width:64rem){
+    .brand .full{display:inline}
+    .brand .short{display:none}
+  }
+</style>
+
+<script>
+  const KEY = "psai-theme";
+  const root = document.documentElement;
+  const btn = document.getElementById("theme-toggle");
+  btn?.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem(KEY, next);
+  });
+</script>
