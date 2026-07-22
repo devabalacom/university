@@ -1,5 +1,6 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 <section class="wrap" id="contact">
   <div class="contact-block reveal">
@@ -24,10 +25,10 @@ const year = new Date().getFullYear();
       </div>
       <nav class="fnav">
         <h3 class="fh">Разделы</h3>
-        <a href="/institut/">Институт</a>
-        <a href="/metod/">Метод</a>
-        <a href="/primenenie/">Применение</a>
-        <a href="/publikacii/">Публикации</a>
+        <a href={`${base}/institut/`}>Институт</a>
+        <a href={`${base}/metod/`}>Метод</a>
+        <a href={`${base}/primenenie/`}>Применение</a>
+        <a href={`${base}/publikacii/`}>Публикации</a>
       </nav>
       <div class="fnav">
         <h3 class="fh">Контакт</h3>

@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 
 const title = "Институт предиктивной архитектуры систем";
 const description = "Системы не взаимодействуют напрямую. Они взаимодействуют через согласование. Институт устанавливает правила вывода, по которым это согласование становится проверяемым знанием.";
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={title} description={description}>
   <section class="hero">
@@ -12,12 +13,12 @@ const description = "Системы не взаимодействуют напр
         <h1>Почему одни системы сохраняют способность исполнять свои функции, а другие постепенно её утрачивают?</h1>
         <p class="sub">Способность системы сохранять и восстанавливать свои функции зависит от согласованности структуры, процессов, среды и направления движения.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="/institut/">Теория →</a>
-          <a class="btn btn-ghost" href="/primenenie/">Применение →</a>
+          <a class="btn btn-primary" href={`${base}/institut/`}>Теория →</a>
+          <a class="btn btn-ghost" href={`${base}/primenenie/`}>Применение →</a>
         </div>
       </div>
       <div class="hero-figure">
-        <img src="/img/hero-architecture.jpg" alt="Абстрактная диаграмма девяти уровней архитектуры системы, от границы к центру" width="1600" height="1000" loading="eager" fetchpriority="high" decoding="async" />
+        <img src={`${base}/img/hero-architecture.jpg`} alt="Абстрактная диаграмма девяти уровней архитектуры системы, от границы к центру" width="1600" height="1000" loading="eager" fetchpriority="high" decoding="async" />
       </div>
     </div>
   </section>
@@ -36,7 +37,7 @@ const description = "Системы не взаимодействуют напр
       <div class="ground">
         <p>Стратегия верна, люди компетентны, процессы описаны, а результата нет, и причина не обнаруживается ни в одном элементе. Она между ними: в том, насколько элементы согласованы друг с другом. Усиление каждого элемента по отдельности эту причину не устраняет. При определённых условиях оно её усиливает.</p>
       </div>
-      <a class="go" href="/metod/">Единица анализа →</a>
+      <a class="go" href={`${base}/metod/`}>Единица анализа →</a>
     </section>
 
     <section class="prose reveal">
@@ -45,7 +46,7 @@ const description = "Системы не взаимодействуют напр
         <p>Система способна описывать собственные намерения, устройство и действия, но самоописание создаётся из той же позиции, которая является предметом исследования. Поэтому оно не тождественно независимому описанию производимого эффекта.</p>
         <p>Проявление становится доступным через вторую сторону: рынок, команду, партнёра, другую систему. Расхождение между намерением, самоописанием и проявлением обнаруживается их сопоставлением.</p>
       </div>
-      <a class="go" href="/metod/">Вертикаль анализа →</a>
+      <a class="go" href={`${base}/metod/`}>Вертикаль анализа →</a>
     </section>
 
     <blockquote class="pull reveal">
@@ -87,15 +88,15 @@ const description = "Системы не взаимодействуют напр
         <p>Измеримо другое: разрыв между двумя конкретными системами. Рынок, юрисдикция, отрасль тоже системы и описываются тем же стандартом, что и компания. Величина не берётся из отчёта, она вычисляется сопоставлением двух архитектур, сведённых к одним правилам описания.</p>
       </div>
       <div class="go-row">
-        <a class="go" href="/metod/">Метод →</a>
-        <a class="go" href="/primenenie/">Применение →</a>
+        <a class="go" href={`${base}/metod/`}>Метод →</a>
+        <a class="go" href={`${base}/primenenie/`}>Применение →</a>
       </div>
     </section>
 
     <section class="bound reveal">
       <span class="eyebrow" style="display:block;margin-bottom:1rem">Институт не является</span>
       <p class="list">консалтингом <span class="sep">·</span> HR-инструментом <span class="sep">·</span> системой оценки персонала <span class="sep">·</span> типологией личности <span class="sep">·</span> психологией <span class="sep">·</span> коучингом <span class="sep">·</span> эзотерической школой</p>
-      <a class="go" href="/primenenie/">Границы применения →</a>
+      <a class="go" href={`${base}/primenenie/`}>Границы применения →</a>
     </section>
   </main>
 </Base>

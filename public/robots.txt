@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://psai-institute.ru/sitemap.xml
+Sitemap: https://devabalacom.github.io/university/sitemap.xml

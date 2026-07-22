@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 
 const title = "Применение · Институт предиктивной архитектуры систем";
 const description = "Четыре класса архитектурного расхождения: между уровнями, между системами, между системой и ролью, между ролью и носителем. Разобранный пример вывода.";
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={title} description={description}>
   <section class="pagehead">
@@ -28,7 +29,7 @@ const description = "Четыре класса архитектурного ра
       <div class="ground">
         <p>Каждый класс существует в трёх режимах: дефицит, гиперактивация, баланс. <b>Гиперактивация не сила.</b> Это тот же отказ с обратным знаком.</p>
       </div>
-      <a class="go" href="/metod/">Метод →</a>
+      <a class="go" href={`${base}/metod/`}>Метод →</a>
     </section>
 
     <blockquote class="pull reveal">
@@ -201,7 +202,7 @@ const description = "Четыре класса архитектурного ра
         <p>Если задача требует вывода без основания. Если запрошена рекомендация без диагностики. Если объект исследования не определён. Если единственный доступный источник: слова заказчика.</p>
       </div>
       <p class="list">Институт не является: консалтингом <span class="sep">·</span> HR-инструментом <span class="sep">·</span> системой оценки персонала <span class="sep">·</span> типологией личности <span class="sep">·</span> психологией <span class="sep">·</span> коучингом</p>
-      <a class="go" href="/publikacii/">Границы предсказуемости →</a>
+      <a class="go" href={`${base}/publikacii/`}>Границы предсказуемости →</a>
     </section>
   </main>
 </Base>

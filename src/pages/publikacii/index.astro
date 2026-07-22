@@ -12,6 +12,7 @@ const publications = [
     lede: "Что метод может и чего не может. Почему точечный прогноз сложной системы ограничен, а структурная тенденция остаётся предметом исследования.",
   },
 ];
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={title} description={description}>
   <section class="pagehead">
@@ -26,7 +27,7 @@ const publications = [
     <section class="reveal">
       <div class="pub-grid">
         {publications.map((pub) => (
-          <a class="pub-card" href={`/publikacii/${pub.slug}/`}>
+          <a class="pub-card" href={`${base}/publikacii/${pub.slug}/`}>
             <span class="pub-kicker">{pub.kicker}</span>
             <h2>{pub.title}</h2>
             <p>{pub.lede}</p>

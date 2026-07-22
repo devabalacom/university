@@ -25,10 +25,17 @@
             └── granitsy-predskazuemosti/index.astro  Публикация 01
 ```
 
-## Что нужно поменять перед запуском в продакшен
+## Деплой
 
-- `astro.config.mjs`: `site` указывает на `https://psai-institute.ru` (плейсхолдер) — заменить на реальный домен.
+Сайт публикуется на GitHub Pages через workflow `.github/workflows/deploy.yml`: любой пуш в `main` собирает и деплоит автоматически. Текущий адрес: **https://devabalacom.github.io/university/**.
+
+Сайт живёт под подпутём `/university/` (`base` в `astro.config.mjs`), поэтому все внутренние ссылки и картинки собираются через `import.meta.env.BASE_URL`, а не хардкодятся.
+
+## Что нужно поменять, если появится свой домен
+
+- `astro.config.mjs`: убрать `base: '/university'` (вернуть `'/'`) и указать `site` на новый домен.
 - `public/robots.txt` и `public/sitemap.xml`: обновить домен там же.
+- Добавить файл `public/CNAME` с доменом и прописать его в настройках GitHub Pages репозитория.
 - `src/components/Footer.astro` и `src/layouts/Base.astro`: контактный email `info@psai-institute.ru` — плейсхолдер, заменить на реальный адрес (или форму).
 
 ## Команды

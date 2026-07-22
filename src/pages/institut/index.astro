@@ -3,6 +3,7 @@ import Base from "../../layouts/Base.astro";
 
 const title = "Институт · Институт предиктивной архитектуры систем";
 const description = "PSAI прогнозирует не события, а изменение вероятностной структуры системы. Объект исследования: согласованность систем.";
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={title} description={description}>
   <section class="hero">
@@ -12,12 +13,12 @@ const description = "PSAI прогнозирует не события, а из�
         <h1>PSAI прогнозирует не события, а изменение вероятностной структуры системы.</h1>
         <p class="sub">Институт существует, чтобы вывод о системе перестал быть мнением. Объект исследования: согласованность систем.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="/metod/">Метод →</a>
-          <a class="btn btn-ghost" href="/publikacii/">Публикации →</a>
+          <a class="btn btn-primary" href={`${base}/metod/`}>Метод →</a>
+          <a class="btn btn-ghost" href={`${base}/publikacii/`}>Публикации →</a>
         </div>
       </div>
       <div class="hero-figure">
-        <img src="/img/institute-network.jpg" alt="Абстрактная диаграмма связанных узлов, представляющая согласованность систем" width="1200" height="1200" loading="eager" fetchpriority="high" decoding="async" />
+        <img src={`${base}/img/institute-network.jpg`} alt="Абстрактная диаграмма связанных узлов, представляющая согласованность систем" width="1200" height="1200" loading="eager" fetchpriority="high" decoding="async" />
       </div>
     </div>
   </section>
@@ -31,7 +32,7 @@ const description = "PSAI прогнозирует не события, а из�
         <p>Предмет исследования: условия устойчивой реализации функции, возникновения архитектурных расхождений, их компенсации и проявления.</p>
         <p>Единица анализа: расхождение между требованием и фактическим обеспечением либо между независимыми описаниями одной архитектурной связи.</p>
       </div>
-      <a class="go" href="/metod/">Метод →</a>
+      <a class="go" href={`${base}/metod/`}>Метод →</a>
     </section>
 
     <section class="prose reveal">
@@ -56,7 +57,7 @@ const description = "PSAI прогнозирует не события, а из�
       <div class="ground">
         <p>Результат Института: знание с обозначенным уровнем доказательности. Единичный случай может дать наблюдение, описание конфигурации или исследовательскую гипотезу, но не является достаточным основанием для включения закономерности в стандарт.</p>
       </div>
-      <a class="go" href="/publikacii/">Публикации →</a>
+      <a class="go" href={`${base}/publikacii/`}>Публикации →</a>
     </section>
 
     <section class="prose reveal">
@@ -64,7 +65,7 @@ const description = "PSAI прогнозирует не события, а из�
       <div class="ground">
         <p>PSAI не предсказывает отдельное событие в сложной системе. Институт исследует структурную тенденцию: условия сохранения функции, конфигурацию расхождений, устойчивость компенсаторов и диапазон вероятных изменений.</p>
       </div>
-      <a class="go" href="/publikacii/granitsy-predskazuemosti/">Читать публикацию →</a>
+      <a class="go" href={`${base}/publikacii/granitsy-predskazuemosti/`}>Читать публикацию →</a>
     </section>
 
     <section class="bound reveal">
@@ -74,8 +75,8 @@ const description = "PSAI прогнозирует не события, а из�
         <p>Институт разрабатывает онтологию, правила вывода и стандарты архитектурного описания систем. Внутрь допускается то, что имеет обозначенное основание и уровень доказательности. Не допускаются: единичный случай как подтверждённая закономерность, утверждение без источника и вывод без указания на то, что его может опровергнуть.</p>
       </div>
       <div class="go-row">
-        <a class="go" href="/metod/">Метод →</a>
-        <a class="go" href="/primenenie/">Применение →</a>
+        <a class="go" href={`${base}/metod/`}>Метод →</a>
+        <a class="go" href={`${base}/primenenie/`}>Применение →</a>
       </div>
     </section>
   </main>

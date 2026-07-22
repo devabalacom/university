@@ -1,19 +1,20 @@
 ---
 import Mark from "./Mark.astro";
 
+const base = import.meta.env.BASE_URL;
 const nav = [
-  { href: "/institut/", label: "Институт" },
-  { href: "/metod/", label: "Метод" },
-  { href: "/primenenie/", label: "Применение" },
-  { href: "/publikacii/", label: "Публикации" },
+  { href: `${base}/institut/`, label: "Институт" },
+  { href: `${base}/metod/`, label: "Метод" },
+  { href: `${base}/primenenie/`, label: "Применение" },
+  { href: `${base}/publikacii/`, label: "Публикации" },
 ];
 
-const path = new URL(Astro.request.url).pathname;
-const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => (href === `${base}/` ? path === href : path.startsWith(href));
 ---
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="/">
+    <a class="brand" href={`${base}/`}>
       <Mark class="brand-mark" />
       <span class="full">Институт предиктивной архитектуры систем</span>
       <span class="short">PSAI</span>

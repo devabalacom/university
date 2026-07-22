@@ -3,11 +3,12 @@ import Base from "../../../layouts/Base.astro";
 
 const title = "Границы предсказуемости · Публикации PSAI";
 const description = "Что метод может и чего не может. Пределы, установленные не Институтом: хаос Лоренца, предел вычислительной мощности Вселенной, теорема Конанта и Эшби о хорошем регуляторе.";
+const base = import.meta.env.BASE_URL;
 ---
 <Base title={title} description={description}>
   <main class="wrap">
     <nav class="crumb" aria-label="Хлебные крошки">
-      <a href="/publikacii/">Публикации</a>
+      <a href={`${base}/publikacii/`}>Публикации</a>
       <span>/</span>
       <span>Границы предсказуемости</span>
     </nav>
@@ -89,8 +90,8 @@ const description = "Что метод может и чего не может. �
     </article>
 
     <div class="go-row reveal" style="margin-top:1rem">
-      <a class="go" href="/publikacii/">← Все публикации</a>
-      <a class="go" href="/primenenie/">Применение →</a>
+      <a class="go" href={`${base}/publikacii/`}>← Все публикации</a>
+      <a class="go" href={`${base}/primenenie/`}>Применение →</a>
     </div>
   </main>
 </Base>
