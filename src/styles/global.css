@@ -191,3 +191,60 @@ footer .fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:
   .md th.d{color:var(--golddark)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ══ redesign additions (same tokens, new arrangement) ══ */
+
+/* split hero: copy + supporting diagram (wider than the editorial reading measure) */
+.hero .wrap{display:grid;gap:2.5rem;align-items:center;max-width:74rem}
+.hero-figure{border-radius:2px;overflow:hidden;border:1px solid var(--hair);box-shadow:0 20px 48px rgba(10,37,64,.12);aspect-ratio:1/1}
+.hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
+@media (min-width:64rem){
+  .hero .wrap{grid-template-columns:1.05fr 1fr;gap:3.5rem}
+}
+
+/* generic supporting figure inside a section */
+.section-figure{border-radius:2px;overflow:hidden;margin:0 0 2.5rem;border:1px solid var(--hair)}
+.section-figure img{width:100%;height:auto;display:block}
+
+/* navy panel: promotes a block to full brand-block treatment (contained, like .pull) */
+.panel-navy{background:var(--navy);color:#fff;border-radius:2px;padding:2.25rem 1.6rem;margin:0 0 3.25rem}
+.panel-navy h2{color:#fff}
+.panel-navy .beat{color:var(--onnavy)}
+.panel-navy .ground{color:var(--onnavy);border-left-color:var(--gold)}
+@media (min-width:52rem){.panel-navy{padding:3rem 2.75rem}}
+
+/* four-principles grid (rules of inference) */
+.principle-grid{display:grid;gap:1.75rem;margin:2rem 0 0;padding:0;list-style:none}
+.principle .num{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem}
+.principle h3{color:#fff;font-size:1.05rem;margin-bottom:.5rem}
+.principle p{margin:0;font-size:.875rem;line-height:1.6;color:var(--onnavy)}
+@media (min-width:40rem){.principle-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+
+/* ladder: numbered vertical showcase (nine levels) */
+.ladder{margin:0 0 1.5rem;padding:0;list-style:none}
+.ladder-item{position:relative;padding:0 0 2rem 3.4rem}
+.ladder-item:last-child{padding-bottom:0}
+.ladder-num{position:absolute;left:0;top:-.1rem;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--mono);font-size:.85rem;font-weight:500;display:flex;align-items:center;justify-content:center}
+.ladder-item:after{content:"";position:absolute;left:1.15rem;top:2.3rem;bottom:0;width:1.5px;background:var(--hair)}
+.ladder-item:last-child:after{display:none}
+.ladder-nm{font-weight:600;color:var(--navy);display:block;margin-bottom:.35rem;font-size:1.05rem;font-family:var(--serif)}
+.ladder-ds{font-size:.9rem;line-height:1.55;color:var(--muted);display:block}
+
+/* class-grid: parallel-category summary (four classes of discrepancy) */
+.class-grid{display:grid;gap:1.25rem;margin:0 0 1.75rem;padding:0;list-style:none}
+.class-grid li{border:1px solid var(--hair);border-radius:2px;padding:1.5rem 1.35rem;background:#fff}
+.class-grid .num{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--golddark);display:block;margin-bottom:.6rem}
+.class-grid h3{margin-bottom:.5rem;font-size:1.05rem}
+.class-grid p{margin:0;font-size:.875rem;line-height:1.6;color:var(--muted)}
+@media (min-width:40rem){.class-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+
+/* tags: pill list replacing comma+dot separated text */
+.tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--hair);border-radius:2px;padding:.4rem .75rem}
+
+/* publication teaser card */
+.pubcard{border:1px solid var(--hair);border-top:3px solid var(--navy);border-radius:2px;padding:1.75rem 1.5rem;margin:0 0 3rem;background:#fff}
+.pubcard .kicker{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--golddark);display:block;margin-bottom:.75rem}
+.pubcard h2{font-size:1.35rem;margin-bottom:.6rem}
+.pubcard .lede{font-size:.9375rem;line-height:1.6;color:var(--muted);margin:0 0 1.25rem;max-width:36rem}
+@media (min-width:52rem){.pubcard{padding:2.25rem 2rem}}

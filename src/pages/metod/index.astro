@@ -1,5 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
+import { Image } from "astro:assets";
+import strata from "../../assets/img/strata.jpg";
 
 const base = import.meta.env.BASE_URL;
 const title = "Метод — ИПАС";
@@ -24,19 +26,20 @@ const description = "Компания. Рынок. Государство. Че�
 <div class="ground">
 <p>Уровни идут от границы системы к её центру. Первый отвечает за то, где система заканчивается. Девятый — за то, что её организует. Каждый следующий уровень зависит от функции предыдущего; при её дефиците он ограничивается, становится неустойчивым либо удерживается за счёт внешнего или компенсаторного обеспечения.</p>
 </div>
-<table class="lv">
-<tbody>
-<tr><td class="n">1</td><td class="b"><span class="nm">Архитектура границы системы</span><span class="ds">Что является системой, а что средой; кто принадлежит; что допускается внутрь и через какие каналы</span></td></tr>
-<tr><td class="n">2</td><td class="b"><span class="nm">Архитектура мотивационного притяжения</span><span class="ds">Чего система хочет; чем притягивает ресурсы, людей, внимание, капитал</span></td></tr>
-<tr><td class="n">3</td><td class="b"><span class="nm">Архитектура активации движения</span><span class="ds">Способность приводить намерение в живое движение. Не намерения, а их возбуждение</span></td></tr>
-<tr><td class="n">4</td><td class="b"><span class="nm">Архитектура благоприятных условий</span><span class="ds">Конфигурация, при которой движение результативно: культура, каналы, структуры решений, доступ к ресурсам</span></td></tr>
-<tr><td class="n">5</td><td class="b"><span class="nm">Архитектура реализации</span><span class="ds">Механизмы, которыми намерение доводится до завершённого действия</span></td></tr>
-<tr><td class="n">6</td><td class="b"><span class="nm">Архитектура устойчивости</span><span class="ds">Способность выдерживать нагрузку роста, не разрушаясь от собственной экспансии</span></td></tr>
-<tr><td class="n">7</td><td class="b"><span class="nm">Архитектура реинтеграции</span><span class="ds">Способность распознать и устранить собственную дисфункцию</span></td></tr>
-<tr><td class="n">8</td><td class="b"><span class="nm">Архитектура интегрального согласования</span><span class="ds">Стратегия совпадает с операциями, ценности — с поведением, знание — с действием</span></td></tr>
-<tr><td class="n">9</td><td class="b"><span class="nm">Архитектура центральной когерентности</span><span class="ds">Наличие подлинного центра, который не декларируется, а реально организует остальные уровни</span></td></tr>
-</tbody>
-</table>
+<figure class="section-figure">
+  <Image src={strata} alt="Девять уровней архитектуры как слоёв, нанизанных на общую вертикаль" width={900} height={640} />
+</figure>
+<ul class="ladder">
+<li class="ladder-item"><span class="ladder-num">1</span><span class="ladder-nm">Архитектура границы системы</span><span class="ladder-ds">Что является системой, а что средой; кто принадлежит; что допускается внутрь и через какие каналы</span></li>
+<li class="ladder-item"><span class="ladder-num">2</span><span class="ladder-nm">Архитектура мотивационного притяжения</span><span class="ladder-ds">Чего система хочет; чем притягивает ресурсы, людей, внимание, капитал</span></li>
+<li class="ladder-item"><span class="ladder-num">3</span><span class="ladder-nm">Архитектура активации движения</span><span class="ladder-ds">Способность приводить намерение в живое движение. Не намерения, а их возбуждение</span></li>
+<li class="ladder-item"><span class="ladder-num">4</span><span class="ladder-nm">Архитектура благоприятных условий</span><span class="ladder-ds">Конфигурация, при которой движение результативно: культура, каналы, структуры решений, доступ к ресурсам</span></li>
+<li class="ladder-item"><span class="ladder-num">5</span><span class="ladder-nm">Архитектура реализации</span><span class="ladder-ds">Механизмы, которыми намерение доводится до завершённого действия</span></li>
+<li class="ladder-item"><span class="ladder-num">6</span><span class="ladder-nm">Архитектура устойчивости</span><span class="ladder-ds">Способность выдерживать нагрузку роста, не разрушаясь от собственной экспансии</span></li>
+<li class="ladder-item"><span class="ladder-num">7</span><span class="ladder-nm">Архитектура реинтеграции</span><span class="ladder-ds">Способность распознать и устранить собственную дисфункцию</span></li>
+<li class="ladder-item"><span class="ladder-num">8</span><span class="ladder-nm">Архитектура интегрального согласования</span><span class="ladder-ds">Стратегия совпадает с операциями, ценности — с поведением, знание — с действием</span></li>
+<li class="ladder-item"><span class="ladder-num">9</span><span class="ladder-nm">Архитектура центральной когерентности</span><span class="ladder-ds">Наличие подлинного центра, который не декларируется, а реально организует остальные уровни</span></li>
+</ul>
 </section>
 <blockquote class="pull">
 <p>Каждый нижний уровень обеспечивает функцию следующего и ограничивает диапазон его возможного. Каждый верхний уровень, в свою очередь, предъявляет требования к обеспечивающему его уровню.</p>
@@ -165,8 +168,15 @@ const description = "Компания. Рынок. Государство. Че�
 </section>
 <section class="bound">
 <p class="eyebrow" style="display:block;margin-bottom:1rem">Что не входит в вывод</p>
-<p class="list">единичный случай как знание<span class="sep">·</span>слова заказчика как архитектурная потребность<span class="sep">·</span>продукт до диагностики<span class="sep">·</span>утверждение без источника<span class="sep">·</span>уверенность эксперта как основание<span class="sep">·</span>отраслевое среднее как критерий</p>
-<a class="go" href={`${base}/primenenie/`}>Границы применения →</a><a class="go" href={`${base}/primenenie/`}>Применение →</a>
+<ul class="tags">
+<li>единичный случай как знание</li>
+<li>слова заказчика как архитектурная потребность</li>
+<li>продукт до диагностики</li>
+<li>утверждение без источника</li>
+<li>уверенность эксперта как основание</li>
+<li>отраслевое среднее как критерий</li>
+</ul>
+<a class="go" href={`${base}/primenenie/`}>Границы применения →</a>
 </section>
   </main>
 </Base>
