@@ -618,67 +618,183 @@ img,svg{max-width:100%;display:block}
   .v-mck .mck-b-featured h2{font-size:1.9rem}
 }
 
-/* ============ sections below the first screen ============ */
-.v-mck .mck-sechead{padding:3.5rem 0 1.5rem}
-.v-mck .mck-sechead h2{font-size:1.75rem;line-height:2.25rem}
-.v-mck .mck-sechead p{margin-top:.75rem;color:var(--muted);font-size:1rem;max-width:38rem}
+/* ====================================================================
+   EVERYTHING BELOW THE FIRST SCREEN — the mckinsey.com module system.
+   Values are computed styles read off the live DOM of the 06.06.2026
+   web.archive.org capture, not approximations:
+     · full-bleed colour bands, padding 64px 0, 64px between light modules
+     · container: width min(85%, 1224px)
+     · backgrounds: deep-blue #051C2C · deep-gradient · electric-blue
+       #2251FF · white · lightest-grey #F0F0F0
+     · type: 76/64/52/44 light (300) display, 24/28 medium (500) item
+       headings, 20/32 light body, 16/24 medium 1.2px uppercase eyebrow
+     · 6-column grid, gutter 32px, cards span 2, media 16:9, item gap 24px
+   McKinsey Sans is proprietary; Roboto (already embedded here) is the
+   closest neo-grotesque with a real 300 cut and Cyrillic coverage.
+   ==================================================================== */
+.v-mck{--mck-blue-800:#042A76;--mck-cyan:#00A9F4;--mck-grey-f0:#F0F0F0;
+  --mck-fd:'Roboto PSAI',"Helvetica Neue",Arial,Roboto,sans-serif}
 
-.v-mck .mck-section{padding:0 0 3rem}
-.v-mck .mck-ladder{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.v-mck .mck-ladder li{list-style:none;display:flex;gap:.9rem;padding:1rem 1.25rem 1rem 0;border-top:1px solid var(--line)}
-.v-mck .mck-ladder li:nth-child(odd){padding-right:1.75rem}
-.v-mck .mck-ladder li:nth-child(-n+2){border-top:none}
-.v-mck .mck-ladder .n{font-weight:600;color:var(--accent);min-width:1.6rem}
-.v-mck .mck-ladder strong{display:block;color:var(--navy);font-size:1rem}
-.v-mck .mck-ladder span{display:block;color:var(--muted);font-size:.875rem;margin-top:.2rem}
-@media (max-width:640px){.v-mck .mck-ladder{grid-template-columns:1fr}.v-mck .mck-ladder li:nth-child(-n+2){border-top:1px solid var(--line)}.v-mck .mck-ladder li:first-child{border-top:none}}
+.v-mck .mck-band{font-family:var(--mck-fd);padding:4rem 0}
+.v-mck .mck-band--deep{background:var(--mck-deep-900);color:#fff}
+.v-mck .mck-band--grad{background:radial-gradient(circle at 100% 0%,#2251FF 14%,#042A76 50%,#051C2C 100%);color:#fff}
+.v-mck .mck-band--blue{background:var(--mck-el-500);color:#fff}
+.v-mck .mck-band--white{background:#fff;color:#000}
+.v-mck .mck-band--grey{background:var(--mck-grey-f0);color:#000}
+.v-mck .mck-band :where(h1,h2,h3,h4,h5){color:inherit;font-weight:400;letter-spacing:0;margin:0}
+.v-mck .mck-in{width:min(85%,76.5rem);margin:0 auto}
 
-.v-mck .mck-produce{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.v-mck .mck-produce div{background:#fff;padding:1.5rem}
-.v-mck .mck-produce b{display:block;color:var(--navy);margin-bottom:.35rem}
-.v-mck .mck-produce p{color:var(--muted);font-size:.9rem}
-@media (max-width:640px){.v-mck .mck-produce{grid-template-columns:1fr}}
+/* --- type scale --- */
+.v-mck .mck-kicker{font-size:1rem;line-height:1.5rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;text-align:center;margin:0}
+.v-mck .mck-dek,.v-mck .mck-h-xl,.v-mck .mck-h-lg,.v-mck .mck-h-md{font-weight:300;line-height:1.2;margin:0}
+.v-mck .mck-dek{font-size:2.25rem;text-align:center}
+.v-mck .mck-h-xl{font-size:2.25rem}
+.v-mck .mck-h-lg{font-size:2.25rem}
+.v-mck .mck-h-md{font-size:2rem;line-height:1.18}
+.v-mck .mck-lead{font-size:1.25rem;line-height:1.875rem;font-weight:300;margin:0}
+.v-mck .mck-desc{font-size:1.125rem;line-height:1.75rem;font-weight:300;margin:0}
+.v-mck .mck-ih{font-size:1.25rem;line-height:1.5rem;font-weight:500;margin:0}
+.v-mck .mck-eyebrow-sm{font-size:.875rem;line-height:1.25rem;font-weight:400;letter-spacing:1.2px;text-transform:uppercase;margin:0}
+@media (min-width:768px){
+  .v-mck .mck-dek{font-size:2.75rem}
+  .v-mck .mck-h-xl{font-size:4rem}
+  .v-mck .mck-h-lg{font-size:4rem}
+  .v-mck .mck-h-md{font-size:2.75rem}
+  .v-mck .mck-lead{font-size:1.5rem;line-height:2.25rem}
+  .v-mck .mck-desc{font-size:1.25rem;line-height:2rem}
+  .v-mck .mck-ih{font-size:1.5rem;line-height:1.75rem}
+}
+@media (min-width:1180px){
+  .v-mck .mck-dek{font-size:3.25rem}
+  .v-mck .mck-h-xl{font-size:4.75rem}
+}
 
-.v-mck .mck-classes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:1.5rem}
-.v-mck .mck-classes div{background:#fff;padding:1.5rem}
-.v-mck .mck-classes .tag{display:block;font-size:.8rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem}
-.v-mck .mck-classes h3{font-size:1.05rem;margin-bottom:.35rem}
-.v-mck .mck-classes p{color:var(--muted);font-size:.9rem}
-@media (max-width:640px){.v-mck .mck-classes{grid-template-columns:1fr}}
+/* --- links, chevrons, buttons --- */
+.v-mck .mck-clink{color:inherit}
+.v-mck .mck-chev{display:inline-block;width:.4em;height:.7em;margin-left:.4em;flex:none;transition:transform .2s ease}
+.v-mck .mck-band--white .mck-chev,.v-mck .mck-lv__card .mck-chev{color:var(--mck-el-500)}
+.v-mck a:hover .mck-chev{transform:translateX(.2em)}
+.v-mck .mck-btn2{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1rem;background:var(--mck-el-500);color:#fff;font-size:1rem;line-height:1.5rem;border:1px solid transparent;transition:background-color .2s}
+.v-mck .mck-btn2 svg{width:1rem;height:1rem}
+.v-mck .mck-btn2:hover{background:#1B41CC}
+.v-mck .mck-ghost{display:inline-flex;align-items:center;gap:.75rem;padding:.5rem 1.5rem;border:1px solid currentColor;font-size:1.125rem;line-height:1.75rem;background:none;color:inherit;transition:background-color .2s,color .2s}
+.v-mck .mck-ghost svg{width:1rem;height:1rem}
+.v-mck .mck-ghost:hover{background:#fff;color:var(--mck-deep-900)}
 
-.v-mck .mck-case-block{border:1px solid var(--line);padding:1.5rem;margin-bottom:1rem}
-.v-mck .mck-case-block .id{font-size:.8rem;font-weight:500;color:var(--accent);letter-spacing:.03em;text-transform:uppercase}
-.v-mck .mck-case-block h3{font-size:1.15rem;margin:.45rem 0 .6rem}
-.v-mck .mck-case-block p{color:var(--muted);font-size:.95rem}
-.v-mck .mck-note{font-size:.875rem;color:var(--muted);font-style:italic;margin-bottom:1rem}
+/* --- up module (eyebrow + dek + card grid) --- */
+.v-mck .mck-up{display:grid;gap:2rem}
+.v-mck .mck-up__head{display:grid;gap:2rem}
+.v-mck .mck-up__head .mck-dek{width:75%;margin:0 auto}
+.v-mck .mck-up__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2rem;align-items:start}
+.v-mck .mck-up__item{grid-column:span 2;display:grid;grid-template-rows:auto 1fr;gap:1.5rem;height:100%}
+.v-mck .mck-up__media{overflow:hidden}
+.v-mck .mck-up__media img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform 1.2s cubic-bezier(.7,.5,.7,.5)}
+.v-mck .mck-up__item:hover .mck-up__media img{transform:scale(1.06)}
+.v-mck .mck-up__body{display:grid;gap:.25rem;align-content:start}
+.v-mck .mck-up__item--rule{border-top:1px solid rgba(255,255,255,.45);padding-top:1.5rem;gap:1rem}
 
-/* full article (the one real publication) */
-.v-mck .mck-article{max-width:42rem;padding-bottom:4rem}
-.v-mck .mck-article .kicker{font-size:.8rem;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
-.v-mck .mck-article h1{font-family:var(--fserif);font-weight:400;font-size:2.75rem;line-height:1.15;margin:.75rem 0 1rem;letter-spacing:-.01em}
-.v-mck .mck-article .lede{font-size:1.125rem;line-height:1.75rem;color:var(--muted);margin-bottom:2rem}
-.v-mck .mck-article h4{color:var(--navy);font-size:.875rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin:2rem 0 .6rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-.v-mck .mck-article p{margin-bottom:1rem;font-size:1rem;line-height:1.6;color:var(--ink)}
-.v-mck .mck-article b{color:var(--navy)}
-.v-mck .mck-article cite{font-style:normal;color:var(--muted);font-size:.9em}
-.v-mck .mck-pull{border-left:3px solid var(--accent);padding:.2rem 0 .2rem 1.25rem;margin:2rem 0;font-family:var(--fserif);font-size:1.4rem;line-height:1.35;color:var(--navy);font-weight:400}
-.v-mck .mck-refs{font-size:.82rem;color:var(--muted);line-height:1.8;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+/* --- nine levels (deep-gradient module) --- */
+.v-mck .mck-lv__head{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;margin-bottom:2rem}
+.v-mck .mck-lv__head .mck-lead{width:75%;margin-top:1.5rem}
+.v-mck .mck-lv__panel{display:grid;grid-template-columns:1fr 1fr}
+.v-mck .mck-lv__card{background:#fff;color:#000;padding:2rem 3.5rem 2rem 2rem;display:grid;gap:2rem;align-content:space-between;min-height:22rem}
+.v-mck .mck-lv__cardtop{display:grid;gap:1rem;align-content:start}
+.v-mck .mck-lv__card h3{font-size:2.25rem;line-height:1.2;font-weight:500}
+.v-mck .mck-lv__card .mck-eyebrow-sm{color:var(--mck-gray-60);letter-spacing:1.2px}
+.v-mck .mck-lv__card .mck-desc{color:var(--mck-gray-80)}
+.v-mck .mck-lv__side{background:var(--mck-blue-800);color:#fff;display:grid;align-content:center;justify-items:center;gap:1rem;padding:2rem;text-align:center}
+.v-mck .mck-lv__num{font-size:7.5rem;line-height:1;font-weight:300;letter-spacing:-.02em}
+.v-mck .mck-lv__side p{font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-deep-200);max-width:18rem}
+.v-mck .mck-lv__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;margin-top:2.5rem;padding:0;list-style:none}
+.v-mck .mck-lv__btn{display:grid;gap:.5rem;width:100%;text-align:left;background:none;border:0;padding:0;color:#fff;font-family:inherit;cursor:pointer}
+.v-mck .mck-lv__bar{display:block;height:6px;background:rgba(255,255,255,.35);transition:background-color .25s}
+.v-mck .mck-lv__btn:hover .mck-lv__bar{background:rgba(255,255,255,.7)}
+.v-mck .mck-lv__btn[aria-selected="true"] .mck-lv__bar{background:var(--mck-cyan)}
+.v-mck .mck-lv__btn span.t{font-size:1rem;line-height:1.5rem;font-weight:400;padding:1rem 0 0 .5rem}
 
-/* boundary strip */
-.v-mck .mck-bound{background:var(--paper2);padding:2.5rem 0}
-.v-mck .mck-bound p{font-size:.875rem;font-weight:600;color:var(--navy);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.03em}
-.v-mck .mck-bound .tags{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;list-style:none;padding:0;margin:0}
-.v-mck .mck-bound .tags li{font-size:.9rem;color:var(--muted)}
+/* --- one-up module (application / four classes) --- */
+.v-mck .mck-oneup{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:2rem;position:relative}
+.v-mck .mck-oneup__col{display:grid;gap:1.5rem;align-content:start;justify-items:start}
+.v-mck .mck-oneup__col .mck-h-md{color:var(--mck-el-500)}
+.v-mck .mck-oneup__mediawrap{position:relative}
+.v-mck .mck-oneup__lines i{position:absolute;background:var(--mck-el-500);display:block}
+.v-mck .mck-oneup__lines i:first-child{top:-1.875rem;right:-1.875rem;width:60%;height:1.875rem}
+.v-mck .mck-oneup__lines i:last-child{top:-1.875rem;right:-1.875rem;width:1.875rem;height:11rem}
+.v-mck .mck-cls{position:relative;background:var(--mck-deep-900);color:#fff;list-style:none;margin:0;padding:0}
+.v-mck .mck-cls li{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;padding:1.5rem 2rem;border-top:1px solid rgba(255,255,255,.18)}
+.v-mck .mck-cls li:first-child{border-top:0}
+.v-mck .mck-cls .n{font-size:1rem;line-height:1.5rem;font-weight:500;color:var(--mck-el-400);white-space:nowrap}
+.v-mck .mck-cls b{display:block;font-size:1.125rem;line-height:1.5rem;font-weight:500}
+.v-mck .mck-cls span.d{display:block;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-deep-200);margin-top:.25rem}
 
-/* footer */
-.v-mck .mck-footer{background:var(--mck-deep-900);color:#c5d0da;padding:3.5rem 0 1.75rem}
+/* --- featured band with photograph (institute) --- */
+.v-mck .mck-tu{padding:0}
+.v-mck .mck-tu__strip{position:relative;margin-top:.5rem;overflow:hidden}
+.v-mck .mck-tu__bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.v-mck .mck-tu__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#051C2C 4%,rgba(5,28,44,.82) 42%,rgba(5,28,44,.05) 78%)}
+.v-mck .mck-tu__inner{position:relative}
+.v-mck .mck-tu__col{width:58%;padding:4rem 4rem 4rem 0;display:grid;gap:1.5rem;justify-items:start;align-content:center;min-height:26.625rem}
+
+/* --- article --- */
+.v-mck .mck-art{width:min(100%,44rem);margin:3rem auto 0}
+.v-mck .mck-art h4{font-size:1.5rem;line-height:1.75rem;font-weight:500;color:var(--mck-deep-900);margin:3rem 0 1rem}
+.v-mck .mck-art p{font-size:1.25rem;line-height:2rem;font-weight:300;margin:0 0 1.5rem}
+.v-mck .mck-art b{font-weight:500}
+.v-mck .mck-art cite{font-style:normal;color:var(--mck-gray-60)}
+.v-mck .mck-pull{border-left:6px solid var(--mck-el-500);padding-left:2rem;margin:3rem 0;font-size:2rem;line-height:1.25;font-weight:300;color:var(--mck-deep-900)}
+.v-mck .mck-refs{border-top:1px solid var(--mck-gray-30);padding-top:1.5rem;margin-top:3rem;font-size:.875rem;line-height:1.85;color:var(--mck-gray-60)}
+
+/* --- accordion --- */
+.v-mck .mck-acc__item{border-top:1px solid var(--mck-gray-30)}
+.v-mck .mck-acc__item:last-child{border-bottom:1px solid var(--mck-gray-30)}
+.v-mck .mck-acc__btn{display:flex;align-items:center;justify-content:space-between;gap:2rem;width:100%;background:none;border:0;padding:1.25rem 0;font-family:inherit;font-size:1.375rem;line-height:1.75rem;font-weight:500;color:#000;text-align:left;cursor:pointer}
+.v-mck .mck-acc__btn svg{width:1.5rem;height:1.5rem;flex:none;transition:transform .25s ease}
+.v-mck .mck-acc__item.is-open .mck-acc__btn svg{transform:rotate(180deg)}
+.v-mck .mck-acc__body{display:none;padding:0 0 1.5rem;max-width:56rem}
+.v-mck .mck-acc__item.is-open .mck-acc__body{display:block}
+.v-mck .mck-acc__body p{font-size:1.25rem;line-height:2rem;font-weight:300;margin:0 0 1rem}
+.v-mck .mck-acc__body ul{display:flex;flex-wrap:wrap;gap:.5rem 2rem;list-style:none;margin:0;padding:0;font-size:1.25rem;line-height:2rem;font-weight:300}
+@media (min-width:768px){.v-mck .mck-acc__btn{font-size:1.75rem;line-height:2rem;padding:1.25rem 0}}
+
+/* --- footer --- */
+.v-mck .mck-footer{background:var(--mck-deep-900);color:#fff;font-family:var(--mck-fd);padding:4rem 0 2rem}
 .v-mck .mck-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem}
-.v-mck .mck-footer strong{display:block;color:#fff;font-size:.875rem;margin-bottom:1rem}
-.v-mck .mck-footer a{display:block;color:#c5d0da;font-size:.9rem;padding:.25rem 0;transition:color .15s}
+.v-mck .mck-footer strong{display:block;font-size:1rem;line-height:1.5rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1.5rem}
+.v-mck .mck-footer a{display:block;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-deep-200);padding:.35rem 0;transition:color .15s}
 .v-mck .mck-footer a:hover{color:#fff}
-.v-mck .mck-footer p{font-size:.9rem;color:#9fb1c1;max-width:24rem}
-.v-mck .mck-footer__cr{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.14);font-size:.8rem;color:#8ea0b1}
-@media (max-width:700px){.v-mck .mck-footer__grid{grid-template-columns:1fr;gap:1.75rem}}
+.v-mck .mck-footer p{font-size:1.125rem;line-height:1.75rem;font-weight:300;color:var(--mck-deep-200);max-width:28rem}
+.v-mck .mck-footer__cr{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.16);font-size:.875rem;line-height:1.25rem;font-weight:300;color:var(--mck-deep-300)}
+
+/* --- below md --- */
+@media (max-width:1023px){
+  .v-mck .mck-up__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .v-mck .mck-lv__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
+}
+@media (max-width:767px){
+  .v-mck .mck-band{padding:3rem 0}
+  .v-mck .mck-up__grid{grid-template-columns:1fr;gap:2.5rem}
+  .v-mck .mck-up__item{grid-column:auto}
+  .v-mck .mck-up__head .mck-dek{width:100%}
+  .v-mck .mck-lv__head{grid-template-columns:1fr;align-items:start;justify-items:start}
+  .v-mck .mck-lv__head .mck-lead{width:100%}
+  .v-mck .mck-lv__panel{grid-template-columns:1fr}
+  .v-mck .mck-lv__card{padding:1.5rem;min-height:0}
+  .v-mck .mck-lv__card h3{font-size:1.75rem}
+  .v-mck .mck-lv__side{padding:2rem 1.5rem}
+  .v-mck .mck-lv__num{font-size:5rem}
+  .v-mck .mck-lv__list{grid-template-columns:1fr;gap:1.5rem}
+  .v-mck .mck-oneup{grid-template-columns:1fr;gap:3rem}
+  .v-mck .mck-oneup__lines i:first-child{width:40%}
+  .v-mck .mck-oneup__lines i:last-child{height:6rem}
+  .v-mck .mck-cls li{padding:1.25rem 1.25rem;grid-template-columns:1fr;gap:.5rem}
+  .v-mck .mck-tu__col{width:100%;padding:3rem 0;min-height:0}
+  .v-mck .mck-tu__bg::after{background:linear-gradient(180deg,rgba(5,28,44,.75) 0%,rgba(5,28,44,.92) 55%)}
+  .v-mck .mck-art{margin-top:2rem}
+  .v-mck .mck-art h4{font-size:1.25rem;margin:2rem 0 .75rem}
+  .v-mck .mck-art p,.v-mck .mck-acc__body p,.v-mck .mck-acc__body ul{font-size:1.125rem;line-height:1.75rem}
+  .v-mck .mck-pull{font-size:1.5rem;padding-left:1.25rem;margin:2rem 0}
+  .v-mck .mck-footer__grid{grid-template-columns:1fr;gap:2.5rem}
+}
 </style>
 </head>
 <body>
@@ -1198,136 +1314,264 @@ img,svg{max-width:100%;display:block}
   </div>
 </div>
 
-<div class="mck-wrap mck-sechead" id="mck-institut">
-  <h2>Институт</h2>
-  <p>PSAI прогнозирует не события, а изменение вероятностной структуры системы. Объект исследования, согласованность функциональных систем.</p>
-</div>
-<div class="mck-wrap mck-section">
-  <div class="mck-produce">
-    <div><b>Стандарты</b><p>Правила описания систем, правила вывода, требования к исследовательской процедуре.</p></div>
-    <div><b>Библиотеки</b><p>Проверенные архитектурные паттерны, ограничения, компенсаторы, классы расхождения.</p></div>
-    <div><b>Исследования</b><p>Применение стандарта к конкретным системам. Каждое производит проверяемое архитектурное описание.</p></div>
-    <div><b>Публикации</b><p>Результаты, вынесенные за пределы Института и доступные проверке.</p></div>
-  </div>
-</div>
-
-<div class="mck-wrap mck-sechead" id="mck-metod">
-  <h2>Девять уровней</h2>
-  <p>Компания. Рынок. Государство. Человек. Разные системы, устройство одно.</p>
-</div>
-<div class="mck-wrap mck-section">
-  <ul class="mck-ladder">
-    <li><span class="n">01</span><div><strong>Архитектура границы системы</strong><span>Что является системой, а что средой; что допускается внутрь</span></div></li>
-    <li><span class="n">02</span><div><strong>Архитектура мотивационного притяжения</strong><span>Чего система хочет; чем притягивает ресурсы и внимание</span></div></li>
-    <li><span class="n">03</span><div><strong>Архитектура активации движения</strong><span>Способность приводить намерение в живое движение</span></div></li>
-    <li><span class="n">04</span><div><strong>Архитектура благоприятных условий</strong><span>Конфигурация, при которой движение результативно</span></div></li>
-    <li><span class="n">05</span><div><strong>Архитектура реализации</strong><span>Механизмы, которыми намерение доводится до действия</span></div></li>
-    <li><span class="n">06</span><div><strong>Архитектура устойчивости</strong><span>Способность выдерживать нагрузку роста</span></div></li>
-    <li><span class="n">07</span><div><strong>Архитектура реинтеграции</strong><span>Способность распознать и устранить собственную дисфункцию</span></div></li>
-    <li><span class="n">08</span><div><strong>Архитектура интегрального согласования</strong><span>Стратегия совпадает с операциями, ценности, с поведением</span></div></li>
-    <li><span class="n">09</span><div><strong>Архитектура центральной когерентности</strong><span>Наличие подлинного центра, который реально организует уровни</span></div></li>
-  </ul>
-</div>
-
-<div class="mck-wrap mck-sechead" id="mck-primenenie">
-  <h2>Четыре класса расхождения</h2>
-  <p>Расхождение возникает там, где требование должно быть обеспечено либо где два архитектурных описания должны быть согласованы.</p>
-</div>
-<div class="mck-wrap mck-section">
-  <div class="mck-classes">
-    <div><span class="tag">Класс 1</span><h3>Между уровнями</h3><p>Уровень не обеспечивает следующий или пережимает его</p></div>
-    <div><span class="tag">Класс 2</span><h3>Между системами</h3><p>Способность одной не совпадает с требованием второй</p></div>
-    <div><span class="tag">Класс 3</span><h3>Система и роль</h3><p>Вынесенная функция обеспечена не так, как требует</p></div>
-    <div><span class="tag">Класс 4</span><h3>Роль и носитель</h3><p>Регуляция носителя не совпадает с требованием роли</p></div>
-  </div>
-
-  <div id="mck-case">
-    <p class="mck-note">Пример построен на типовой конфигурации. Числовые значения иллюстративны.</p>
-    <div class="mck-case-block">
-      <span class="id">Вывод В-01 · класс 1</span>
-      <h3>Условия результативности удерживаются носителями, а не структурой</h3>
-      <p>Уровень 4, Архитектура благоприятных условий, в дефицитном режиме: условия результативности не заданы структурой. Функцию условий исполняет неформальная сеть носителей контекста. Компенсатор опирается на плотность связей, а не на численность, и рост эту плотность разрушает.</p>
-    </div>
-    <div class="mck-case-block">
-      <span class="id">Вывод В-02 · класс 3</span>
-      <h3>Роль вынесена наружу. Обеспечение осталось внутри</h3>
-      <p>Роль вынесена, чтобы создать условия. Создание условий требует доступа к критериям решений, а критерии находятся не в документах, а в носителях, которые роли не подчинены.</p>
-    </div>
-    <div class="mck-case-block">
-      <span class="id">Вывод В-03 · класс 4</span>
-      <h3>Требование роли к носителю внутренне противоречиво</h3>
-      <p>Роль требует одновременно принадлежать контуру носителей, иначе контекст не передадут, и обесценить этот контур, формализовав то, что составляет основание его положения.</p>
+<!-- ============ 02 · ИНСТИТУТ — featured band with photograph ============ -->
+<section class="mck-band mck-band--deep mck-tu" id="mck-institut">
+  <div class="mck-in"><p class="mck-kicker">Институт</p></div>
+  <div class="mck-tu__strip">
+    <div class="mck-tu__bg" style="background-image:url(img/network.jpg)"></div>
+    <div class="mck-in mck-tu__inner">
+      <div class="mck-tu__col">
+        <h2 class="mck-h-lg">Прогноз структуры, а не событий</h2>
+        <p class="mck-desc">PSAI прогнозирует не события, а изменение вероятностной структуры системы. Объект исследования — согласованность функциональных систем.</p>
+        <a class="mck-ghost" href="#mck-metod">Девять уровней
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </a>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="mck-wrap mck-article" id="mck-art-granitsy">
-  <span class="kicker">Публикация</span>
-  <h1>Границы предсказуемости</h1>
-  <p class="lede">Что метод может и чего не может. Пределы, установленные не Институтом.</p>
+<!-- ============ 03 · МЕТОД — nine levels ============ -->
+<section class="mck-band mck-band--grad" id="mck-metod">
+  <div class="mck-in">
+    <div class="mck-lv__head">
+      <div>
+        <h2 class="mck-h-xl">Девять уровней</h2>
+        <p class="mck-lead">Компания. Рынок. Государство. Человек. Разные системы, устройство одно. Каждый уровень отвечает за одну функцию и обеспечивает следующий.</p>
+      </div>
+      <a class="mck-ghost" href="#mck-art-granitsy">Границы метода
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8"/></svg>
+      </a>
+    </div>
 
-  <h4>I · Предсказание работает</h4>
-  <p>Наука предсказывает, и предсказывает хорошо. Орбиты, полураспад, эпидемические кривые, отказы конструкций, погода на ближайшую неделю. Стремление предвидеть, не порок методологии, а условие любого действия: всякий, кто принимает решение, уже опирается на прогноз, даже если не называет его так.</p>
-  <p>Институт не оспаривает предсказание. Институт устанавливает, в какой форме оно возможно для тех систем, которыми занимается, для людей, ролей, организаций и рынков.</p>
+    <div class="mck-lv__panel">
+      <div class="mck-lv__card">
+        <div class="mck-lv__cardtop">
+          <p class="mck-eyebrow-sm" data-lv-eyebrow>Уровень 01</p>
+          <h3 data-lv-title>Архитектура границы системы</h3>
+          <p class="mck-desc" data-lv-desc>Что является системой, а что средой; что допускается внутрь</p>
+        </div>
+        <a class="mck-clink mck-ih" href="#mck-primenenie">Как читается расхождение<svg class="mck-chev" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      </div>
+      <div class="mck-lv__side">
+        <span class="mck-lv__num" data-lv-num>01</span>
+        <p>Уровень в дефиците не отказывает сразу, он перекладывает свою функцию на соседний</p>
+      </div>
+    </div>
 
-  <h4>II · Предел посчитан, и он физический</h4>
-  <p>Системы, о которых идёт речь, нелинейны и чувствительны к начальным условиям. Лоренц в 1960-х обнаружил это в буквальном виде: округление входного значения с 0,506127 до 0,506 дало совершенно иную последовательность. Его собственный вывод был жёстким: если в наблюдении текущего состояния есть хоть какая-то погрешность, а в реальных системах погрешности неизбежны, то точное предсказание мгновенного состояния в отдалённом будущем может оказаться невозможным.</p>
-  <p>Это не дефицит вычислительной мощности, который однажды закроют. <b>Предел посчитан.</b> Сет Ллойд <cite>(Physical Review Letters, 2002)</cite> установил: за всю свою историю Вселенная могла выполнить не более 10<sup>120</sup> элементарных операций над 10<sup>90</sup> битами. Вычислитель, удерживающий все микрофакторы живой системы, потребовал бы ресурса, которого физически не существует.</p>
-  <p>Отсюда следует известное ограничение: достоверность детального прогноза погоды существенно снижается по мере удаления горизонта и обычно становится ограниченной на масштабе приблизительно десяти-четырнадцати суток. Причина заключается не только в зрелости моделей, но и в чувствительности системы к неполноте начальных условий.</p>
-
-  <h4>III · Запрещено не всё</h4>
-  <p>Здесь проходит граница, которую обычно не замечают.</p>
-  <p>Чувствительность к начальным условиям запрещает <b>точечный прогноз</b>, утверждение, что система окажется в конкретном состоянии в конкретный момент. Она не запрещает описание статистического и структурного поведения. Исследования систем Лоренца показывают прямо: даже когда точечный прогноз запрещён, статистическое поведение часто относительно просто и его свойства предсказуемы. Большинство систем бо́льшую часть времени функционируют в своих границах, и пока они в них, они управляемы.</p>
-  <p>Институт не предсказывает событие. Институт описывает архитектуру, в границах которой событие происходит: где система остаётся устойчивой, при каких условиях выходит из границ, какая её часть отказывает первой. Это разрешённые вопросы, и они не требуют вычислителя размером со Вселенную.</p>
-
-  <div class="mck-pull">Достоверный долгосрочный точечный прогноз сложной системы принципиально ограничен. Структурное описание вероятностного диапазона остаётся возможным.</div>
-
-  <h4>IV · Данных достаточно. Предсказания нет</h4>
-  <p>Самое прямое подтверждение приходит не из физики, а из социальных наук.</p>
-  <p>Fragile Families Challenge <cite>(Salganik et al., PNAS, 2020)</cite> поставил вопрос экспериментально: насколько предсказуемы жизненные траектории? 160 команд получили лонгитюдные данные по 4 242 семьям, собранные за пятнадцать лет, и применили методы машинного обучения, оптимизированные под предсказание. Предсказывались шесть исходов: успеваемость ребёнка, упорство, выселение семьи, материальные трудности, увольнение и участие в переобучении.</p>
-  <p>Лучшие модели оказались неточными и лишь немного превзошли простую эталонную модель на четырёх переменных. Вывод авторов сформулирован без смягчения: не следует полагать, что сложные модели автоматически дадут точный прогноз будущего конкретного человека.</p>
-  <p><b>Это опровергает не предсказание. Это опровергает надежду на объём.</b> Пятнадцать лет наблюдений и лучшие алгоритмы не дали того, что должен был дать объём данных, потому что недостающее не находилось в данных.</p>
-
-  <h4>V · Модель, не удобство, а необходимое условие</h4>
-  <p>Конант и Эшби <cite>(International Journal of Systems Science, 1970)</cite> доказали теорему о хорошем регуляторе: всякий регулятор, максимально успешный и одновременно простой, обязан быть моделью регулируемой системы. Создание модели, таким образом, необходимо.</p>
-  <p>Формулировка требует внимания, потому что её постоянно переворачивают. Теорема <b>не</b> утверждает, что модель гарантирует успешное управление. Она утверждает обратное направление: если управление успешно, модель уже есть. Наличие модели, необходимое условие, не достаточное.</p>
-  <p>Отсюда то, что и составляет предмет Института. <b>Тот, кто управляет системой, уже пользуется её моделью</b>, неявной, несформулированной, невоспроизводимой, унаследованной из чужого опыта. Метод не добавляет модель туда, где её не было. Метод заменяет неявную модель явной: у которой есть источник, уровень доказательности и то, что её опровергает.</p>
-
-  <h4>VI · Зазор, в котором работает метод</h4>
-  <p>Два результата выше кажутся несовместимыми: полную модель построить нельзя, но хороший регулятор обязан быть моделью. Противоречие снимается деталью, которую в теореме обычно пропускают.</p>
-  <p>Отображение, которое строят Конант и Эшби, гомоморфизм, а не изоморфизм. <b>Модель имеет право терять информацию о моделируемом.</b> Полнота не требуется, требуется структурная верность.</p>
-  <p>Это и есть весь зазор, в котором существует метод. Девять уровней архитектуры, гомоморфное отображение системы: они теряют детали и удерживают устройство. Того же требует и закон необходимого разнообразия Эшби <cite>(1956)</cite>: регулятор должен располагать разнообразием не меньшим, чем регулируемая система. Не бо́льшим. Не полным. Достаточным.</p>
-
-  <h4>VII · Как это согласуется с теорией</h4>
-  <p>Теория утверждает: способность системы сохранять и восстанавливать реализацию своих функций зависит от согласованности между её структурой, процессами, средой и направлением движения. Согласованность повышает вероятность устойчивой реализации функции, адаптации и сохранения структурно предсказуемого диапазона поведения, но не гарантирует конкретный результат.</p>
-  <p><b>Структурная предсказуемость определяется не только возможностями наблюдателя, но и состоянием самой системы. Чем устойчивее согласованы её функции, ограничения и условия среды, тем уже диапазон вероятных структурных изменений.</b></p>
-  <p>Согласованная система с большей вероятностью сохраняет функциональные границы и потому допускает структурное описание диапазона поведения. По мере роста расхождений, ослабления компенсаторов и выхода за функциональные ограничения диапазон возможных состояний расширяется, а достоверность структурного прогноза снижается.</p>
-
-  <h4>VIII · Чего Институт не утверждает</h4>
-  <p>Что результат гарантирован. Что мониторинг архитектуры устраняет неопределённость. Что верная модель делает управление успешным, теорема этого не говорит, и Институт не будет говорить за неё.</p>
-  <p>Институт утверждает следующее. Расхождение между двумя системами измеримо и существует до того, как проявится. Точечный прогноз запрещён физически, структурный не запрещён. Управление уже опирается на модель, и вопрос лишь в том, явная она или нет, проверяема или нет, известно ли, что её опровергнет.</p>
-
-  <div class="mck-refs">
-    Lorenz E. N., Deterministic Nonperiodic Flow, 1963<br>
-    Ashby W. R., An Introduction to Cybernetics, 1956<br>
-    Conant R. C., Ashby W. R., Every Good Regulator of a System Must Be a Model of That System. Int. J. Systems Science 1(2), 1970<br>
-    Lloyd S., Computational Capacity of the Universe. Phys. Rev. Lett. 88, 237901, 2002<br>
-    Salganik M. J. et al., Measuring the Predictability of Life Outcomes with a Scientific Mass Collaboration. PNAS 117(15), 2020
-  </div>
-</div>
-
-<div class="mck-bound">
-  <div class="mck-wrap">
-    <p>Институт не является</p>
-    <ul class="tags">
-      <li>консалтингом</li><li>HR-инструментом</li><li>системой оценки персонала</li>
-      <li>типологией личности</li><li>психологией</li><li>коучингом</li><li>эзотерической школой</li>
+    <ul class="mck-lv__list" role="tablist" aria-label="Девять уровней архитектуры">
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="true" data-lv="01" data-title="Архитектура границы системы" data-desc="Что является системой, а что средой; что допускается внутрь"><span class="mck-lv__bar"></span><span class="t">Граница системы</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="02" data-title="Архитектура мотивационного притяжения" data-desc="Чего система хочет; чем притягивает ресурсы и внимание"><span class="mck-lv__bar"></span><span class="t">Мотивационное притяжение</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="03" data-title="Архитектура активации движения" data-desc="Способность приводить намерение в живое движение"><span class="mck-lv__bar"></span><span class="t">Активация движения</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="04" data-title="Архитектура благоприятных условий" data-desc="Конфигурация, при которой движение результативно"><span class="mck-lv__bar"></span><span class="t">Благоприятные условия</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="05" data-title="Архитектура реализации" data-desc="Механизмы, которыми намерение доводится до действия"><span class="mck-lv__bar"></span><span class="t">Реализация</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="06" data-title="Архитектура устойчивости" data-desc="Способность выдерживать нагрузку роста"><span class="mck-lv__bar"></span><span class="t">Устойчивость</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="07" data-title="Архитектура реинтеграции" data-desc="Способность распознать и устранить собственную дисфункцию"><span class="mck-lv__bar"></span><span class="t">Реинтеграция</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="08" data-title="Архитектура интегрального согласования" data-desc="Стратегия совпадает с операциями, ценности, с поведением"><span class="mck-lv__bar"></span><span class="t">Интегральное согласование</span></button></li>
+      <li><button class="mck-lv__btn" type="button" role="tab" aria-selected="false" data-lv="09" data-title="Архитектура центральной когерентности" data-desc="Наличие подлинного центра, который реально организует уровни"><span class="mck-lv__bar"></span><span class="t">Центральная когерентность</span></button></li>
     </ul>
   </div>
-</div>
+</section>
+
+<!-- ============ 04 · ЧТО ПРОИЗВОДИТ ИНСТИТУТ — three cards ============ -->
+<section class="mck-band mck-band--deep">
+  <div class="mck-in mck-up">
+    <div class="mck-up__head">
+      <h2 class="mck-kicker">Что производит Институт</h2>
+      <p class="mck-dek">Каждое исследование производит проверяемое архитектурное описание</p>
+    </div>
+    <div class="mck-up__grid">
+
+      <article class="mck-up__item">
+        <div class="mck-up__media"><a href="#mck-metod"><img src="img/rings.jpg" alt="" loading="lazy"></a></div>
+        <div class="mck-up__body">
+          <h3 class="mck-ih"><a class="mck-clink" href="#mck-metod">Стандарты<svg class="mck-chev" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a></h3>
+          <p class="mck-desc">Правила описания систем, правила вывода, требования к исследовательской процедуре.</p>
+        </div>
+      </article>
+
+      <article class="mck-up__item">
+        <div class="mck-up__media"><a href="#mck-primenenie"><img src="img/strata.jpg" alt="" loading="lazy"></a></div>
+        <div class="mck-up__body">
+          <h3 class="mck-ih"><a class="mck-clink" href="#mck-primenenie">Библиотеки<svg class="mck-chev" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a></h3>
+          <p class="mck-desc">Проверенные архитектурные паттерны, ограничения, компенсаторы, классы расхождения.</p>
+        </div>
+      </article>
+
+      <article class="mck-up__item">
+        <div class="mck-up__media"><a href="#mck-art-granitsy"><img src="img/network.jpg" alt="" loading="lazy" style="object-position:70% 50%"></a></div>
+        <div class="mck-up__body">
+          <h3 class="mck-ih"><a class="mck-clink" href="#mck-art-granitsy">Исследования и публикации<svg class="mck-chev" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a></h3>
+          <p class="mck-desc">Применение стандарта к конкретным системам. Результаты вынесены за пределы Института и доступны проверке.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · ПРИМЕНЕНИЕ — one-up with brand lines ============ -->
+<section class="mck-band mck-band--white" id="mck-primenenie">
+  <div class="mck-in">
+    <h2 class="mck-kicker">Применение</h2>
+    <div class="mck-oneup">
+      <div class="mck-oneup__col">
+        <h3 class="mck-h-md">Четыре класса расхождения</h3>
+        <p class="mck-desc">Расхождение возникает там, где требование должно быть обеспечено либо где два архитектурных описания должны быть согласованы.</p>
+        <a class="mck-btn2" href="#mck-case">Смотреть разбор кейса
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </a>
+      </div>
+      <div class="mck-oneup__mediawrap">
+        <div class="mck-oneup__lines" aria-hidden="true"><i></i><i></i></div>
+        <ul class="mck-cls">
+          <li><span class="n">Класс 1</span><div><b>Между уровнями</b><span class="d">Уровень не обеспечивает следующий или пережимает его</span></div></li>
+          <li><span class="n">Класс 2</span><div><b>Между системами</b><span class="d">Способность одной не совпадает с требованием второй</span></div></li>
+          <li><span class="n">Класс 3</span><div><b>Система и роль</b><span class="d">Вынесенная функция обеспечена не так, как требует</span></div></li>
+          <li><span class="n">Класс 4</span><div><b>Роль и носитель</b><span class="d">Регуляция носителя не совпадает с требованием роли</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · РАЗБОР КЕЙСА — electric blue band ============ -->
+<section class="mck-band mck-band--blue" id="mck-case">
+  <div class="mck-in mck-up">
+    <div class="mck-up__head">
+      <h2 class="mck-kicker">Разбор кейса</h2>
+      <p class="mck-dek">Три вывода, полученные по стандарту</p>
+      <p class="mck-desc" style="text-align:center;max-width:44rem;margin:0 auto;opacity:.8">Пример построен на типовой конфигурации. Числовые значения иллюстративны.</p>
+    </div>
+    <div class="mck-up__grid">
+
+      <article class="mck-up__item mck-up__item--rule">
+        <p class="mck-eyebrow-sm">Вывод В-01 · класс 1</p>
+        <div class="mck-up__body">
+          <h3 class="mck-ih">Условия результативности удерживаются носителями, а не структурой</h3>
+          <p class="mck-desc">Уровень 4, Архитектура благоприятных условий, в дефицитном режиме: условия результативности не заданы структурой. Функцию условий исполняет неформальная сеть носителей контекста. Компенсатор опирается на плотность связей, а не на численность, и рост эту плотность разрушает.</p>
+        </div>
+      </article>
+
+      <article class="mck-up__item mck-up__item--rule">
+        <p class="mck-eyebrow-sm">Вывод В-02 · класс 3</p>
+        <div class="mck-up__body">
+          <h3 class="mck-ih">Роль вынесена наружу. Обеспечение осталось внутри</h3>
+          <p class="mck-desc">Роль вынесена, чтобы создать условия. Создание условий требует доступа к критериям решений, а критерии находятся не в документах, а в носителях, которые роли не подчинены.</p>
+        </div>
+      </article>
+
+      <article class="mck-up__item mck-up__item--rule">
+        <p class="mck-eyebrow-sm">Вывод В-03 · класс 4</p>
+        <div class="mck-up__body">
+          <h3 class="mck-ih">Требование роли к носителю внутренне противоречиво</h3>
+          <p class="mck-desc">Роль требует одновременно принадлежать контуру носителей, иначе контекст не передадут, и обесценить этот контур, формализовав то, что составляет основание его положения.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 · ПУБЛИКАЦИЯ ============ -->
+<section class="mck-band mck-band--white" id="mck-art-granitsy">
+  <div class="mck-in">
+    <div class="mck-up__head">
+      <h2 class="mck-kicker">Публикация</h2>
+      <p class="mck-dek">Границы предсказуемости</p>
+      <p class="mck-lead" style="text-align:center;width:75%;margin:0 auto;color:#333">Что метод может и чего не может. Пределы, установленные не Институтом.</p>
+    </div>
+
+    <article class="mck-art">
+      <h4>I · Предсказание работает</h4>
+      <p>Наука предсказывает, и предсказывает хорошо. Орбиты, полураспад, эпидемические кривые, отказы конструкций, погода на ближайшую неделю. Стремление предвидеть, не порок методологии, а условие любого действия: всякий, кто принимает решение, уже опирается на прогноз, даже если не называет его так.</p>
+      <p>Институт не оспаривает предсказание. Институт устанавливает, в какой форме оно возможно для тех систем, которыми занимается, для людей, ролей, организаций и рынков.</p>
+
+      <h4>II · Предел посчитан, и он физический</h4>
+      <p>Системы, о которых идёт речь, нелинейны и чувствительны к начальным условиям. Лоренц в 1960-х обнаружил это в буквальном виде: округление входного значения с 0,506127 до 0,506 дало совершенно иную последовательность. Его собственный вывод был жёстким: если в наблюдении текущего состояния есть хоть какая-то погрешность, а в реальных системах погрешности неизбежны, то точное предсказание мгновенного состояния в отдалённом будущем может оказаться невозможным.</p>
+      <p>Это не дефицит вычислительной мощности, который однажды закроют. <b>Предел посчитан.</b> Сет Ллойд <cite>(Physical Review Letters, 2002)</cite> установил: за всю свою историю Вселенная могла выполнить не более 10<sup>120</sup> элементарных операций над 10<sup>90</sup> битами. Вычислитель, удерживающий все микрофакторы живой системы, потребовал бы ресурса, которого физически не существует.</p>
+      <p>Отсюда следует известное ограничение: достоверность детального прогноза погоды существенно снижается по мере удаления горизонта и обычно становится ограниченной на масштабе приблизительно десяти-четырнадцати суток. Причина заключается не только в зрелости моделей, но и в чувствительности системы к неполноте начальных условий.</p>
+
+      <h4>III · Запрещено не всё</h4>
+      <p>Здесь проходит граница, которую обычно не замечают.</p>
+      <p>Чувствительность к начальным условиям запрещает <b>точечный прогноз</b>, утверждение, что система окажется в конкретном состоянии в конкретный момент. Она не запрещает описание статистического и структурного поведения. Исследования систем Лоренца показывают прямо: даже когда точечный прогноз запрещён, статистическое поведение часто относительно просто и его свойства предсказуемы. Большинство систем бо́льшую часть времени функционируют в своих границах, и пока они в них, они управляемы.</p>
+      <p>Институт не предсказывает событие. Институт описывает архитектуру, в границах которой событие происходит: где система остаётся устойчивой, при каких условиях выходит из границ, какая её часть отказывает первой. Это разрешённые вопросы, и они не требуют вычислителя размером со Вселенную.</p>
+
+      <div class="mck-pull">Достоверный долгосрочный точечный прогноз сложной системы принципиально ограничен. Структурное описание вероятностного диапазона остаётся возможным.</div>
+
+      <h4>IV · Данных достаточно. Предсказания нет</h4>
+      <p>Самое прямое подтверждение приходит не из физики, а из социальных наук.</p>
+      <p>Fragile Families Challenge <cite>(Salganik et al., PNAS, 2020)</cite> поставил вопрос экспериментально: насколько предсказуемы жизненные траектории? 160 команд получили лонгитюдные данные по 4 242 семьям, собранные за пятнадцать лет, и применили методы машинного обучения, оптимизированные под предсказание. Предсказывались шесть исходов: успеваемость ребёнка, упорство, выселение семьи, материальные трудности, увольнение и участие в переобучении.</p>
+      <p>Лучшие модели оказались неточными и лишь немного превзошли простую эталонную модель на четырёх переменных. Вывод авторов сформулирован без смягчения: не следует полагать, что сложные модели автоматически дадут точный прогноз будущего конкретного человека.</p>
+      <p><b>Это опровергает не предсказание. Это опровергает надежду на объём.</b> Пятнадцать лет наблюдений и лучшие алгоритмы не дали того, что должен был дать объём данных, потому что недостающее не находилось в данных.</p>
+
+      <h4>V · Модель, не удобство, а необходимое условие</h4>
+      <p>Конант и Эшби <cite>(International Journal of Systems Science, 1970)</cite> доказали теорему о хорошем регуляторе: всякий регулятор, максимально успешный и одновременно простой, обязан быть моделью регулируемой системы. Создание модели, таким образом, необходимо.</p>
+      <p>Формулировка требует внимания, потому что её постоянно переворачивают. Теорема <b>не</b> утверждает, что модель гарантирует успешное управление. Она утверждает обратное направление: если управление успешно, модель уже есть. Наличие модели, необходимое условие, не достаточное.</p>
+      <p>Отсюда то, что и составляет предмет Института. <b>Тот, кто управляет системой, уже пользуется её моделью</b>, неявной, несформулированной, невоспроизводимой, унаследованной из чужого опыта. Метод не добавляет модель туда, где её не было. Метод заменяет неявную модель явной: у которой есть источник, уровень доказательности и то, что её опровергает.</p>
+
+      <h4>VI · Зазор, в котором работает метод</h4>
+      <p>Два результата выше кажутся несовместимыми: полную модель построить нельзя, но хороший регулятор обязан быть моделью. Противоречие снимается деталью, которую в теореме обычно пропускают.</p>
+      <p>Отображение, которое строят Конант и Эшби, гомоморфизм, а не изоморфизм. <b>Модель имеет право терять информацию о моделируемом.</b> Полнота не требуется, требуется структурная верность.</p>
+      <p>Это и есть весь зазор, в котором существует метод. Девять уровней архитектуры, гомоморфное отображение системы: они теряют детали и удерживают устройство. Того же требует и закон необходимого разнообразия Эшби <cite>(1956)</cite>: регулятор должен располагать разнообразием не меньшим, чем регулируемая система. Не бо́льшим. Не полным. Достаточным.</p>
+
+      <h4>VII · Как это согласуется с теорией</h4>
+      <p>Теория утверждает: способность системы сохранять и восстанавливать реализацию своих функций зависит от согласованности между её структурой, процессами, средой и направлением движения. Согласованность повышает вероятность устойчивой реализации функции, адаптации и сохранения структурно предсказуемого диапазона поведения, но не гарантирует конкретный результат.</p>
+      <p><b>Структурная предсказуемость определяется не только возможностями наблюдателя, но и состоянием самой системы. Чем устойчивее согласованы её функции, ограничения и условия среды, тем уже диапазон вероятных структурных изменений.</b></p>
+      <p>Согласованная система с большей вероятностью сохраняет функциональные границы и потому допускает структурное описание диапазона поведения. По мере роста расхождений, ослабления компенсаторов и выхода за функциональные ограничения диапазон возможных состояний расширяется, а достоверность структурного прогноза снижается.</p>
+
+      <div class="mck-refs">
+        Lorenz E. N., Deterministic Nonperiodic Flow, 1963<br>
+        Ashby W. R., An Introduction to Cybernetics, 1956<br>
+        Conant R. C., Ashby W. R., Every Good Regulator of a System Must Be a Model of That System. Int. J. Systems Science 1(2), 1970<br>
+        Lloyd S., Computational Capacity of the Universe. Phys. Rev. Lett. 88, 237901, 2002<br>
+        Salganik M. J. et al., Measuring the Predictability of Life Outcomes with a Scientific Mass Collaboration. PNAS 117(15), 2020
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 08 · ГРАНИЦЫ — accordion ============ -->
+<section class="mck-band mck-band--grey">
+  <div class="mck-in">
+    <div class="mck-acc">
+
+      <div class="mck-acc__item is-open">
+        <h4><button class="mck-acc__btn" type="button" aria-expanded="true">Что Институт утверждает
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 9l7 7 7-7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button></h4>
+        <div class="mck-acc__body">
+          <p>Расхождение между двумя системами измеримо и существует до того, как проявится. Точечный прогноз запрещён физически, структурный не запрещён. Управление уже опирается на модель, и вопрос лишь в том, явная она или нет, проверяема или нет, известно ли, что её опровергнет.</p>
+        </div>
+      </div>
+
+      <div class="mck-acc__item">
+        <h4><button class="mck-acc__btn" type="button" aria-expanded="false">Чего Институт не утверждает
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 9l7 7 7-7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button></h4>
+        <div class="mck-acc__body">
+          <p>Что результат гарантирован. Что мониторинг архитектуры устраняет неопределённость. Что верная модель делает управление успешным, теорема этого не говорит, и Институт не будет говорить за неё.</p>
+        </div>
+      </div>
+
+      <div class="mck-acc__item">
+        <h4><button class="mck-acc__btn" type="button" aria-expanded="false">Чем Институт не является
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 9l7 7 7-7" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button></h4>
+        <div class="mck-acc__body">
+          <ul>
+            <li>консалтингом</li><li>HR-инструментом</li><li>системой оценки персонала</li>
+            <li>типологией личности</li><li>психологией</li><li>коучингом</li><li>эзотерической школой</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <footer class="mck-footer">
-  <div class="mck-wrap">
+  <div class="mck-in">
     <div class="mck-footer__grid">
       <div>
         <strong>Институт предиктивной архитектуры систем</strong>
@@ -1377,6 +1621,31 @@ img,svg{max-width:100%;display:block}
       root.setAttribute('data-theme', next);
       var label = next === 'dark' ? btn.getAttribute('data-label-dark') : btn.getAttribute('data-label-light');
       if (label) btn.textContent = label;
+    });
+  });
+  // variant I — nine-levels selector and disclosure accordion
+  var lvBtns = document.querySelectorAll('.v-mck .mck-lv__btn');
+  var lvNum = document.querySelector('.v-mck [data-lv-num]');
+  var lvEyebrow = document.querySelector('.v-mck [data-lv-eyebrow]');
+  var lvTitle = document.querySelector('.v-mck [data-lv-title]');
+  var lvDesc = document.querySelector('.v-mck [data-lv-desc]');
+  if (lvNum && lvTitle) {
+    lvBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        lvBtns.forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+        lvNum.textContent = btn.getAttribute('data-lv');
+        lvEyebrow.textContent = 'Уровень ' + btn.getAttribute('data-lv');
+        lvTitle.textContent = btn.getAttribute('data-title');
+        lvDesc.textContent = btn.getAttribute('data-desc');
+      });
+    });
+  }
+  document.querySelectorAll('.v-mck .mck-acc__btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.mck-acc__item');
+      if (!item) return;
+      var open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
 })();
