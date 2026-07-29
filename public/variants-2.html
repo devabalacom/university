@@ -439,7 +439,7 @@ img,svg{max-width:100%;display:block}
   /* aliases used by the sections below the first screen */
   --navy:#051C2C;--ink:#333333;--bg:#fff;--paper2:#F5F5F5;--line:#E6E6E6;
   --accent:#2251FF;--muted:#666666;--tagfg:#051C2C;
-  --fsans:'IBM Plex Sans Cyr',"Helvetica Neue",Calibri,Corbel,Helvetica,Roboto,sans-serif;
+  --fsans:'Roboto PSAI',"Helvetica Neue",Calibri,Corbel,Helvetica,Arial,sans-serif;
   --fserif:'Playfair PSAI',Georgia,"Times New Roman",serif;
   position:relative;
   font-family:var(--fsans);
@@ -477,11 +477,11 @@ img,svg{max-width:100%;display:block}
   color:#fff;letter-spacing:.005em;padding-left:.5rem;white-space:nowrap;
 }
 .v-mck .mck-gh__nav{display:flex;align-items:center;gap:1.5rem;margin-left:2.5rem}
-.v-mck .mck-gh__nav a{display:inline-flex;align-items:center;gap:.35rem;font-size:1rem;line-height:1.5rem;color:#fff;padding:.35rem 0;border-bottom:2px solid transparent;transition:border-color .2s}
+.v-mck .mck-gh__nav a{display:inline-flex;align-items:center;gap:.35rem;font-size:1rem;line-height:1.5rem;font-weight:300;color:#fff;padding:.35rem 0;border-bottom:2px solid transparent;transition:border-color .2s}
 .v-mck .mck-gh__nav a:hover{border-bottom-color:#fff}
 .v-mck .mck-gh__nav svg{width:.6rem;height:.4rem;flex:none}
 .v-mck .mck-gh__right{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:.35rem;padding-bottom:.25rem}
-.v-mck .mck-gh__util{display:flex;align-items:center;gap:.5rem;font-size:.875rem;line-height:1.25rem;color:#fff}
+.v-mck .mck-gh__util{display:flex;align-items:center;gap:.5rem;font-size:.875rem;line-height:1.25rem;font-weight:300;color:#fff}
 .v-mck .mck-gh__util a:hover{text-decoration:underline}
 .v-mck .mck-gh__util span{color:rgba(255,255,255,.5)}
 .v-mck .mck-search{appearance:none;background:none;border:0;padding:0;cursor:pointer;color:#fff;display:flex}
@@ -735,14 +735,29 @@ img,svg{max-width:100%;display:block}
 .v-mck .mck-tu__inner{position:relative}
 .v-mck .mck-tu__col{width:58%;padding:4rem 4rem 4rem 0;display:grid;gap:1.5rem;justify-items:start;align-content:center;min-height:26.625rem}
 
-/* --- article --- */
-.v-mck .mck-art{width:min(100%,44rem);margin:3rem auto 0}
-.v-mck .mck-art h4{font-size:1.5rem;line-height:1.75rem;font-weight:500;color:var(--mck-deep-900);margin:3rem 0 1rem}
-.v-mck .mck-art p{font-size:1.25rem;line-height:2rem;font-weight:300;margin:0 0 1.5rem}
-.v-mck .mck-art b{font-weight:500}
+/* --- publication, laid out like a mckinsey.com article page:
+       deep-blue title band with a 52/62.4 serif headline, then the body in an
+       802px column offset 204px from the container edge, 20/32 light on #333,
+       serif 44/52 section headings, drop cap on the opening paragraph --- */
+.v-mck .mck-pub{background:linear-gradient(180deg,#051C2C 0%,#0C2E46 100%);color:#fff;display:flex;align-items:flex-end;min-height:35.625rem;padding:4rem 0}
+.v-mck .mck-pub h1{font-family:var(--fserif);font-weight:400;font-size:3.25rem;line-height:1.2;letter-spacing:0;color:#fff;margin:0;max-width:63rem}
+.v-mck .mck-pub__meta{margin-top:1rem;font-size:.875rem;line-height:1.25rem;font-weight:300;color:#fff}
+.v-mck .mck-byline{font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-gray-80);margin:0 0 2.5rem}
+.v-mck .mck-artwrap{display:grid;grid-template-columns:12.75rem 50.125rem 1fr}
+.v-mck .mck-art{grid-column:2}
+.v-mck .mck-art .lede{font-size:1.5rem;line-height:2.25rem;font-weight:300;color:#000;margin:0 0 2.5rem}
+.v-mck .mck-art h4{font-family:var(--fserif);font-weight:400;font-size:2.75rem;line-height:1.18;color:#000;margin:4.125rem 0 1.5rem}
+.v-mck .mck-art p{font-size:1.25rem;line-height:2rem;font-weight:300;color:var(--mck-gray-80);margin:0 0 1rem}
+.v-mck .mck-art h4:first-of-type+p::first-letter{float:left;font-family:var(--fserif);font-size:4.25rem;line-height:.82;font-weight:400;color:#000;padding:.06em .1em 0 0}
+.v-mck .mck-art b{font-weight:500;color:#000}
 .v-mck .mck-art cite{font-style:normal;color:var(--mck-gray-60)}
-.v-mck .mck-pull{border-left:6px solid var(--mck-el-500);padding-left:2rem;margin:3rem 0;font-size:2rem;line-height:1.25;font-weight:300;color:var(--mck-deep-900)}
+.v-mck .mck-pull{border-left:6px solid var(--mck-el-500);padding-left:2rem;margin:3rem 0;font-family:var(--fserif);font-size:2rem;line-height:1.3;font-weight:400;color:var(--mck-deep-900)}
 .v-mck .mck-refs{border-top:1px solid var(--mck-gray-30);padding-top:1.5rem;margin-top:3rem;font-size:.875rem;line-height:1.85;color:var(--mck-gray-60)}
+.v-mck .mck-art__rail{grid-column:3;padding-left:2rem}
+.v-mck .mck-art__rail div{border-top:1px solid var(--mck-gray-30);padding-top:1rem}
+.v-mck .mck-art__rail p{font-size:.875rem;line-height:1.25rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:#000;margin:0 0 .25rem}
+.v-mck .mck-art__rail a{font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-el-500)}
+.v-mck .mck-art__rail a:hover{text-decoration:underline}
 
 /* --- accordion --- */
 .v-mck .mck-acc__item{border-top:1px solid var(--mck-gray-30)}
@@ -756,14 +771,29 @@ img,svg{max-width:100%;display:block}
 .v-mck .mck-acc__body ul{display:flex;flex-wrap:wrap;gap:.5rem 2rem;list-style:none;margin:0;padding:0;font-size:1.25rem;line-height:2rem;font-weight:300}
 @media (min-width:768px){.v-mck .mck-acc__btn{font-size:1.75rem;line-height:2rem;padding:1.25rem 0}}
 
-/* --- footer --- */
-.v-mck .mck-footer{background:var(--mck-deep-900);color:#fff;font-family:var(--mck-fd);padding:4rem 0 2rem}
-.v-mck .mck-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem}
-.v-mck .mck-footer strong{display:block;font-size:1rem;line-height:1.5rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1.5rem}
-.v-mck .mck-footer a{display:block;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-deep-200);padding:.35rem 0;transition:color .15s}
-.v-mck .mck-footer a:hover{color:#fff}
-.v-mck .mck-footer p{font-size:1.125rem;line-height:1.75rem;font-weight:300;color:var(--mck-deep-200);max-width:28rem}
-.v-mck .mck-footer__cr{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.16);font-size:.875rem;line-height:1.25rem;font-weight:300;color:var(--mck-deep-300)}
+/* --- global footer, 1:1 with theirs: white, serif wordmark, 20/32 link
+       columns, subscribe block, hairline, 16/24 grey bottom row --- */
+.v-mck .mck-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.v-mck .mck-footer{background:#fff;color:var(--mck-gray-80);font-family:var(--fsans);padding:4rem 0 2.5rem}
+.v-mck .mck-footer__mark{font-family:var(--fserif);font-weight:400;font-size:2.75rem;line-height:1.14;color:#000;margin:0 0 2.5rem}
+.v-mck .mck-footer__top{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.v-mck .mck-footer__nav{display:grid;grid-template-columns:11rem auto;gap:0 2rem;align-content:start}
+.v-mck .mck-footer__nav a{display:block;font-size:1.25rem;line-height:2rem;font-weight:400;color:#000;padding:.5rem 0}
+.v-mck .mck-footer__nav a:hover{text-decoration:underline}
+.v-mck .mck-footer__sub{width:min(100%,21.875rem);justify-self:end}
+.v-mck .mck-footer__sub b{display:block;font-size:1.25rem;line-height:2rem;font-weight:500;color:#000}
+.v-mck .mck-footer__sub p{font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-gray-80);margin:0 0 1rem}
+.v-mck .mck-footer__form{display:flex}
+.v-mck .mck-footer__form input{flex:1;min-width:0;height:3rem;border:1px solid #000;padding:.5rem 1rem;font-family:inherit;font-size:1rem;font-weight:300;background:#fff;color:#000}
+.v-mck .mck-footer__form button{height:3rem;padding:.25rem 1rem;background:var(--mck-el-500);color:#fff;border:1px solid transparent;font-family:inherit;font-size:.875rem;cursor:pointer;transition:background-color .2s}
+.v-mck .mck-footer__form button:hover{background:#1B41CC}
+.v-mck .mck-footer__rule{border-top:1px solid var(--mck-gray-30);margin:2.5rem 0 1.5rem}
+.v-mck .mck-footer__bot{display:flex;justify-content:space-between;gap:2rem;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--mck-gray-80)}
+@media (max-width:1179px){
+  .v-mck .mck-artwrap{grid-template-columns:1fr}
+  .v-mck .mck-art{grid-column:auto}
+  .v-mck .mck-art__rail{grid-column:auto;padding:0;margin-top:2.5rem}
+}
 
 /* --- below md --- */
 @media (max-width:1023px){
@@ -789,11 +819,18 @@ img,svg{max-width:100%;display:block}
   .v-mck .mck-cls li{padding:1.25rem 1.25rem;grid-template-columns:1fr;gap:.5rem}
   .v-mck .mck-tu__col{width:100%;padding:3rem 0;min-height:0}
   .v-mck .mck-tu__bg::after{background:linear-gradient(180deg,rgba(5,28,44,.75) 0%,rgba(5,28,44,.92) 55%)}
-  .v-mck .mck-art{margin-top:2rem}
   .v-mck .mck-art h4{font-size:1.25rem;margin:2rem 0 .75rem}
   .v-mck .mck-art p,.v-mck .mck-acc__body p,.v-mck .mck-acc__body ul{font-size:1.125rem;line-height:1.75rem}
   .v-mck .mck-pull{font-size:1.5rem;padding-left:1.25rem;margin:2rem 0}
-  .v-mck .mck-footer__grid{grid-template-columns:1fr;gap:2.5rem}
+  .v-mck .mck-pub{min-height:0;padding:3rem 0}
+  .v-mck .mck-pub h1{font-size:2.25rem}
+  .v-mck .mck-art .lede{font-size:1.25rem;line-height:1.875rem}
+  .v-mck .mck-art h4{font-size:1.75rem;margin:2.5rem 0 1rem}
+  .v-mck .mck-art h4:first-of-type+p::first-letter{font-size:3rem}
+  .v-mck .mck-footer__mark{font-size:2rem}
+  .v-mck .mck-footer__top{grid-template-columns:1fr;gap:2.5rem}
+  .v-mck .mck-footer__sub{justify-self:start;width:100%}
+  .v-mck .mck-footer__bot{flex-direction:column;gap:.5rem}
 }
 </style>
 </head>
@@ -1473,16 +1510,20 @@ img,svg{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ============ 07 · ПУБЛИКАЦИЯ ============ -->
-<section class="mck-band mck-band--white" id="mck-art-granitsy">
+<!-- ============ 07 · ПУБЛИКАЦИЯ — their article-page layout ============ -->
+<section class="mck-pub" id="mck-art-granitsy">
   <div class="mck-in">
-    <div class="mck-up__head">
-      <h2 class="mck-kicker">Публикация</h2>
-      <p class="mck-dek">Границы предсказуемости</p>
-      <p class="mck-lead" style="text-align:center;width:75%;margin:0 auto;color:#333">Что метод может и чего не может. Пределы, установленные не Институтом.</p>
-    </div>
-
-    <article class="mck-art">
+    <h1>Границы предсказуемости</h1>
+    <p class="mck-pub__meta">Публикация · Институт предиктивной архитектуры систем</p>
+  </div>
+</section>
+<section class="mck-band mck-band--white">
+  <div class="mck-in">
+    <p class="mck-byline">Материал Института · метод и его пределы</p>
+    <div class="mck-artwrap">
+      <div></div>
+      <article class="mck-art">
+      <p class="lede">Что метод может и чего не может. Пределы, установленные не Институтом.</p>
       <h4>I · Предсказание работает</h4>
       <p>Наука предсказывает, и предсказывает хорошо. Орбиты, полураспад, эпидемические кривые, отказы конструкций, погода на ближайшую неделю. Стремление предвидеть, не порок методологии, а условие любого действия: всякий, кто принимает решение, уже опирается на прогноз, даже если не называет его так.</p>
       <p>Институт не оспаривает предсказание. Институт устанавливает, в какой форме оно возможно для тех систем, которыми занимается, для людей, ролей, организаций и рынков.</p>
@@ -1520,14 +1561,21 @@ img,svg{max-width:100%;display:block}
       <p><b>Структурная предсказуемость определяется не только возможностями наблюдателя, но и состоянием самой системы. Чем устойчивее согласованы её функции, ограничения и условия среды, тем уже диапазон вероятных структурных изменений.</b></p>
       <p>Согласованная система с большей вероятностью сохраняет функциональные границы и потому допускает структурное описание диапазона поведения. По мере роста расхождений, ослабления компенсаторов и выхода за функциональные ограничения диапазон возможных состояний расширяется, а достоверность структурного прогноза снижается.</p>
 
-      <div class="mck-refs">
+      <div class="mck-refs" id="mck-refs">
         Lorenz E. N., Deterministic Nonperiodic Flow, 1963<br>
         Ashby W. R., An Introduction to Cybernetics, 1956<br>
         Conant R. C., Ashby W. R., Every Good Regulator of a System Must Be a Model of That System. Int. J. Systems Science 1(2), 1970<br>
         Lloyd S., Computational Capacity of the Universe. Phys. Rev. Lett. 88, 237901, 2002<br>
         Salganik M. J. et al., Measuring the Predictability of Life Outcomes with a Scientific Mass Collaboration. PNAS 117(15), 2020
       </div>
-    </article>
+      </article>
+      <aside class="mck-art__rail">
+        <div>
+          <p>Источники</p>
+          <a href="#mck-refs">Пять работ</a>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -1572,25 +1620,38 @@ img,svg{max-width:100%;display:block}
 
 <footer class="mck-footer">
   <div class="mck-in">
-    <div class="mck-footer__grid">
-      <div>
-        <strong>Институт предиктивной архитектуры систем</strong>
-        <p>PSAI устанавливает правила вывода: переход от наблюдения к заключению, проверяемый третьей стороной.</p>
+    <p class="mck-footer__mark">Институт<br>ПСАИ</p>
+
+    <div class="mck-footer__top">
+      <div class="mck-footer__nav">
+        <div>
+          <a href="#mck-institut">Институт</a>
+          <a href="#mck-metod">Метод</a>
+          <a href="#mck-primenenie">Применение</a>
+        </div>
+        <div>
+          <a href="#mck-case">Разборы</a>
+          <a href="#mck-art-granitsy">Публикации</a>
+        </div>
       </div>
-      <div>
-        <strong>Разделы</strong>
-        <a href="#mck-institut">Институт</a>
-        <a href="#mck-metod">Метод</a>
-        <a href="#mck-primenenie">Применение</a>
-        <a href="#mck-art-granitsy">Публикации</a>
-      </div>
-      <div>
-        <strong>Публикация</strong>
-        <a href="#mck-art-granitsy">Границы предсказуемости</a>
-        <a href="#mck-case">Разбор кейса В-01</a>
+
+      <div class="mck-footer__sub">
+        <b>Подписка</b>
+        <p>Выберите темы и получайте новые исследования и публикации Института</p>
+        <form class="mck-footer__form" onsubmit="return false">
+          <label class="mck-vh" for="mck-sub-email">Электронная почта</label>
+          <input id="mck-sub-email" type="email" placeholder="Электронная почта" autocomplete="email">
+          <button type="submit">Отправить</button>
+        </form>
       </div>
     </div>
-    <div class="mck-footer__cr">Институт предиктивной архитектуры систем · Predictive Systems Architecture Institute</div>
+
+    <div class="mck-footer__rule"></div>
+
+    <div class="mck-footer__bot">
+      <span>Институт предиктивной архитектуры систем · Predictive Systems Architecture Institute</span>
+      <span>© 2026 PSAI</span>
+    </div>
   </div>
 </footer>
 
