@@ -320,7 +320,6 @@ a:hover .chev{transform:translateX(.2em)}
 .vd{display:grid;gap:2rem;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:2.5rem}
 .vd__item{background:var(--deep-800);border-top:3px solid var(--el-500);padding:1.75rem 1.5rem;
   display:grid;gap:.75rem;align-content:start}
-.vd__id{font-size:.875rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--el-300)}
 .vd__item h3{font-size:1.25rem;line-height:1.6rem;font-weight:500}
 .vd__item p{font-size:1rem;line-height:1.5rem;font-weight:300}
 .vd__lvl{justify-self:start;font-size:.875rem;font-weight:500;padding:.35rem .7rem;
