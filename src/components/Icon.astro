@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: "chev" | "chev-down" | "arrow" | "arrow-left";
+  class?: string;
+}
+const { name, class: cls } = Astro.props;
+---
+{name === "chev" && (
+  <svg class={cls ?? "chev"} viewBox="0 0 8 14" fill="none" aria-hidden="true" focusable="false">
+    <path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="2" />
+  </svg>
+)}
+{name === "chev-down" && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path d="M4 8l8 8 8-8" stroke="currentColor" stroke-width="2" />
+  </svg>
+)}
+{name === "arrow" && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path d="M3 12h17M14 5l7 7-7 7" stroke="currentColor" stroke-width="2" />
+  </svg>
+)}
+{name === "arrow-left" && (
+  <svg class={cls} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path d="M21 12H4M10 19l-7-7 7-7" stroke="currentColor" stroke-width="2" />
+  </svg>
+)}

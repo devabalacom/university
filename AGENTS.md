@@ -20,3 +20,17 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## User simulation
+
+`node tools/user-sim.mjs` drives the site through goal-directed journeys
+(understand what the institute is, find the method, verify the sources, find a
+contact) on desktop and mobile, and reports where the path breaks plus
+page-level ergonomics: horizontal overflow, heading structure, touch-target
+size and colour contrast.
+
+    node tools/user-sim.mjs                  # needs the dev server running
+    OUT=/tmp/sim node tools/user-sim.mjs     # log.json + a screenshot per step
+
+A failing journey is a finding about the site, not about the script. The
+`contact` journey fails by design: there is no contact route yet.

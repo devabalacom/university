@@ -1,116 +1,325 @@
 ---
 import Base from "../layouts/Base.astro";
-import NotAn from "../components/NotAn.astro";
+import Icon from "../components/Icon.astro";
 import { Image } from "astro:assets";
 import rings from "../assets/img/rings.jpg";
+import strata from "../assets/img/strata.jpg";
+import network from "../assets/img/network.jpg";
 
 const base = import.meta.env.BASE_URL;
 const title = "Институт предиктивной архитектуры систем — PSAI";
-const description = "Системы не взаимодействуют напрямую. Они взаимодействуют через согласование. Этим согласованием в нашем мире является человек — через функцию, которую он исполняет.";
+const description = "Части работоспособны, система нерезультативна. Институт исследует согласованность систем: девять уровней архитектуры, четыре класса расхождения, вывод с уровнем доказательности и фальсификатором.";
+
+const levels = [
+  { n: "01", nm: "Граница системы", ds: "Что является системой, а что средой; кто принадлежит; что допускается внутрь и через какие каналы", note: "Уровень в дефиците не отказывает сразу — он перекладывает свою функцию на соседний" },
+  { n: "02", nm: "Мотивационное притяжение", ds: "Чего система хочет; чем притягивает ресурсы, людей, внимание, капитал", note: "Усиление мотивации не устраняет отказ, если мотивационная функция уже обеспечена" },
+  { n: "03", nm: "Активация движения", ds: "Способность приводить намерение в живое движение. Не намерения, а их возбуждение", note: "Между «хочет» и «делает» лежит отдельная функция, и она отказывает отдельно" },
+  { n: "04", nm: "Благоприятные условия", ds: "Культура, каналы, структуры решений, доступ к ресурсам — конфигурация, при которой движение результативно", note: "Отказ проявляется на уровне реализации, а находится здесь" },
+  { n: "05", nm: "Реализация", ds: "Механизмы, которыми намерение доводится до завершённого действия", note: "Исполнители есть, инструменты внедрены, регламенты написаны — и результата нет" },
+  { n: "06", nm: "Устойчивость", ds: "Способность выдерживать нагрузку роста, не разрушаясь от собственной экспансии", note: "Рост разрушает компенсатор, который держал систему до роста" },
+  { n: "07", nm: "Реинтеграция", ds: "Способность распознать и устранить собственную дисфункцию", note: "Система, не видящая своих искажений, не может их исправить" },
+  { n: "08", nm: "Интегральное согласование", ds: "Стратегия совпадает с операциями, ценности — с поведением, знание — с действием", note: "Расхождение между сказанным и сделанным — измеримая величина, а не характер" },
+  { n: "09", nm: "Центральная когерентность", ds: "Наличие подлинного центра, который не декларируется, а реально организует остальные уровни", note: "Центр, который приходится объявлять, центром не является" },
+];
 ---
 <Base title={title} description={description}>
-  <section class="splash">
-    <div class="body">
-      <div class="wrap">
-        <blockquote>
-          <p>В нашем мире всё одновременно упорядочено и хаотично. Хаосом человек называет порядок, который он пока не в состоянии распознать. <em>PSAI</em> делает наблюдаемой архитектуру исследуемой системы и модель её взаимодействия с другими системами — так, чтобы основания решений могли быть описаны, проверены и сопоставлены с производимым результатом.</p>
-        </blockquote>
-        <div class="sig">
-          <span class="ru">Институт предиктивной архитектуры систем</span>
-          <span class="en">Predictive Systems Architecture Institute</span>
+  <section class="bento" aria-label="Главное">
+    <div class="bento__grid">
+      <div class="b-intro">
+        <p class="b-kicker">Институт предиктивной архитектуры систем · исследование согласованности функциональных систем</p>
+        <h1 class="b-title"><span>Где теряется</span><span>согласованность?</span></h1>
+        <p class="b-desc">Части работоспособны. Система нерезультативна. Противоречия здесь нет: результативность держится на согласованности уровней, а не на исправности частей.</p>
+        <div class="b-cta">
+          <a class="ghost" href="#content">Как это устроено<Icon name="arrow" /></a>
+        </div>
+      </div>
+
+      <a class="b-card b-featured" href={`${base}/metod/`}>
+        <span class="b-card__bg"><Image src={rings} alt="" widths={[720, 1080, 1376]} sizes="(max-width: 760px) 100vw, 46vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <span class="b-eyebrow">Метод</span>
+            <h2>Девять уровней архитектуры системы</h2>
+          </div>
+          <span class="btn">Читать метод<Icon name="arrow" /></span>
+        </div>
+      </a>
+
+      <a class="b-card b-item2" href={`${base}/publikacii/granicy-predskazuemosti/`}>
+        <span class="b-card__bg"><Image src={network} alt="" widths={[480, 720, 1184]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <span class="b-eyebrow">Публикация</span>
+            <h3>Границы предсказуемости: что метод может и чего не может<Icon name="chev" /></h3>
+          </div>
+        </div>
+      </a>
+
+      <a class="b-card b-item3" href={`${base}/primenenie/#example`}>
+        <div class="b-card__content">
+          <div>
+            <span class="b-eyebrow">Разбор кейса · класс 1</span>
+            <h3>Условия держатся на носителях, а не на структуре<Icon name="chev" /></h3>
+          </div>
+        </div>
+      </a>
+
+      <a class="b-card b-item4" href={`${base}/institut/`}>
+        <span class="b-card__bg"><Image src={strata} alt="" widths={[384, 640, 768]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <span class="b-eyebrow">Институт</span>
+            <h3>Что исследует Институт<Icon name="chev" /></h3>
+          </div>
+        </div>
+      </a>
+
+      <a class="b-card b-item5" href={`${base}/primenenie/`}>
+        <div class="b-card__content">
+          <div>
+            <span class="b-eyebrow">Применение</span>
+            <h3>Четыре класса расхождения<Icon name="chev" /></h3>
+          </div>
+        </div>
+      </a>
+
+      <div class="b-card b-promo">
+        <div class="b-card__content">
+          <span class="b-eyebrow">Что производит Институт</span>
+          <ul>
+            <li>Стандарты — правила описания систем и правила вывода</li>
+            <li>Библиотеки — паттерны, ограничения, компенсаторы</li>
+            <li>Исследования — применение стандарта к конкретным системам</li>
+            <li>Публикации — результаты, доступные проверке</li>
+          </ul>
+          <a class="clink" href={`${base}/institut/`}>Об институте<Icon name="chev" /></a>
         </div>
       </div>
     </div>
-    <button class="cue" type="button" data-to="content">Теория согласованности систем ↓</button>
   </section>
 
-  <main id="content" class="main--hero">
-    <section class="hero">
-      <div class="wrap">
-        <span class="eyebrow">Теория согласованности систем</span>
-        <h1>Почему одни системы сохраняют способность к устойчивой реализации своих функций, а другие постепенно утрачивают эту способность?</h1>
-        <p class="beat">Система — это различимая целостность, элементы которой связаны общей функцией, границей и способом взаимодействия со средой.</p>
-        <div class="thesis">
-          <p><strong>Способность системы сохранять и восстанавливать реализацию своих функций зависит от согласованности между её структурой, процессами, средой и направлением движения.</strong></p>
+  <main id="content">
+    <!-- ══ институт ══ -->
+    <section class="band band--deep tu" aria-labelledby="h-inst">
+      <div class="tu__strip">
+        <div class="tu__bg" style={`background-image:url('${base}/img/network.jpg')`}></div>
+        <div class="in tu__inner">
+          <div class="tu__col">
+            <p class="kicker kicker--left">Институт</p>
+            <h2 class="h-md" id="h-inst">Прогноз структуры, а не событий</h2>
+            <p class="desc">PSAI прогнозирует не события, а изменение вероятностной структуры системы. Чем сложнее система, тем менее предсказуемо отдельное событие — и тем отчётливее её структурная тенденция.</p>
+            <a class="ghost" href="#content">Как это устроено<Icon name="arrow" /></a>
+          </div>
         </div>
-        <figure class="section-figure">
-          <Image src={rings} alt="Концентрические кольца с общим светящимся центром — система, описываемая от внешней границы к центру" widths={[640, 960, 1376]} sizes="(min-width: 52rem) 34rem, calc(100vw - 3rem)" />
-        </figure>
-        <span class="eyebrow lab">Согласованность повышает вероятность устойчивой реализации функции и расширяет диапазон:</span>
-        <ul class="chain-chips">
-          <li>Устойчивость</li>
-          <li>Функциональная результативность</li>
-          <li>Адаптивность</li>
-          <li>Структурная предсказуемость</li>
-        </ul>
-        <p class="note">Согласованность не определяет ценность самой функции и не гарантирует конкретный результат.</p>
-        <a class="go" href={`${base}/institut/`}>Теория →</a><a class="go" href={`${base}/primenenie/`}>Применение →</a>
       </div>
     </section>
 
-    <div class="wrap">
-      <section>
-        <h2>Работоспособность частей системы не означает её эффективности.</h2>
-        <p class="beat">Части работоспособны. Система нерезультативна. Противоречия здесь нет.</p>
-        <div class="ground">
-          <p>Стратегия верна, люди компетентны, процессы описаны — а результата нет, и причина не обнаруживается ни в одном элементе. Она между ними: в том, насколько элементы согласованы друг с другом. Усиление каждого элемента по отдельности эту причину не устраняет. При определённых условиях — усиливает.</p>
+    <!-- ══ девять уровней ══ -->
+    <section class="band band--deep" aria-labelledby="h-lv">
+      <div class="in">
+        <div class="lv__head">
+          <div>
+            <h2 class="h-lg" id="h-lv">Девять уровней</h2>
+            <p class="lead">Компания. Рынок. Государство. Человек. Разные системы, устройство одно. Каждый уровень отвечает за одну функцию и обеспечивает следующий.</p>
+          </div>
+          <a class="ghost" href={`${base}/publikacii/granicy-predskazuemosti/`}>Границы метода<Icon name="arrow" /></a>
         </div>
-        <a class="go" href={`${base}/metod/`}>Единица анализа →</a>
-      </section>
 
-      <section>
-        <h2>Система становится наблюдаемой через сопоставление самоописания и производимого проявления.</h2>
-        <div class="ground">
-          <p>Система способна описывать собственные намерения, устройство и действия, но её самоописание создаётся из той же позиции, которая является предметом исследования. Поэтому оно не тождественно независимому описанию производимого эффекта.</p>
-          <p>Проявление становится доступным через вторую сторону: рынок, команду, партнёра или другую систему. Расхождение между намерением, самоописанием и проявлением обнаруживается их сопоставлением.</p>
+        <div class="lv__panel">
+          <div class="lv__card">
+            <div class="lv__cardtop">
+              <p class="eyebrow-sm" id="lv-eyebrow">Уровень 01</p>
+              <h3 id="lv-name">Граница системы</h3>
+              <p class="desc" id="lv-desc">Что является системой, а что средой; кто принадлежит; что допускается внутрь и через какие каналы</p>
+            </div>
+            <a class="clink" href={`${base}/metod/`}>Как читается расхождение<Icon name="chev" /></a>
+          </div>
+          <div class="lv__side">
+            <span class="lv__num" id="lv-num">01</span>
+            <p id="lv-note">Уровень в дефиците не отказывает сразу — он перекладывает свою функцию на соседний</p>
+          </div>
         </div>
-        <a class="go" href={`${base}/metod/`}>Вертикаль анализа →</a>
-      </section>
 
-      <blockquote class="pull">
-        <p>Состояние элемента становится наблюдаемым через его отношения с другими элементами и требованиями системы. Поэтому единицей архитектурного анализа является не изолированный элемент, а отношение.</p>
-      </blockquote>
-
-      <section>
-        <h2>Одни и те же данные могут обосновать противоположные решения.</h2>
-        <p class="beat q">Тогда что определяет вывод?</p>
-        <div class="ground">
-          <p>Цель, с которой данные читают. Интерпретация невозможна без цели: одно и то же значение означает разное в зависимости от того, какое решение принимается.</p>
-          <p>Заказывают верное действие — получают массив, из которого действие нужно вывести самостоятельно. Шаг вывода не описан ни в одной методике.</p>
-        </div>
-      </section>
-
-      <blockquote class="pull">
-        <p>Искажение входит дважды: в данных о системе — и в том, кто их читает.</p>
-      </blockquote>
-
-      <section class="panel-navy" id="rules">
-        <h2>Институт устанавливает правила вывода.</h2>
-        <p class="beat">Правило определяет переход от наблюдения к заключению и делает этот переход проверяемым третьей стороной.</p>
-        <ul class="principle-grid">
-          <li class="principle"><span class="num">01</span><h3>Прослеживаемость</h3><p>Каждое утверждение имеет источник и уровень доказательности</p></li>
-          <li class="principle"><span class="num">02</span><h3>Разделение</h3><p>Факт, интерпретация и гипотеза не смешиваются</p></li>
-          <li class="principle"><span class="num">03</span><h3>Триангуляция</h3><p>Вывод силён при подтверждении тремя независимыми источниками</p></li>
-          <li class="principle"><span class="num">04</span><h3>Фальсифицируемость</h3><p>Каждый вывод указывает, что его опровергнет</p></li>
+        <ul class="lv__list" role="tablist" aria-label="Девять уровней архитектуры">
+          {levels.map((l, i) => (
+            <li role="presentation">
+              <button
+                class="lv__btn"
+                type="button"
+                role="tab"
+                aria-selected={i === 0 ? "true" : "false"}
+                data-n={l.n}
+                data-nm={l.nm}
+                data-ds={l.ds}
+                data-note={l.note}>
+                <span class="lv__bar"></span>
+                <span class="t" data-n={l.n}>{l.nm}</span>
+              </button>
+            </li>
+          ))}
         </ul>
-      </section>
+      </div>
+    </section>
 
-      <blockquote class="pull">
-        <p>Единица измерения — пара. Расхождение между тем, что требует одна система, и тем, что умеет вторая.</p>
-      </blockquote>
-
-      <section>
-        <div class="ground">
-          <p>Отраслевой бенчмарк измеряет отклонение от среднего. Среднее не является критерием ни для одной системы: соответствие ему не означает согласованности, отставание от него может не означать ничего.</p>
-          <p>Измеримо другое — разрыв между двумя конкретными системами. Рынок, юрисдикция, отрасль — тоже системы, и описываются тем же стандартом, что и компания. Величина не берётся из отчёта: она вычисляется сопоставлением двух архитектур, сведённых к одним правилам описания.</p>
+    <!-- ══ когда это нужно ══ -->
+    <section class="band band--deep" aria-labelledby="h-when">
+      <div class="in up">
+        <div class="up__head">
+          <p class="kicker">Когда обращаются</p>
+          <p class="dek" id="h-when">Три ситуации, в которых причина не находится ни в одном элементе</p>
         </div>
-        <a class="go" href={`${base}/metod/`}>Метод →</a><a class="go" href={`${base}/primenenie/`}>Применение →</a>
-      </section>
+        <div class="up__grid">
+          <div class="up__item up__item--rule">
+            <div class="up__body">
+              <p class="ih">Усиление не даёт результата</p>
+              <p class="desc">Стратегия верна, люди компетентны, процессы описаны — а результата нет. Ресурс вкладывается в уровень, который и так в балансе.</p>
+            </div>
+          </div>
+          <div class="up__item up__item--rule">
+            <div class="up__body">
+              <p class="ih">Роль не закрывается</p>
+              <p class="desc">Кандидаты подходят по квалификации и не удерживаются в роли. Разрыв лежит между системой и ролью, а не в носителе.</p>
+            </div>
+          </div>
+          <div class="up__item up__item--rule">
+            <div class="up__body">
+              <p class="ih">Смена среды ломает то, что работало</p>
+              <p class="desc">Компания в балансе на домашнем рынке уходит в дефицит на зарубежном. Внутри ничего не изменилось — изменилось требование второй стороны.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-5"><a class="ghost" href={`${base}/primenenie/`}>Четыре класса расхождения<Icon name="arrow" /></a></p>
+      </div>
+    </section>
 
-      <section class="bound">
-        <NotAn />
-        <a class="go" href={`${base}/primenenie/`}>Границы применения →</a>
-      </section>
-    </div>
+    <!-- ══ применение ══ -->
+    <section class="band band--white" aria-labelledby="h-app">
+      <div class="in">
+        <p class="kicker">Применение</p>
+        <div class="oneup">
+          <div class="oneup__col">
+            <h2 class="h-md" id="h-app">Четыре класса расхождения</h2>
+            <p class="desc">Расхождение возникает там, где требование должно быть обеспечено либо где два архитектурных описания должны быть согласованы.</p>
+            <a class="btn2" href={`${base}/primenenie/#example`}>Смотреть разбор кейса<Icon name="arrow" /></a>
+          </div>
+          <div class="oneup__mediawrap">
+            <ul class="cls">
+              <li><span class="n">Класс 1</span><span><b>Между уровнями</b><span class="d">Уровень не обеспечивает следующий или пережимает его</span></span></li>
+              <li><span class="n">Класс 2</span><span><b>Между системами</b><span class="d">Способность одной не совпадает с требованием второй</span></span></li>
+              <li><span class="n">Класс 3</span><span><b>Система и роль</b><span class="d">Вынесенная функция обеспечена не так, как требует</span></span></li>
+              <li><span class="n">Класс 4</span><span><b>Роль и носитель</b><span class="d">Регуляция носителя не совпадает с требованием роли</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ разбор кейса ══ -->
+    <section class="band band--blue" aria-labelledby="h-case">
+      <div class="in up">
+        <div class="up__head">
+          <p class="kicker">Разбор кейса</p>
+          <p class="dek" id="h-case">Три вывода, полученные по стандарту</p>
+          <p class="note centered">Пример построен на типовой конфигурации. Числовые значения иллюстративны.</p>
+        </div>
+        <div class="vd">
+          <div class="vd__item">
+            <span class="vd__id">Вывод В-01 · класс 1</span>
+            <h3>Условия результативности удерживаются носителями, а не структурой</h3>
+            <p>Уровень 4 в дефицитном режиме: условия не заданы структурой, их функцию исполняет неформальная сеть носителей контекста. Компенсатор опирается на плотность связей, а не на численность, и рост эту плотность разрушает.</p>
+            <span class="vd__lvl">II — подтверждённая гипотеза</span>
+          </div>
+          <div class="vd__item">
+            <span class="vd__id">Вывод В-02 · класс 3</span>
+            <h3>Роль вынесена наружу. Обеспечение осталось внутри</h3>
+            <p>Роль вынесена, чтобы создать условия. Создание условий требует доступа к критериям решений, а критерии находятся не в документах, а в носителях, которые роли не подчинены.</p>
+            <span class="vd__lvl">II — подтверждённая гипотеза</span>
+          </div>
+          <div class="vd__item">
+            <span class="vd__id">Вывод В-03 · класс 4</span>
+            <h3>Требование роли к носителю внутренне противоречиво</h3>
+            <p>Роль требует одновременно принадлежать контуру носителей — иначе контекст не передадут — и обесценить этот контур, формализовав то, что составляет основание его положения.</p>
+            <span class="vd__lvl">I — исследовательская гипотеза</span>
+          </div>
+        </div>
+        <p class="mt-5"><a class="ghost" href={`${base}/primenenie/#example`}>Разбор целиком<Icon name="arrow" /></a></p>
+      </div>
+    </section>
+
+    <!-- ══ границы ══ -->
+    <section class="band band--grey" aria-labelledby="h-bounds">
+      <div class="in">
+        <h2 class="h-md mb-5" id="h-bounds">Границы</h2>
+        <div class="acc">
+          <div class="acc__item is-open">
+            <h3>
+              <button class="acc__btn" type="button" aria-expanded="true" aria-controls="acc1">
+                Что Институт утверждает<Icon name="chev-down" />
+              </button>
+            </h3>
+            <div class="acc__body" id="acc1">
+              <p>Расхождение между двумя системами измеримо и существует до того, как проявится. Точечный прогноз запрещён физически, структурный — не запрещён. Управление уже опирается на модель, и вопрос лишь в том, явная она или нет, проверяема или нет, известно ли, что её опровергнет.</p>
+            </div>
+          </div>
+          <div class="acc__item">
+            <h3>
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc2">
+                Чего Институт не утверждает<Icon name="chev-down" />
+              </button>
+            </h3>
+            <div class="acc__body" id="acc2">
+              <p>Что результат гарантирован. Что мониторинг архитектуры устраняет неопределённость. Что верная модель делает управление успешным — теорема этого не говорит, и Институт не будет говорить за неё.</p>
+            </div>
+          </div>
+          <div class="acc__item">
+            <h3>
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="acc3">
+                Чем Институт не является<Icon name="chev-down" />
+              </button>
+            </h3>
+            <div class="acc__body" id="acc3">
+              <ul>
+                <li>Консалтингом</li>
+                <li>HR-инструментом</li>
+                <li>Системой оценки персонала</li>
+                <li>Типологией личности</li>
+                <li>Психологией</li>
+                <li>Коучингом</li>
+                <li>Эзотерической школой</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Base>
+
+<script>
+  // levels selector — the card and the number panel follow the chosen level
+  const btns = document.querySelectorAll<HTMLButtonElement>(".lv__btn");
+  const set = (id: string, text: string) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+  btns.forEach((b) => {
+    b.addEventListener("click", () => {
+      btns.forEach((o) => o.setAttribute("aria-selected", String(o === b)));
+      set("lv-eyebrow", `Уровень ${b.dataset.n}`);
+      set("lv-name", b.dataset.nm ?? "");
+      set("lv-desc", b.dataset.ds ?? "");
+      set("lv-num", b.dataset.n ?? "");
+      set("lv-note", b.dataset.note ?? "");
+    });
+  });
+
+  // accordion
+  document.querySelectorAll<HTMLButtonElement>(".acc__btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".acc__item");
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      item?.classList.toggle("is-open", !open);
+    });
+  });
+</script>

@@ -27,7 +27,10 @@ const siteName = "Институт предиктивной архитектур
 <link rel="canonical" href={canonical}>
 
 <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml">
-<meta name="theme-color" content="#0A2540">
+<meta name="theme-color" content="#051C2C">
+
+
+<link rel="preload" href={`${base}/fonts/PSAI-Display-normal-400_600-83c9b620.woff2`} as="font" type="font/woff2" crossorigin>
 
 <meta property="og:type" content={ogType}>
 <meta property="og:locale" content="ru_RU">
@@ -43,26 +46,11 @@ const siteName = "Институт предиктивной архитектур
 <meta name="twitter:title" content={title}>
 <meta name="twitter:description" content={description}>
 <meta name="twitter:image" content={ogImage}>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 <a class="skip" href="#content">К содержанию</a>
 <Header />
 <slot />
 <Footer />
-<script>
-(function(){
-  document.addEventListener('click', function(e){
-    var n = e.target, b = null;
-    while (n && n !== document) { if (n.getAttribute && n.getAttribute('data-to')) { b = n; break; } n = n.parentNode; }
-    if (!b) return;
-    var el = document.getElementById(b.getAttribute('data-to'));
-    if (el && el.scrollIntoView) el.scrollIntoView({behavior:'smooth', block:'start'});
-  }, false);
-})();
-</script>
 </body>
 </html>

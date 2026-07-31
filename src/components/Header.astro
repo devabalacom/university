@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 const base = import.meta.env.BASE_URL;
 const nav = [
   { href: `${base}/institut/`, label: "Институт" },
@@ -8,21 +10,48 @@ const nav = [
 ];
 
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => (href === `${base}/` ? path === href : path.startsWith(href));
+const isCurrent = (href: string) => path.startsWith(href);
 ---
 <header class="topbar">
-  <div class="wrap">
-    <a
-      class="brand"
-      href={`${base}/`}
-      title="Институт предиктивной архитектуры систем"
-      aria-label="PSAI — Институт предиктивной архитектуры систем"
-      aria-current={isCurrent(`${base}/`) ? "page" : undefined}
-    >PSAI</a>
-    <nav class="menu" aria-label="Основная навигация">
+  <div class="topbar__in">
+    <a class="brand" href={`${base}/`} aria-label="PSAI — Институт предиктивной архитектуры систем, на главную">
+      <span class="wordmark"><span>Институт</span><span>ПСАИ</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Разделы">
       {nav.map((item) => (
         <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
       ))}
     </nav>
+
+    <div class="topbar__right">
+      <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Меню">
+        <i></i>
+      </button>
+    </div>
   </div>
+
+  <nav class="drawer" id="drawer" aria-label="Разделы">
+    {nav.map((item) => (
+      <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+    ))}
+  </nav>
 </header>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>(".burger");
+  const drawer = document.getElementById("drawer");
+  burger?.addEventListener("click", () => {
+    const open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    drawer?.classList.toggle("is-open", !open);
+  });
+  // Escape closes the drawer and returns focus to the control that opened it
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && burger?.getAttribute("aria-expanded") === "true") {
+      burger.setAttribute("aria-expanded", "false");
+      drawer?.classList.remove("is-open");
+      burger.focus();
+    }
+  });
+</script>

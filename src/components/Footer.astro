@@ -1,20 +1,37 @@
 ---
+import Icon from "./Icon.astro";
+
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
-<footer>
-  <div class="wrap">
-    <nav class="fnav" aria-label="Разделы сайта">
-      <a class="go" href={`${base}/institut/`}>Институт</a>
-      <a class="go" href={`${base}/metod/`}>Метод</a>
-      <a class="go" href={`${base}/primenenie/`}>Применение</a>
-      <a class="go" href={`${base}/publikacii/`}>Публикации</a>
-    </nav>
-    <p class="fmark">Институт предиктивной архитектуры систем</p>
-    <span class="fmark-en">Predictive Systems Architecture Institute</span>
-    <p class="fine">
+<footer class="footer">
+  <div class="in">
+    <p class="footer__mark"><span>Институт</span><span>ПСАИ</span></p>
+
+    <div class="footer__top">
+      <nav class="footer__nav" aria-label="Разделы сайта">
+        <a href={`${base}/institut/`}>Институт</a>
+        <a href={`${base}/publikacii/`}>Публикации</a>
+        <a href={`${base}/metod/`}>Метод</a>
+        <a href={`${base}/primenenie/#example`}>Разбор кейса</a>
+        <a href={`${base}/primenenie/`}>Применение</a>
+        <a href={`${base}/institut/#kanon`}>Версии канона</a>
+      </nav>
+
+      {/* The reference puts a newsletter signup here. There is no list to
+          subscribe to and no backend to receive it, so this says what is
+          actually true instead of collecting addresses into nothing. */}
+      <div class="footer__aside">
+        <b>Публикации</b>
+        <p>Институт публикует результаты по мере вынесения их за свои пределы — не по расписанию. Каждая указывает основание, уровень доказательности и границы применимости.</p>
+        <a class="btn2" href={`${base}/publikacii/`}>Перечень публикаций<Icon name="arrow" /></a>
+      </div>
+    </div>
+
+    <div class="footer__rule"></div>
+    <div class="footer__bot">
+      <span>Институт предиктивной архитектуры систем · Predictive Systems Architecture Institute</span>
       <span>© {year} PSAI</span>
-      <span>Объект исследования — согласованность систем</span>
-    </p>
+    </div>
   </div>
 </footer>

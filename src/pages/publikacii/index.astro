@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
 import { publications } from "../../data/publications";
 
 const base = import.meta.env.BASE_URL;
@@ -7,51 +8,59 @@ const title = "Публикации — PSAI";
 const description = "Институт публикует результаты, вынесенные за его пределы и доступные независимому прочтению, проверке и критике.";
 ---
 <Base title={title} description={description}>
-  <section class="splash">
-    <div class="body">
-      <div class="wrap">
-        <span class="eyebrow lab">Публикации</span>
-        <h1>Результат становится знанием только тогда, когда вынесен за пределы Института и <em>доступен проверке</em>.</h1>
-        <p class="sub">Каждая публикация указывает основание своих положений, уровень доказательности и границы применимости.</p>
-        <p class="sub2">Публикации выходят по мере вынесения результатов за пределы Института — не по расписанию.</p>
+  <main id="content">
+    <section class="band band--deep" aria-labelledby="h1">
+      <div class="in">
+        <p class="kicker kicker--left">Публикации</p>
+        <h1 class="h-xl mt-3 w-56" id="h1">Результат становится знанием, когда вынесен наружу и доступен проверке</h1>
+        <p class="lead mt-4 w-48">Каждая публикация указывает основание своих положений, уровень доказательности и границы применимости.</p>
       </div>
-    </div>
-    <button class="cue" type="button" data-to="content">Перечень публикаций ↓</button>
-  </section>
-
-  <main class="wrap" id="content">
-    <section>
-      <h2>Перечень.</h2>
-      <ul class="publist">
-        {publications.map((pub) => (
-          <li>
-            <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
-              <span class="pubmeta">
-                <span>Публикация {pub.no}</span>
-                <span class="sep" aria-hidden="true">·</span>
-                <span class="kind">{pub.kind}</span>
-              </span>
-              <h3>{pub.title}</h3>
-              <p class="lede">{pub.lede}</p>
-              <span class="more">Читать →</span>
-            </a>
-          </li>
-        ))}
-      </ul>
     </section>
 
-    <section>
-      <h2>Что обязана содержать публикация.</h2>
-      <p class="beat">Публикация — это вывод, вынесенный наружу вместе с тем, что позволяет его оспорить.</p>
-      <table class="t2">
-        <tbody>
-          <tr><td class="k">Основание</td><td class="v">Источник каждого положения. Утверждение без источника публикации не подлежит</td></tr>
-          <tr><td class="k">Уровень доказательности</td><td class="v">От I — исследовательской гипотезы — до IV, архитектурного принципа, внесённого в стандарт</td></tr>
-          <tr><td class="k">Границы применимости</td><td class="v">К каким системам и при каких условиях вывод относится, а к каким не относится</td></tr>
-          <tr><td class="k">Фальсификатор</td><td class="v">Что именно опровергнет вывод. Утверждение, которое нечем опровергнуть, — это мнение</td></tr>
-        </tbody>
-      </table>
-      <a class="go" href={`${base}/metod/`}>Правила вывода →</a><a class="go" href={`${base}/institut/#kanon`}>Версии канона →</a>
+    <section class="band band--white" aria-labelledby="h-list">
+      <div class="in">
+        <p class="kicker kicker--left">Перечень</p>
+        <h2 class="h-md mt-2" id="h-list">Опубликовано</h2>
+        <ul class="publist">
+          {publications.map((pub) => (
+            <li>
+              <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
+                <span class="pubitem__body">
+                  <span class="eyebrow-sm">{pub.no} · {pub.kind}</span>
+                  <h3>{pub.title}</h3>
+                  <span class="desc">{pub.lede}</span>
+                  <span class="pubitem__facts">
+                    <span>{pub.parts} частей</span>
+                    <span class="sep" aria-hidden="true">·</span>
+                    <span>{pub.sources} источника: {pub.cites.join(", ")}</span>
+                    <span class="sep" aria-hidden="true">·</span>
+                    <span>~{pub.minutes} мин</span>
+                  </span>
+                </span>
+                <span class="pubitem__go" aria-hidden="true"><Icon name="arrow" /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="note mt-3">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>
+      </div>
+    </section>
+
+    <section class="band band--grey" aria-labelledby="h-req">
+      <div class="in">
+        <p class="kicker kicker--left">Требования</p>
+        <h2 class="h-md mt-2 w-48" id="h-req">Публикация — это вывод, вынесенный наружу вместе с тем, что позволяет его оспорить</h2>
+        <table class="tbl">
+          <thead><tr><th>Обязательное поле</th><th>Что оно содержит</th></tr></thead>
+          <tbody>
+            <tr><td class="k">Основание</td><td class="v" data-m="Содержание">Источник каждого положения. Утверждение без источника публикации не подлежит</td></tr>
+            <tr><td class="k">Уровень доказательности</td><td class="v" data-m="Содержание">От I — исследовательской гипотезы — до IV, архитектурного принципа, внесённого в стандарт</td></tr>
+            <tr><td class="k">Границы применимости</td><td class="v" data-m="Содержание">К каким системам и при каких условиях вывод относится, а к каким не относится</td></tr>
+            <tr><td class="k">Фальсификатор</td><td class="v" data-m="Содержание">Что именно опровергнет вывод. Утверждение, которое нечем опровергнуть, — это мнение</td></tr>
+          </tbody>
+        </table>
+        <p class="mt-4"><a class="btn2" href={`${base}/metod/`}>Правила вывода<Icon name="arrow" /></a></p>
+      </div>
     </section>
   </main>
 </Base>
