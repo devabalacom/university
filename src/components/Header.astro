@@ -12,8 +12,14 @@ const isCurrent = (href: string) => (href === `${base}/` ? path === href : path.
 ---
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href={`${base}/`} aria-current={isCurrent(`${base}/`) ? "page" : undefined}><span class="sm">PSAI</span><span class="lg">Predictive Systems Architecture Institute</span></a>
-    <nav class="menu">
+    <a
+      class="brand"
+      href={`${base}/`}
+      title="Институт предиктивной архитектуры систем"
+      aria-label="PSAI — Институт предиктивной архитектуры систем"
+      aria-current={isCurrent(`${base}/`) ? "page" : undefined}
+    >PSAI</a>
+    <nav class="menu" aria-label="Основная навигация">
       {nav.map((item) => (
         <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
       ))}

@@ -1,11 +1,20 @@
 ---
 const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
 ---
 <footer>
   <div class="wrap">
-    <div class="fnav">
-      <a class="go" href={`${base}/metod/`}>Метод</a><a class="go" href={`${base}/primenenie/`}>Применение</a><a class="go" href={`${base}/publikacii/`}>Публикации</a><a class="go" href={`${base}/institut/`}>Институт</a>
-    </div>
-    <p class="fine">Институт предиктивной архитектуры систем</p>
+    <nav class="fnav" aria-label="Разделы сайта">
+      <a class="go" href={`${base}/institut/`}>Институт</a>
+      <a class="go" href={`${base}/metod/`}>Метод</a>
+      <a class="go" href={`${base}/primenenie/`}>Применение</a>
+      <a class="go" href={`${base}/publikacii/`}>Публикации</a>
+    </nav>
+    <p class="fmark">Институт предиктивной архитектуры систем</p>
+    <span class="fmark-en">Predictive Systems Architecture Institute</span>
+    <p class="fine">
+      <span>© {year} PSAI</span>
+      <span>Объект исследования — согласованность систем</span>
+    </p>
   </div>
 </footer>

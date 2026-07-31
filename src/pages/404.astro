@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL;
+const title = "Страница не найдена — PSAI";
+const description = "Запрошенной страницы не существует. Разделы Института: Институт, Метод, Применение, Публикации.";
+---
+<Base title={title} description={description}>
+  <main class="wrap" id="content">
+    <section class="soon">
+      <p>Ошибка 404</p>
+      <h1>Такой страницы нет.</h1>
+      <div class="ground">
+        <p>Адрес указывает на страницу, которой не существует, — либо она была перемещена. Ниже разделы, которые существуют.</p>
+      </div>
+      <nav class="golist" aria-label="Разделы сайта">
+        <a class="go" href={`${base}/`}>Главная →</a>
+        <a class="go" href={`${base}/institut/`}>Институт →</a>
+        <a class="go" href={`${base}/metod/`}>Метод →</a>
+        <a class="go" href={`${base}/primenenie/`}>Применение →</a>
+        <a class="go" href={`${base}/publikacii/`}>Публикации →</a>
+      </nav>
+    </section>
+  </main>
+</Base>

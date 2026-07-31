@@ -6,10 +6,16 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  /** Set on article pages so social cards report the right type. */
+  ogType?: "website" | "article";
 }
 
-const { title, description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://devabalacom.github.io").toString();
+const { title, description, ogType = "website" } = Astro.props;
+const site = Astro.site ?? new URL("https://devabalacom.github.io");
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, site).toString();
+const ogImage = new URL(`${base}/og.jpg`, site).toString();
+const siteName = "Институт предиктивной архитектуры систем";
 ---
 <!doctype html>
 <html lang="ru">
@@ -19,11 +25,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://devabalacom
 <title>{title}</title>
 <meta name="description" content={description}>
 <link rel="canonical" href={canonical}>
+
+<link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml">
+<meta name="theme-color" content="#0A2540">
+
+<meta property="og:type" content={ogType}>
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content={siteName}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content={siteName}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={ogImage}>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<a class="skip" href="#content">К содержанию</a>
 <Header />
 <slot />
 <Footer />

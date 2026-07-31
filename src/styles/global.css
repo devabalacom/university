@@ -1,7 +1,9 @@
 :root{
   --navy:#0A2540;--graphite:#1D2E3E;--slate:#26323B;
-  --gold:#D8A24A;--golddark:#A9761F;
-  --paper:#FBFCFD;--hair:#DCE1E6;--muted:#6B7883;--onnavy:#B9C6D2;
+  /* --golddark and --muted are the small-text colours on --paper; both are
+     tuned to clear WCAG AA (4.5:1) at the sizes they are actually used. */
+  --gold:#D8A24A;--golddark:#9A6B1C;
+  --paper:#FBFCFD;--hair:#DCE1E6;--muted:#67747F;--onnavy:#B9C6D2;
   --serif:"Literata",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --measure:38rem;--bar:3.4rem;
@@ -11,25 +13,36 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--slate);font-family:var(--serif);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
 .wrap{max-width:var(--measure);margin:0 auto;padding:0 1.5rem}
 .eyebrow{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--golddark)}
+/* the eyebrow is inline by default; .lab is the block form used above a block */
+.lab{display:block;margin-bottom:1rem}
+
+/* skip link — first tab stop on every page */
+.skip{position:absolute;left:-9999px;top:0;z-index:40;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--navy);padding:.7rem 1.1rem;text-decoration:none}
+.skip:focus{left:.5rem;top:.5rem}
 
 /* ══ topbar ══ */
+/* The underline is drawn with ::after rather than border-bottom so the links
+   can carry vertical padding (touch-target height) without the rule drifting
+   away from the text. */
 .topbar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;z-index:20}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:var(--bar)}
-.brand{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;transition:color .18s,border-color .18s;flex-shrink:0}
-.brand:hover{color:var(--gold)}
-.brand[aria-current]{color:var(--gold);border-color:var(--gold)}
-.brand .lg{display:none}
+.brand,.menu a{position:relative;text-decoration:none;font-family:var(--mono);font-weight:500;text-transform:uppercase;padding:.62rem 0;transition:color .18s}
+.brand::after,.menu a::after{content:"";position:absolute;left:0;right:0;bottom:.42rem;height:1.5px;background:transparent;transition:background .18s}
+.brand{font-size:.62rem;letter-spacing:.16em;color:#fff;flex-shrink:0}
+.brand:hover,.menu a:hover{color:var(--gold)}
+.brand[aria-current],.menu a[aria-current]{color:var(--gold)}
+.brand[aria-current]::after,.menu a[aria-current]::after,.brand:hover::after,.menu a:hover::after{background:var(--gold)}
 .menu{display:flex;gap:.85rem;flex-wrap:nowrap;justify-content:flex-end;white-space:nowrap}
-.menu a{font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--onnavy);text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;transition:color .18s,border-color .18s}
-.menu a:hover{color:var(--gold)}
-.menu a[aria-current]{color:var(--gold);border-color:var(--gold)}
+.menu a{font-size:.58rem;letter-spacing:.08em;color:var(--onnavy)}
 
 /* ══ splash ══ */
 .splash{background:var(--navy);color:#fff;min-height:calc(100svh - var(--bar));display:flex;flex-direction:column}
 .splash .body{flex:1;display:flex;align-items:center;padding:3rem 0 2rem}
 .splash .eyebrow{display:block;margin-bottom:1.5rem;color:var(--gold)}
 .splash blockquote{margin:0 0 1.75rem;padding:0}
-.splash blockquote p{margin:0;font-weight:700;color:#fff;font-size:1.7rem;line-height:1.3;letter-spacing:-.014em;text-wrap:balance}
+/* One display rule for both the long home manifesto and the short section
+   epigraphs: the size follows the viewport, so neither overruns the screen. */
+.splash blockquote p,.splash h1{margin:0;font-family:var(--serif);font-weight:700;color:#fff;font-size:clamp(1.55rem,1.05rem + 1.6vw,2.5rem);line-height:1.28;letter-spacing:-.014em;text-wrap:balance}
 .splash em{font-style:normal;color:var(--gold)}
 .splash .thesis{border-left:2px solid var(--gold);padding-left:1.15rem;margin:0 0 2rem;color:var(--onnavy);font-size:1rem;line-height:1.62}
 .splash .thesis p{margin:0}
@@ -39,56 +52,68 @@ body{margin:0;background:var(--paper);color:var(--slate);font-family:var(--serif
 .sig{border-top:1px solid rgba(255,255,255,.16);padding-top:1.25rem}
 .sig .ru{display:block;font-family:var(--serif);font-weight:600;font-size:1rem;color:#fff;line-height:1.4;margin-bottom:.3rem}
 .sig .en{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
-.cue{display:block;width:100%;border:0;background:var(--navy);font-family:var(--mono);padding:0 0 2.5rem;text-align:center;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--onnavy);text-decoration:none;transition:color .18s;background:var(--navy)}
+.cue{display:block;width:100%;border:0;background:var(--navy);padding:.75rem 0 2.5rem;text-align:center;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--onnavy);cursor:pointer;transition:color .18s}
 .cue:hover{color:var(--gold)}
 
 /* ══ hero (home) ══ */
 .hero{background:var(--paper);border-bottom:1px solid var(--hair);padding:4rem 0 3.5rem}
 .hero .eyebrow{display:block;margin-bottom:1.5rem}
-.hero h1{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:1.85rem;line-height:1.24;letter-spacing:-.012em;margin:0 0 1.9rem;text-wrap:balance}
 .hero .thesis{border-left:2px solid var(--gold);padding-left:1.15rem;margin:0 0 2.25rem;font-size:1rem;line-height:1.62;color:var(--slate)}
 .hero .thesis p{margin:0}
 .hero .thesis strong{color:var(--navy);font-weight:600}
-.lab{display:block;margin-bottom:.9rem}
 .chain-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 2.25rem;padding:0;list-style:none}
 .chain-chips li{font-family:var(--mono);font-size:.64rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);background:var(--navy);padding:.42rem .7rem;border-radius:2px}
 
 main{padding-top:3.5rem}
+/* the home page opens with the hero, which carries its own top padding */
+.main--hero{padding-top:0}
+.hero + .wrap{padding-top:3.5rem}
 section{padding:0 0 3.25rem}
-.claim{padding:0 0 3.25rem}
-h1{font-family:var(--serif);color:var(--navy);font-weight:700}
+h1{font-family:var(--serif);color:var(--navy);font-weight:700;font-size:1.85rem;line-height:1.24;letter-spacing:-.012em;margin:0 0 1.9rem;text-wrap:balance}
 h2{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.5rem;line-height:1.28;letter-spacing:-.011em;margin:0 0 1rem;text-wrap:balance}
 h3{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.15rem;line-height:1.35;margin:0 0 .7rem}
+/* a subhead that breaks up a long section needs air above it */
+section > h3{margin:2rem 0 1rem}
+.ground.gap-top{margin-top:1.5rem}
 .beat{font-weight:600;font-size:1.0625rem;line-height:1.5;color:var(--graphite);margin:0 0 1.15rem}
 .beat.q{color:var(--golddark)}
 .ground{border-left:1.5px solid var(--gold);padding:.1rem 0 .1rem 1.15rem;margin:0 0 1.5rem;font-size:.9375rem;line-height:1.68}
 .ground p{margin:0 0 .8rem}
 .ground p:last-child{margin-bottom:0}
 .ground .lab{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.25rem}
-.note{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;line-height:1.6}
+/* qualifier line: mono and quiet, but sentence case — every use of it is a
+   full sentence, and a full Russian sentence in all-caps is unreadable */
+.note{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--muted);line-height:1.6;max-width:34rem;margin:0 0 2.25rem}
 
 a{color:inherit}
-.go{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--gold);padding-bottom:.2rem;transition:color .18s,border-color .18s;cursor:pointer}
+em{font-style:normal;color:var(--golddark)}
+sup{font-size:.72em;line-height:0;vertical-align:super}
+/* top padding is hit-area only — it keeps the link at a 28px touch target
+   without moving the gold rule away from the text */
+.go{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--gold);padding:.35rem 0 .2rem;transition:color .18s,border-color .18s;cursor:pointer}
 .go:hover{color:var(--golddark);border-color:var(--navy)}
+/* .golist is the flex row form; the sibling margin is only for inline runs */
 .go+.go{margin-left:1.35rem}
+.golist{display:flex;flex-wrap:wrap;gap:1.35rem}
+.golist .go+.go{margin-left:0}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
 
 .pull{background:var(--navy);color:var(--gold);margin:0 0 3rem;padding:2.15rem 1.6rem;border-radius:2px}
 .pull p{margin:0;font-weight:600;font-size:1.25rem;line-height:1.38;letter-spacing:-.008em;text-wrap:balance}
 
-/* ══ tables ══ */
-.rules,.t2,.ov,.outs,.lv,.mods{width:100%;border-collapse:collapse;margin:0 0 1.5rem}
-.rules th,.t2 th,.mods th{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 0 .7rem;border-bottom:1px solid var(--hair)}
-.rules td,.t2 td,.ov td,.outs td,.lv td,.mods td{padding:.9rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
-.rules tr:last-child td,.t2 tr:last-child td,.ov tr:last-child td,.outs tr:last-child td,.lv tr:last-child td,.mods tr:last-child td{border-bottom:none}
-.rules td.k{font-weight:600;color:var(--navy);padding-right:1.4rem;width:34%}
-.rules td.v,.t2 td.v,.ov td.v,.outs td.v,.mods td.an{font-size:.875rem;line-height:1.55;color:var(--muted)}
-.t2 td.k,.outs td.k,.mods td.nm{font-weight:600;color:var(--navy);padding-right:1.2rem;width:34%}
-.t2 td.d,.ov td.n,.mods td.dim{font-family:var(--mono);font-size:.74rem;color:var(--golddark);width:1%;padding-right:.9rem;white-space:nowrap}
-.ov td.k{font-weight:600;color:var(--navy);padding-right:1.1rem;width:30%}
-.lv td.n{font-family:var(--mono);font-size:.8rem;font-weight:500;color:var(--gold);width:1%;padding-right:.85rem;white-space:nowrap}
-.lv .nm{font-weight:600;color:var(--navy);display:block;margin-bottom:.15rem}
-.lv .ds{font-size:.85rem;line-height:1.5;color:var(--muted);display:block}
+/* ══ tables: stacked rows on mobile, real tables from 52rem up ══ */
+/* Three-column tables cannot hold three Russian columns in a 320px screen —
+   below the breakpoint every row collapses into index / title / description
+   stacked vertically, which is the same shape .md already used. */
+.t2,.ov,.outs{width:100%;border-collapse:collapse;margin:0 0 1.5rem;display:block}
+.t2 thead,.ov thead,.outs thead{display:none}
+.t2 tbody,.ov tbody,.outs tbody{display:block}
+.t2 tr,.ov tr,.outs tr{display:block;border-bottom:1px solid var(--hair);padding:.9rem 0}
+.t2 tr:last-child,.ov tr:last-child,.outs tr:last-child{border-bottom:none}
+.t2 td,.ov td,.outs td{display:block;padding:0;border:none;width:auto;vertical-align:top}
+.t2 td.d,.ov td.n{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;color:var(--golddark);margin-bottom:.25rem}
+.t2 td.k,.ov td.k,.outs td.k{font-weight:600;color:var(--navy);margin-bottom:.3rem}
+.t2 td.v,.ov td.v,.outs td.v{font-size:.875rem;line-height:1.55;color:var(--muted)}
 
 /* ══ modes: cards on mobile, table on desktop ══ */
 .md{width:100%;border-collapse:collapse;display:block}
@@ -101,8 +126,7 @@ a{color:inherit}
 .md td[data-m]:before{content:attr(data-m);font-family:var(--mono);font-size:.56rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--golddark);display:block;margin-bottom:.1rem}
 .md td[data-m]{margin-bottom:.5rem}
 .md td[data-m]:last-child{margin-bottom:0}
-.hint{display:none}
-.sx{margin:0 0 1.5rem}
+.sx{margin:0 0 1.5rem;overflow-x:auto}
 
 /* ══ chain ══ */
 .chain{margin:0 0 1.75rem;padding:0;list-style:none;counter-reset:step}
@@ -131,54 +155,99 @@ a{color:inherit}
 .fld:last-child{margin-bottom:0}
 .fld .n{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.3rem}
 .fld p{margin:0;font-size:.875rem;line-height:1.6}
+.fld p + p{margin-top:.6rem}
 .fld .src{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:.35rem}
+.fld .rm{margin-top:.4rem}
 .lvl{display:inline-block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.1em;background:var(--gold);color:var(--navy);padding:.2rem .5rem;border-radius:2px}
 
 /* ══ article ══ */
 .art{border-top:3px solid var(--navy);padding-top:2rem;margin-top:1rem}
 .art .kicker{font-family:var(--mono);font-size:.64rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--golddark);display:block;margin-bottom:.7rem}
-.art h2{font-size:1.9rem;margin-bottom:.7rem}
+.art h1{font-size:1.9rem;margin-bottom:.7rem}
 .art .lede{font-size:1rem;line-height:1.6;color:var(--muted);margin:0 0 2.5rem}
+.art .meta{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin:0 0 2.5rem;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.art .meta .sep{color:var(--hair)}
 .part{padding:0 0 2.5rem}
 .part .num{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.14em;color:var(--gold);display:block;margin-bottom:.4rem}
 .part p{margin:0 0 .95rem;font-size:.9375rem;line-height:1.7}
 .part p:last-child{margin-bottom:0}
 .part b{color:var(--navy);font-weight:600}
-cite{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap}
+/* no nowrap: a full journal citation is wider than a 320px screen */
+cite{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 .refs{border-top:1px solid var(--hair);padding-top:1.5rem;margin-top:1rem}
-.refs p{font-family:var(--mono);font-size:.68rem;line-height:1.9;color:var(--muted);margin:0}
+.refs ul{margin:0;padding:0;list-style:none}
+.refs li{font-family:var(--mono);font-size:.68rem;line-height:1.65;color:var(--muted);padding-left:1.1rem;text-indent:-1.1rem;margin-bottom:.6rem}
+.refs li:last-child{margin-bottom:0}
 
 .bound{border-top:1px solid var(--hair);padding-top:2.5rem}
 .bound .list{font-size:.9rem;line-height:1.85;margin:0 0 1.5rem;color:var(--muted)}
 .bound .sep{color:var(--gold);padding:0 .2em}
 
-/* ══ empty state ══ */
-.soon{padding:5rem 0 6rem;text-align:center}
-.soon p{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 1.75rem}
-.soon h2{margin-bottom:1.25rem}
+/* ══ publications index ══ */
+.publist{margin:0;padding:0;list-style:none;border-top:2px solid var(--navy)}
+.publist > li{border-bottom:1px solid var(--hair)}
+.pubitem{display:block;padding:1.6rem 0;text-decoration:none;transition:background .18s}
+.pubitem:hover{background:rgba(10,37,64,.035)}
+.pubmeta{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin:0 0 .55rem;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--golddark)}
+.pubmeta .sep{color:var(--hair)}
+.pubmeta .kind{color:var(--muted)}
+.pubitem h3{margin:0 0 .45rem;font-size:1.2rem;transition:color .18s}
+.pubitem:hover h3{color:var(--golddark)}
+.pubitem .lede{margin:0 0 .9rem;font-size:.9375rem;line-height:1.6;color:var(--muted)}
+.pubitem .more{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--navy);border-bottom:1.5px solid var(--gold);padding-bottom:.15rem}
+/* forthcoming rows are listed, not linked — nothing to read yet */
+.publist > li.pending{padding:1.6rem 0;opacity:.72}
+.publist > li.pending h3{margin:0 0 .45rem;font-size:1.2rem;color:var(--muted);font-weight:600}
+.publist > li.pending .lede{margin:0;font-size:.9375rem;line-height:1.6;color:var(--muted)}
 
-footer{border-top:2px solid var(--navy);margin-top:3rem;padding:2.25rem 0 5rem}
-footer .fnav{display:flex;flex-wrap:wrap;gap:1.35rem;margin-bottom:1.75rem}
-footer .fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+/* back link above an article */
+.back{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.4rem 0;margin:0 0 1.6rem;transition:color .18s}
+.back:hover{color:var(--navy)}
+
+/* ══ empty state / 404 ══ */
+.soon{padding:5rem 0 6rem}
+.soon p{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 1.75rem}
+.soon h1{margin-bottom:1.25rem}
+
+/* ══ footer ══ */
+footer{border-top:2px solid var(--navy);margin-top:3rem;padding:2.5rem 0 4rem}
+footer .fnav{display:flex;flex-wrap:wrap;gap:1.35rem;margin-bottom:2rem}
+footer .fnav .go+.go{margin-left:0}
+.fmark{margin:0 0 .35rem;font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--navy);line-height:1.4}
+.fmark-en{display:block;font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--golddark);margin:0 0 1.75rem}
+footer .fine{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;border-top:1px solid var(--hair);padding-top:1.25rem;margin:0;font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;color:var(--muted);text-transform:uppercase}
 
 @media (min-width:52rem){
   body{font-size:18px}
   .menu{gap:1.2rem}
   .menu a{font-size:.62rem;letter-spacing:.1em}
   .brand{font-size:.66rem}
-  .splash blockquote p{font-size:2.7rem}
   .splash blockquote{margin-bottom:2.25rem}
   .splash .sub{font-size:1.15rem}
   .sig .ru{font-size:1.2rem}
   .hero{padding:6rem 0 5rem}
-  .hero h1{font-size:2.9rem}
+  h1{font-size:2.9rem}
   h2{font-size:1.75rem}
   .cls h2{font-size:1.5rem}
-  .art h2{font-size:2.3rem}
+  .art h1{font-size:2.3rem}
   .pull p{font-size:1.45rem}
   .pull{padding:2.5rem 2.25rem}
   main{padding-top:5rem}
+  .main--hero{padding-top:0}
+  .hero + .wrap{padding-top:5rem}
   .card{padding:1.9rem 1.75rem}
+  .pubitem h3,.publist > li.pending h3{font-size:1.3rem}
+  /* three-column tables become real tables once there is room for them */
+  .t2,.ov,.outs{display:table}
+  .t2 thead,.ov thead,.outs thead{display:table-header-group}
+  .t2 tbody,.ov tbody,.outs tbody{display:table-row-group}
+  .t2 tr,.ov tr,.outs tr{display:table-row;padding:0}
+  .t2 td,.ov td,.outs td{display:table-cell;padding:.9rem 0;border-bottom:1px solid var(--hair);margin:0}
+  .t2 tr:last-child td,.ov tr:last-child td,.outs tr:last-child td{border-bottom:none}
+  .t2 th{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 0 .7rem;border-bottom:1px solid var(--hair)}
+  .t2 td.d,.ov td.n{font-size:.74rem;width:1%;padding-right:.9rem;white-space:nowrap}
+  .t2 td.k,.outs td.k{padding-right:1.2rem;width:34%}
+  .ov td.k{padding-right:1.1rem;width:30%}
   .md{display:table}
   .md thead{display:table-header-group}
   .md tbody{display:table-row-group}
@@ -192,19 +261,14 @@ footer .fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
-/* ══ redesign additions (same tokens, new arrangement) ══ */
-
-/* split hero: copy + supporting diagram (wider than the editorial reading measure) */
-.hero .wrap{display:grid;gap:2.5rem;align-items:center;max-width:74rem}
-.hero-figure{border-radius:2px;overflow:hidden;border:1px solid var(--hair);box-shadow:0 20px 48px rgba(10,37,64,.12);aspect-ratio:1/1}
-.hero-figure img{width:100%;height:100%;object-fit:cover;display:block}
-@media (min-width:64rem){
-  .hero .wrap{grid-template-columns:1.05fr 1fr;gap:3.5rem}
-}
-
-/* generic supporting figure inside a section */
-.section-figure{border-radius:2px;overflow:hidden;margin:0 0 2.5rem;border:1px solid var(--hair)}
+/* ══ figures ══ */
+/* Every plate on the site sits in the same reading measure as the text, and
+   every one is rendered at its source aspect ratio — the images are navy
+   line-art, so any crop or squash destroys the drawing. */
+.section-figure{border-radius:2px;overflow:hidden;margin:0 0 2.5rem;border:1px solid var(--hair);background:var(--navy)}
 .section-figure img{width:100%;height:auto;display:block}
+/* portrait plate: constrained so a tall drawing does not run past a screen */
+.section-figure.tall{max-width:20rem;margin-left:auto;margin-right:auto}
 
 /* navy panel: promotes a block to full brand-block treatment (contained, like .pull) */
 .panel-navy{background:var(--navy);color:#fff;border-radius:2px;padding:2.25rem 1.6rem;margin:0 0 3.25rem}
@@ -242,9 +306,3 @@ footer .fine{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:
 .tags{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0;list-style:none}
 .tags li{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--hair);border-radius:2px;padding:.4rem .75rem}
 
-/* publication teaser card */
-.pubcard{border:1px solid var(--hair);border-top:3px solid var(--navy);border-radius:2px;padding:1.75rem 1.5rem;margin:0 0 3rem;background:#fff}
-.pubcard .kicker{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--golddark);display:block;margin-bottom:.75rem}
-.pubcard h2{font-size:1.35rem;margin-bottom:.6rem}
-.pubcard .lede{font-size:.9375rem;line-height:1.6;color:var(--muted);margin:0 0 1.25rem;max-width:36rem}
-@media (min-width:52rem){.pubcard{padding:2.25rem 2rem}}
