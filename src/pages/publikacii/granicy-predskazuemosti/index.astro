@@ -1,7 +1,7 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import Icon from "../../../components/Icon.astro";
-import { bySlug } from "../../../data/publications";
+import { bySlug, partsLabel, sourcesLabel } from "../../../data/publications";
 
 const base = import.meta.env.BASE_URL;
 const pub = bySlug("granicy-predskazuemosti")!;
@@ -16,9 +16,9 @@ const description = pub.lede;
         <h1>{pub.title}</h1>
         <p class="pubhero__meta">
           <span>Публикация {pub.no}</span><span class="sep" aria-hidden="true">·</span>
-          <span>{pub.kind}</span><span class="sep" aria-hidden="true">·</span>
-          <span>{pub.parts} частей</span><span class="sep" aria-hidden="true">·</span>
-          <span>{pub.sources} источника</span><span class="sep" aria-hidden="true">·</span>
+          <span>{pub.group}</span><span class="sep" aria-hidden="true">·</span>
+          <span>{partsLabel(pub.parts)}</span><span class="sep" aria-hidden="true">·</span>
+          <span>{sourcesLabel(pub.sources)}</span><span class="sep" aria-hidden="true">·</span>
           <span>~{pub.minutes} мин</span>
         </p>
       </div>

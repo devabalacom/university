@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
-import { publications } from "../../data/publications";
+import { groups, inGroup, partsLabel, sourcesLabel } from "../../data/publications";
 
 const base = import.meta.env.BASE_URL;
 const title = "Публикации — PSAI";
@@ -21,27 +21,32 @@ const description = "Институт публикует результаты, �
       <div class="in">
         <p class="kicker kicker--left">Перечень</p>
         <h2 class="h-md mt-2" id="h-list">Опубликовано</h2>
-        <ul class="publist">
-          {publications.map((pub) => (
-            <li>
-              <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
-                <span class="pubitem__body">
-                  <span class="eyebrow-sm">{pub.no} · {pub.kind}</span>
-                  <h3>{pub.title}</h3>
-                  <span class="desc">{pub.lede}</span>
-                  <span class="pubitem__facts">
-                    <span>{pub.parts} частей</span>
-                    <span class="sep" aria-hidden="true">·</span>
-                    <span>{pub.sources} источника: {pub.cites.join(", ")}</span>
-                    <span class="sep" aria-hidden="true">·</span>
-                    <span>~{pub.minutes} мин</span>
-                  </span>
-                </span>
-                <span class="pubitem__go" aria-hidden="true"><Icon name="arrow" /></span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        {groups.map((group, gi) => (
+          <div class={gi === 0 ? "pubgroup mt-6" : "pubgroup mt-8"}>
+            <h3 class="pubgroup__name">{group}</h3>
+            <ul class="publist">
+              {inGroup(group).map((pub) => (
+                <li>
+                  <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
+                    <span class="pubitem__body">
+                      <span class="eyebrow-sm">Публикация {pub.no}</span>
+                      <h4>{pub.title}</h4>
+                      <span class="desc">{pub.lede}</span>
+                      <span class="pubitem__facts">
+                        <span>{partsLabel(pub.parts)}</span>
+                        <span class="sep" aria-hidden="true">·</span>
+                        <span>{sourcesLabel(pub.sources)}: {pub.cites.join(", ")}</span>
+                        <span class="sep" aria-hidden="true">·</span>
+                        <span>~{pub.minutes} мин</span>
+                      </span>
+                    </span>
+                    <span class="pubitem__go" aria-hidden="true"><Icon name="arrow" /></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
         <p class="note mt-3">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>
       </div>
     </section>

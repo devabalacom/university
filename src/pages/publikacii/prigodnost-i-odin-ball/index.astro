@@ -1,0 +1,110 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import { bySlug, partsLabel, sourcesLabel } from "../../../data/publications";
+
+const base = import.meta.env.BASE_URL;
+const pub = bySlug("prigodnost-i-odin-ball")!;
+const title = `${pub.title} — Публикации PSAI`;
+const description = pub.lede;
+---
+<Base title={title} description={description} ogType="article">
+  <main id="content">
+    <section class="pubhero">
+      <div class="in">
+        <a class="back" href={`${base}/publikacii/`}><Icon name="arrow-left" />Публикации</a>
+        <h1>{pub.title}</h1>
+        <p class="pubhero__meta">
+          <span>Публикация {pub.no}</span><span class="sep" aria-hidden="true">·</span>
+          <span>{pub.group}</span><span class="sep" aria-hidden="true">·</span>
+          <span>{partsLabel(pub.parts)}</span><span class="sep" aria-hidden="true">·</span>
+          <span>{sourcesLabel(pub.sources)}</span><span class="sep" aria-hidden="true">·</span>
+          <span>~{pub.minutes} мин</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="in artwrap">
+      <article class="art">
+        <p class="lede">Соответствие человека работе, организации, группе и руководителю — различные виды соответствия с различными последствиями. Оценка, сводящая их в единый показатель, теряет именно ту информацию, ради которой проводится.</p>
+
+        <h2 id="p1">I · Вопрос</h2>
+        <p>Практика оценки персонала стремится к единому суждению: подходит или не подходит, и насколько. Это удобно для решения о найме и разрушительно для его качества.</p>
+        <p>Соответствие человека среде не является одной величиной. Человек соприкасается со средой многими сторонами одновременно, и по разным сторонам соответствие может быть разным. Свести их в один балл — значит усреднить то, что усреднению не подлежит.</p>
+
+        <h2 id="p2">II · Что установлено</h2>
+        <p>Кристоф-Браун, Циммерман и Джонсон (2005) свели воедино результаты 172 исследований, давших 836 оценок эффекта. Рассматривались четыре различных вида соответствия: человека и работы, человека и организации, человека и группы, человека и непосредственного руководителя.</p>
+        <p>Первый результат: связи устойчивы. Почти все доверительные интервалы не включали ноль, что означает воспроизводимость эффектов в широком диапазоне ситуаций.</p>
+        <p>Второй результат существеннее для оценки. Разные виды соответствия связаны с разными исходами. Соответствие работе сильнее предсказывает удовлетворённость и результативность. Соответствие организации — приверженность и намерение остаться. Соответствие группе и руководителю образуют отдельные линии. Это не один фактор, наблюдаемый с четырёх сторон, а четыре разных отношения.</p>
+
+        <h2 id="p3">III · Почему усреднение теряет причину</h2>
+        <p>Если исходы различны, то и дефицит по каждому виду соответствия ведёт к своему следствию. Единый балл эти следствия складывает и тем самым скрывает.</p>
+        <p>Человек, прекрасно подходящий к работе и не подходящий к организации, и человек, подходящий к организации и не справляющийся с работой, могут получить один и тот же средний балл. Он будет означать противоположные вещи и предписывать противоположные действия. Балл этой разницы не содержит.</p>
+        <p>Отсюда практическое: усреднённая оценка соответствия пригодна для отсева и непригодна для решения. Она отвечает на вопрос «в целом ли годится», но не на вопрос «что именно не совпадёт и к какому последствию это приведёт».</p>
+
+        <h2 id="p4">IV · Соответствие относительно роли, а не вообще</h2>
+        <p>Существует и второе основание, по которому единый балл вводит в заблуждение. Соответствие не является свойством человека. Оно является отношением между человеком и конкретной конфигурацией: этой работой, этой организацией, этой группой, этим руководителем.</p>
+        <p>Тот же человек по отношению к другой роли имеет другое соответствие. Балл, приписанный человеку, переносит на него свойство, которое ему не принадлежит: оно принадлежит паре. Оценка вне конкретной роли измеряет прошлое соответствие человека чему-то другому.</p>
+        <p>Это согласуется с положением, установленным независимо: качество соответствия на верхних уровнях задаёт границы соответствию на нижних, и связь верхнего уровня с исходом полностью опосредована нижними. Соответствие устроено уровнево, а не единым числом.</p>
+
+        <h2 id="p5">V · Что из этого следует для оценки</h2>
+        <p>Оценка соответствия имеет смысл как локализация, а не как ранжирование. Вопрос не в том, насколько человек хорош, а в том, по какой именно оси и в какой именно роли возникает расхождение и какое последствие из этого следует.</p>
+        <p>Это требует не единого показателя, а раздельного описания по многим осям — с сохранением того, где именно проходит несовпадение. Расхождение локализуется, а не суммируется. Именно поэтому архитектурное описание человека устроено как множество раздельных точек регуляции, а не как общий уровень пригодности.</p>
+        <p>Информация, ради которой оценка проводится, содержится в различиях между осями. Единый балл — операция, которая эти различия стирает первой.</p>
+
+        <div class="refs">
+          <h2>Источники</h2>
+          <ul>
+            <li id="ref-1"><span class="rn">1</span><span>Kristof-Brown A. L., Zimmerman R. D., Johnson E. C. <i>Consequences of Individuals' Fit at Work: A Meta-Analysis of Person–Job, Person–Organization, Person–Group, and Person–Supervisor Fit</i>. Personnel Psychology 58(2), 281–342, 2005</span></li>
+            <li id="ref-2"><span class="rn">2</span><span>Vogel R. M., Feldman D. C. <i>Integrating the Levels of Person-Environment Fit: The Roles of Vocational Fit and Group Fit</i>. Journal of Vocational Behavior 75(1), 68–81, 2009</span></li>
+            <li id="ref-3"><span class="rn">3</span><span>Edwards J. R. <i>Person-Job Fit: A Conceptual Integration, Literature Review, and Methodological Critique</i>. International Review of Industrial and Organizational Psychology 6, 283–357, 1991</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <aside class="art__rail" aria-label="Содержание публикации">
+        <div>
+          <p>Содержание</p>
+          <a href="#p1" data-part="p1">I · Вопрос</a>
+          <a href="#p2" data-part="p2">II · Что установлено</a>
+          <a href="#p3" data-part="p3">III · Почему усреднение теряет причину</a>
+          <a href="#p4" data-part="p4">IV · Соответствие относительно роли, а не вообще</a>
+          <a href="#p5" data-part="p5">V · Что из этого следует для оценки</a>
+        </div>
+      </aside>
+    </div>
+
+    <section class="band band--grey" aria-labelledby="h-next">
+      <div class="in">
+        <p class="kicker kicker--left">Дальше</p>
+        <h2 class="h-md mt-2 w-48" id="h-next">Чем этот вывод обеспечен</h2>
+        <div class="up__grid mt-6">
+          <a class="up__item up__item--rule" href={`${base}/metod/`}>
+            <span class="up__body"><span class="ih">Метод<Icon name="chev" /></span><span class="desc">Девять уровней и правила, по которым строится вывод.</span></span>
+          </a>
+          <a class="up__item up__item--rule" href={`${base}/primenenie/#example`}>
+            <span class="up__body"><span class="ih">Разбор кейса<Icon name="chev" /></span><span class="desc">Как выглядит вывод на живом примере.</span></span>
+          </a>
+          <a class="up__item up__item--rule" href={`${base}/publikacii/`}>
+            <span class="up__body"><span class="ih">Все публикации<Icon name="chev" /></span><span class="desc">Перечень и требования к публикации.</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // highlight the part being read in the rail
+    const links = [...document.querySelectorAll<HTMLAnchorElement>(".art__rail a[data-part]")];
+    const heads = links.map((a) => document.getElementById(a.dataset.part!)).filter(Boolean) as HTMLElement[];
+    if (heads.length) {
+      const io = new IntersectionObserver((entries) => {
+        const seen = entries.filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!seen) return;
+        links.forEach((a) => a.classList.toggle("is-current", a.dataset.part === seen.target.id));
+      }, { rootMargin: "-20% 0px -70% 0px" });
+      heads.forEach((h) => io.observe(h));
+    }
+  </script>
+</Base>
