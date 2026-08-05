@@ -128,16 +128,16 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:600;letter-spacing:-.0
 .hx-epi .sig .ru{display:block;font-family:var(--ftext);font-weight:600;font-size:.95rem;line-height:1.4;color:var(--deep-900)}
 .hx-epi .sig .en{display:block;font-family:var(--fmono);font-size:.62rem;font-weight:500;letter-spacing:.13em;
   text-transform:uppercase;color:var(--el-600);margin-top:.2rem}
-.hx-row{display:grid;gap:1.5rem;margin:2.5rem 0}
+.hx-row{display:grid;gap:1.25rem;margin:2.5rem 0}
 .hx-3,.hx-mid,.hx-bot{grid-template-columns:1fr}
-.hx-head{margin:3.5rem 0 0}
+.hx-head{margin:2.5rem 0 0}
 .hx-head h2{font-size:1.5rem;line-height:1.28;font-weight:600;letter-spacing:-.011em;margin:0}
 .hx-head p{margin:.5rem 0 0;max-width:34rem;color:var(--gray-60);font-size:.9rem;line-height:1.6;font-weight:400}
 .hx-tile,.hx-mini{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-30);border-radius:3px;
   overflow:hidden;transition:border-color .18s,transform .18s}
 .hx-tile:hover,.hx-mini:hover{border-color:var(--el-500);transform:translateY(-2px)}
 .hx-ph{position:relative;overflow:hidden;aspect-ratio:16/9;
-  background:linear-gradient(135deg,var(--deep-800),var(--deep-600))}
+  background:linear-gradient(135deg,var(--deep-900),var(--deep-600))}
 .hx-ph.d{background:linear-gradient(135deg,var(--deep-900),var(--deep-700))}
 .hx-ph::after{content:"";position:absolute;inset:0;
   background:radial-gradient(circle at 30% 30%,rgba(216,162,74,.16),transparent 60%)}
@@ -149,7 +149,7 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:600;letter-spacing:-.0
 .hx-tile:hover h3,.hx-mini:hover h3{color:var(--el-600)}
 .hx-body p{margin:0 0 1rem;font-size:.82rem;line-height:1.55;font-weight:400;color:var(--gray-60)}
 .hx-more{margin-top:auto;align-self:flex-start;font-family:var(--fmono);font-size:.64rem;font-weight:500;
-  line-height:1.25rem;letter-spacing:.1em;text-transform:uppercase;color:var(--deep-900);
+  line-height:1.2;letter-spacing:.1em;text-transform:uppercase;color:var(--deep-900);
   border-bottom:1.5px solid var(--el-500);padding-bottom:.15rem}
 .hx-flag{display:flex;flex-direction:column;background:var(--deep-900);color:#fff;border-radius:3px;overflow:hidden;transition:transform .18s}
 .hx-flag:hover{transform:translateY(-2px)}
@@ -170,15 +170,16 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:600;letter-spacing:-.0
 .hx-band h3{flex:1;margin:0;padding:1.4rem;color:#fff;font-size:1.05rem;line-height:1.3;font-weight:600;
   display:flex;align-items:center}
 .hx-pub{margin:3rem 0 0;background:#EEF1F4;border-radius:3px;padding:2.25rem 1.6rem;display:flex;flex-direction:column;gap:1.25rem}
+.hx-pub p{margin-top:0}
 .hx-pub h2{font-size:1.5rem;line-height:1.28;font-weight:600;letter-spacing:-.011em;margin:0}
 .hx-pub p{margin:.5rem 0 0;font-size:.9rem;line-height:1.6;font-weight:400;color:var(--gray-60)}
 @media (min-width:768px){
-  .hx-epi{padding:5rem 0 4rem}
+  .hx-epi{padding:4.5rem 0 3.5rem}
   .hx-epi .q{font-size:2.15rem;line-height:1.3}
   .hx-3,.hx-mid,.hx-bot{grid-template-columns:1fr 1fr 1fr}
-  .hx-head h2,.hx-pub h2{font-size:1.75rem}
-  .hx-flag h3{font-size:1.5rem}
-  .hx-pub{flex-direction:row;align-items:center;justify-content:space-between;gap:2.5rem;padding:2.5rem}
+  .hx-head h2,.hx-pub h2{font-size:1.5rem}
+  .hx-flag h3{font-size:1.2rem}
+  .hx-pub{flex-direction:row;align-items:center;justify-content:space-between;gap:1.25rem;padding:2.5rem}
 }
 
 .band[id]{scroll-margin-top:calc(var(--bar) + 3rem)}
@@ -195,11 +196,13 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:600;letter-spacing:-.0
 .band--white{background:var(--paper);color:var(--gray-80)}
 .band--grey{background:var(--grey-f0);color:var(--gray-80)}
 .band :where(h1,h2,h3,h4,h5){color:inherit;font-weight:600;letter-spacing:-.011em}
+/* on paper and grey the draft sets every heading in navy, not in the body ink */
+.band--white :where(h1,h2,h3,h4,h5),.band--grey :where(h1,h2,h3,h4,h5){color:var(--deep-900)}
 .in{width:min(85%,76.5rem);margin:0 auto}
 
 /* type scale — the draft's sizes, opened up a step at the top because these
    headings sit on a 76.5rem canvas rather than in its 38rem column */
-.kicker{font-family:var(--fmono);font-size:.68rem;line-height:1.2rem;font-weight:500;letter-spacing:.18em;
+.kicker{font-family:var(--fmono);font-size:.68rem;line-height:1.2;font-weight:500;letter-spacing:.18em;
   text-transform:uppercase;text-align:center;margin:0;color:var(--el-600)}
 .band--deep .kicker,.band--grad .kicker,.band--blue .kicker{color:var(--el-500)}
 .kicker--left{text-align:left}
@@ -214,7 +217,8 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:600;letter-spacing:-.0
 .band--deep .lead,.band--grad .lead,.band--blue .lead{color:#fff}
 .desc{font-size:.9375rem;line-height:1.68;font-weight:400;margin:0}
 .ih{font-size:1.0625rem;line-height:1.5;font-weight:600;margin:0}
-.eyebrow-sm{font-family:var(--fmono);font-size:.68rem;line-height:1.2rem;font-weight:500;letter-spacing:.18em;
+/* .pcnum in the draft: smaller and tighter than the section kicker */
+.eyebrow-sm{font-family:var(--fmono);font-size:.62rem;line-height:1.2;font-weight:500;letter-spacing:.12em;
   text-transform:uppercase;margin:0;color:var(--el-600)}
 .band--deep .eyebrow-sm,.band--grad .eyebrow-sm{color:var(--el-500)}
 .note{font-size:.875rem;line-height:1.6;font-weight:400;margin:0}
@@ -294,7 +298,7 @@ a:hover .chev{transform:translateX(.2em)}
 .lv__card{background:#fff;color:var(--gray-80);padding:2rem 3.5rem 2rem 2rem;display:grid;gap:2rem;align-content:space-between;min-height:22rem}
 .lv__cardtop{display:grid;gap:1rem;align-content:start}
 .lv__card h3{font-size:1.75rem;line-height:1.24;font-weight:600;color:var(--deep-900)}
-.lv__card .eyebrow-sm{color:var(--gray-60)}
+.lv__card .eyebrow-sm{color:var(--el-600)}
 .lv__card .desc{color:var(--gray-80)}
 .lv__side{background:var(--blue-800);color:#fff;display:grid;align-content:center;justify-items:center;gap:1rem;padding:2rem;text-align:center}
 .lv__num{font-family:var(--fmono);font-size:6rem;line-height:1;font-weight:500;color:var(--el-500);letter-spacing:-.02em}
@@ -367,7 +371,7 @@ a:hover .chev{transform:translateX(.2em)}
   .tbl tbody{display:table-row-group}
   .tbl tr{display:table-row;padding:0}
   .tbl th{text-align:left;font-family:var(--fmono);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--gray-60);padding:0 1.5rem .75rem 0;border-bottom:1px solid var(--gray-30)}
+    color:var(--el-600);padding:0 1.5rem .75rem 0;border-bottom:1px solid var(--gray-30)}
   .tbl td{display:table-cell;padding:1.25rem 1.5rem 1.25rem 0;border-top:1px solid var(--gray-30);vertical-align:top;margin:0}
   .tbl td[data-m]::before{display:none}
   .tbl td.n{width:1%;white-space:nowrap;margin:0}
@@ -457,12 +461,12 @@ a:hover .chev{transform:translateX(.2em)}
 .pubitem:hover{border-left-color:var(--el-500);transform:translateX(2px)}
 .pubitem__body{display:flex;flex-direction:column;gap:.5rem;flex:1}
 .pubitem .desc{margin-bottom:.9rem}
-.pubitem .eyebrow-sm{color:var(--gray-60)}
+.pubitem .eyebrow-sm{color:var(--el-600)}
 .pubitem h3,.pubitem h4{font-size:1.0625rem;line-height:1.32;font-weight:600;transition:color .18s}
 .pubitem:hover h3,.pubitem:hover h4{color:var(--el-600)}
 .pubitem .desc{font-size:.875rem;line-height:1.55;color:var(--gray-60)}
 .pubitem__go{display:inline-flex;align-items:center;gap:.5rem;margin-top:auto;font-family:var(--fmono);
-  font-size:.64rem;line-height:1.25rem;letter-spacing:.1em;text-transform:uppercase;color:var(--deep-900);
+  font-size:.64rem;line-height:1.2;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--deep-900);
   border-bottom:1.5px solid var(--el-500);padding-bottom:.15rem;align-self:flex-start;transition:color .18s}
 .pubitem__go svg{width:1rem;height:1rem}
 .pubitem:hover .pubitem__go{color:var(--el-600)}
