@@ -2,15 +2,19 @@
 import Icon from "./Icon.astro";
 
 const base = import.meta.env.BASE_URL;
+/* Order follows the draft's menu: Главное · Публикации · Метод · Применение · Институт */
 const nav = [
-  { href: `${base}/institut/`, label: "Институт" },
+  { href: `${base}/`, label: "Главное", exact: true },
+  { href: `${base}/publikacii/`, label: "Публикации" },
   { href: `${base}/metod/`, label: "Метод" },
   { href: `${base}/primenenie/`, label: "Применение" },
-  { href: `${base}/publikacii/`, label: "Публикации" },
+  { href: `${base}/institut/`, label: "Институт" },
 ];
 
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => path.startsWith(href);
+/* the home entry would otherwise match every page, since every path starts with the base */
+const isCurrent = (item: { href: string; exact?: boolean }) =>
+  item.exact ? path === item.href || path === `${item.href}/` : path.startsWith(item.href);
 ---
 <header class="topbar">
   <div class="topbar__in">
@@ -20,7 +24,7 @@ const isCurrent = (href: string) => path.startsWith(href);
 
     <nav class="nav" aria-label="Разделы">
       {nav.map((item) => (
-        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+        <a href={item.href} aria-current={isCurrent(item) ? "page" : undefined}>{item.label}</a>
       ))}
     </nav>
 
@@ -33,7 +37,7 @@ const isCurrent = (href: string) => path.startsWith(href);
 
   <nav class="drawer" id="drawer" aria-label="Разделы">
     {nav.map((item) => (
-      <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</a>
+      <a href={item.href} aria-current={isCurrent(item) ? "page" : undefined}>{item.label}</a>
     ))}
   </nav>
 </header>

@@ -12,25 +12,23 @@ const description = "Институт публикует результаты, �
     <section class="band band--deep" aria-labelledby="h1">
       <div class="in">
         <p class="kicker kicker--left">Публикации</p>
-        <h1 class="h-xl mt-3 w-56" id="h1">Результат становится знанием, когда вынесен наружу и доступен проверке</h1>
-        <p class="lead mt-4 w-48">Каждая публикация указывает основание своих положений, уровень доказательности и границы применимости.</p>
+        <h1 class="h-xl mt-3 w-56" id="h1">Исследования Института</h1>
+        <p class="lead mt-4 w-48">Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.</p>
       </div>
     </section>
 
-    <section class="band band--white" aria-labelledby="h-list">
+    <section class="band band--white" aria-label="Перечень публикаций">
       <div class="in">
-        <p class="kicker kicker--left">Перечень</p>
-        <h2 class="h-md mt-2" id="h-list">Опубликовано</h2>
         {groups.map((group, gi) => (
-          <div class={gi === 0 ? "pubgroup mt-6" : "pubgroup mt-8"}>
-            <h3 class="pubgroup__name">{group}</h3>
+          <div class={gi === 0 ? "pubgroup" : "pubgroup mt-6"}>
+            <h2 class="pubgroup__name">{group}</h2>
             <ul class="publist">
               {inGroup(group).map((pub) => (
                 <li>
                   <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
                     <span class="pubitem__body">
                       <span class="eyebrow-sm">Публикация {pub.no}</span>
-                      <h4>{pub.title}</h4>
+                      <h3>{pub.title}</h3>
                       <span class="desc">{pub.lede}</span>
                       <span class="pubitem__facts">
                         <span>{partsLabel(pub.parts)}</span>
@@ -40,14 +38,14 @@ const description = "Институт публикует результаты, �
                         <span>~{pub.minutes} мин</span>
                       </span>
                     </span>
-                    <span class="pubitem__go" aria-hidden="true"><Icon name="arrow" /></span>
+                    <span class="pubitem__go">Читать<Icon name="arrow" /></span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
         ))}
-        <p class="note mt-3">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>
+        <p class="note mt-6">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>
       </div>
     </section>
 
