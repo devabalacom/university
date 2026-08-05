@@ -1,24 +1,24 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
-import { groups, inGroup, partsLabel, sourcesLabel } from "../../data/publications";
+import { groups, inGroup } from "../../data/publications";
 
 const base = import.meta.env.BASE_URL;
 const title = "Публикации — PSAI";
-const description = "Институт публикует результаты, вынесенные за его пределы и доступные независимому прочтению, проверке и критике.";
+const description = "Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.";
 ---
 <Base title={title} description={description}>
+  {/* The draft opens this page on paper, not on a navy hero: an eyebrow, the
+      title, a standfirst and a rule — then straight into the groups. */}
   <main id="content">
-    <section class="band band--deep" aria-labelledby="h1">
-      <div class="in">
-        <p class="kicker kicker--left">Публикации</p>
-        <h1 class="h-xl mt-3 w-56" id="h1">Исследования Института</h1>
-        <p class="lead mt-4 w-48">Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.</p>
-      </div>
-    </section>
+    <section class="band band--white" aria-label="Публикации">
+      <div class="in in--reading">
+        <div class="phead">
+          <p class="kicker kicker--left">Публикации</p>
+          <h1 class="phead__title" id="h1">Исследования Института</h1>
+          <p class="phead__sub">Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.</p>
+        </div>
 
-    <section class="band band--white" aria-label="Перечень публикаций">
-      <div class="in">
         {groups.map((group, gi) => (
           <div class={gi === 0 ? "pubgroup" : "pubgroup mt-6"}>
             <h2 class="pubgroup__name">{group}</h2>
@@ -30,13 +30,6 @@ const description = "Институт публикует результаты, �
                       <span class="eyebrow-sm">Публикация {pub.no}</span>
                       <h3>{pub.title}</h3>
                       <span class="desc">{pub.lede}</span>
-                      <span class="pubitem__facts">
-                        <span>{partsLabel(pub.parts)}</span>
-                        <span class="sep" aria-hidden="true">·</span>
-                        <span>{sourcesLabel(pub.sources)}: {pub.cites.join(", ")}</span>
-                        <span class="sep" aria-hidden="true">·</span>
-                        <span>~{pub.minutes} мин</span>
-                      </span>
                     </span>
                     <span class="pubitem__go">Читать<Icon name="arrow" /></span>
                   </a>
@@ -46,23 +39,6 @@ const description = "Институт публикует результаты, �
           </div>
         ))}
         <p class="note mt-6">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>
-      </div>
-    </section>
-
-    <section class="band band--grey" aria-labelledby="h-req">
-      <div class="in">
-        <p class="kicker kicker--left">Требования</p>
-        <h2 class="h-md mt-2 w-48" id="h-req">Публикация — это вывод, вынесенный наружу вместе с тем, что позволяет его оспорить</h2>
-        <table class="tbl">
-          <thead><tr><th>Обязательное поле</th><th>Что оно содержит</th></tr></thead>
-          <tbody>
-            <tr><td class="k">Основание</td><td class="v" data-m="Содержание">Источник каждого положения. Утверждение без источника публикации не подлежит</td></tr>
-            <tr><td class="k">Уровень доказательности</td><td class="v" data-m="Содержание">От I — исследовательской гипотезы — до IV, архитектурного принципа, внесённого в стандарт</td></tr>
-            <tr><td class="k">Границы применимости</td><td class="v" data-m="Содержание">К каким системам и при каких условиях вывод относится, а к каким не относится</td></tr>
-            <tr><td class="k">Фальсификатор</td><td class="v" data-m="Содержание">Что именно опровергнет вывод. Утверждение, которое нечем опровергнуть, — это мнение</td></tr>
-          </tbody>
-        </table>
-        <p class="mt-4"><a class="btn2" href={`${base}/metod/`}>Правила вывода<Icon name="arrow" /></a></p>
       </div>
     </section>
   </main>
