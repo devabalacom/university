@@ -1,7 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
-import SecNav from "../../components/SecNav.astro";
 import { Image } from "astro:assets";
 import network from "../../assets/img/network.jpg";
 import rings from "../../assets/img/rings.jpg";
@@ -11,16 +10,6 @@ const title = "Институт — PSAI";
 const description = "Институт существует, чтобы вывод о системе перестал быть мнением. Объект исследования — согласованность систем.";
 ---
 <Base title={title} description={description}>
-  <SecNav items={[
-    { id: "object", label: "Что исследует Институт" },
-    { id: "theory", label: "Теория согласованности" },
-    { id: "discipline", label: "Правила вывода" },
-    { id: "unit", label: "Единица измерения" },
-    { id: "regulation", label: "Условие согласованности" },
-    { id: "output", label: "Что производит Институт" },
-    { id: "kanon", label: "Версии канона" },
-    { id: "bounds", label: "Границы" },
-  ]} />
   <main id="content">
     <section class="band band--deep" aria-labelledby="h1">
       <div class="in">

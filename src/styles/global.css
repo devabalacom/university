@@ -202,14 +202,6 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
   .hx-pub{flex-direction:row;align-items:center;justify-content:space-between;gap:2.5rem}
 }
 
-/* ══════════════════ section nav (long pages) ══════════════════ */
-.secnav{position:sticky;top:var(--bar);z-index:30;background:var(--deep-800);border-bottom:1px solid rgba(255,255,255,.14)}
-.secnav ul{display:flex;gap:0;margin:0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none}
-.secnav ul::-webkit-scrollbar{display:none}
-.secnav a{display:block;white-space:nowrap;padding:.9rem 1.1rem;font-size:.9375rem;font-weight:300;
-  color:rgba(255,255,255,.72);border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
-.secnav a:hover{color:#fff}
-.secnav a.is-current{color:#fff;border-bottom-color:var(--cyan)}
 .band[id]{scroll-margin-top:calc(var(--bar) + 3rem)}
 
 /* ══════════════════ bands ══════════════════ */

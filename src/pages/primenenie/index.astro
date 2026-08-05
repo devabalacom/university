@@ -1,7 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
-import SecNav from "../../components/SecNav.astro";
 
 const base = import.meta.env.BASE_URL;
 const title = "Применение — PSAI";
@@ -38,19 +37,6 @@ const classes = [
 ];
 ---
 <Base title={title} description={description}>
-  <SecNav items={[
-    { id: "classes", label: "Четыре класса" },
-    { id: "c0", label: "Класс 1" },
-    { id: "c1", label: "Класс 2" },
-    { id: "c2", label: "Класс 3" },
-    { id: "c3", label: "Класс 4" },
-    { id: "example", label: "Разбор кейса" },
-    { id: "v1", label: "В-01" },
-    { id: "v2", label: "В-02" },
-    { id: "v3", label: "В-03" },
-    { id: "outcome", label: "Что получает организация" },
-    { id: "refuse", label: "Когда откажет" },
-  ]} />
   <main id="content">
     <section class="band band--deep" aria-labelledby="h1">
       <div class="in">

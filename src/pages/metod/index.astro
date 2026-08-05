@@ -1,7 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
-import SecNav from "../../components/SecNav.astro";
 import { Image } from "astro:assets";
 import strata from "../../assets/img/strata.jpg";
 
@@ -22,18 +21,6 @@ const levels = [
 ];
 ---
 <Base title={title} description={description}>
-  <SecNav items={[
-    { id: "levels", label: "Девять уровней" },
-    { id: "modes", label: "Три режима" },
-    { id: "functions", label: "Девять функций" },
-    { id: "pair", label: "Единица анализа" },
-    { id: "carrier", label: "Носитель" },
-    { id: "models", label: "Две модели" },
-    { id: "procedure", label: "Процедура" },
-    { id: "evidence", label: "Уровни доказательности" },
-    { id: "self", label: "Метод к себе" },
-    { id: "excluded", label: "Что не входит в вывод" },
-  ]} />
   <main id="content">
     <section class="band band--deep" aria-labelledby="h1">
       <div class="in">
