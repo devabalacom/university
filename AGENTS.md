@@ -48,3 +48,12 @@ up as page-level overflow.
     ORIGIN=http://localhost:4321 node tools/layout-audit.mjs
 
 Exits non-zero when it finds something.
+
+## Scrim contrast
+
+`node tools/scrim-contrast.mjs` screenshots the home page with the text layer
+hidden, reads the pixels behind every line on a card that carries artwork, and
+reports any line whose **worst** pixel falls under 4.5:1. The average is not
+the measure that matters: a scrim can be dark over most of a card and still
+leave a heading lying across a bright ring. Silence means every line clears it
+at every width checked.

@@ -121,10 +121,20 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
   transform-origin:center;transition:transform 1s ease-in}
 .b-card__bg img{width:100%;height:100%;object-fit:cover;display:block}
 .b-card:hover .b-card__bg{transition:transform 4s cubic-bezier(.7,.5,.7,.5);transform:scale(1.1)}
-/* the scrim has to carry a standfirst as well as a title, so it holds full
-   strength further up the card than the reference's title-only one did */
+/* The scrim has to carry a standfirst as well as a title, so it holds full
+   strength further up the card than the reference's title-only one did.
+
+   Measured against the artwork rather than assumed: the gold rings and the
+   vertical rule cross the text, and where they do the worst pixel behind a
+   line fell to 2.9:1. These values put every line on every image card over
+   4.5:1 at its worst pixel, not just on average. */
 .b-card__bg::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(0deg,rgba(0,0,0,.82) 30%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 116.24%)}
+  background:linear-gradient(0deg,rgba(0,0,0,.9) 34%,rgba(0,0,0,.62) 66%,rgba(0,0,0,.12) 100%)}
+/* the featured card holds its head at the top, where a bottom-anchored scrim
+   does nothing — it needs one at that end too */
+.b-featured .b-card__bg::after{
+  background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 30%,rgba(0,0,0,.12) 55%),
+             linear-gradient(0deg,rgba(0,0,0,.88) 10%,rgba(0,0,0,.2) 34%,rgba(0,0,0,0) 55%)}
 .b-card__content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
   height:100%;width:100%;padding:1.75rem;gap:1.5rem}
 .b-eyebrow{font-size:1rem;line-height:1.5rem;color:#fff;text-transform:uppercase;letter-spacing:.03em}
@@ -634,6 +644,11 @@ a:hover .chev{transform:translateX(.2em)}
   .b-title,.b-title span+span{text-align:left}
   /* only cards carrying artwork need a minimum height; text-only cards were
      stretched into blank slabs that read as a failed image load */
+  /* on a phone a card is barely taller than its text, so the artwork sits
+     under every line rather than below it: the scrim goes near-flat here,
+     which keeps the image readable as texture and the text readable as text */
+  .b-card__bg::after,.b-featured .b-card__bg::after{
+    background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.74) 55%,rgba(0,0,0,.66) 100%)}
   .b-card{min-height:0!important;margin:0!important}
   .b-card:has(img){min-height:18rem!important}
   .b-featured{min-height:26rem!important}
