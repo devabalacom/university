@@ -48,7 +48,7 @@ body{margin:0;background:#fff;color:var(--gray-80);font-family:var(--fsans);line
 img,svg{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 p{margin:0}
-h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.01em}
+h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.01em;overflow-wrap:break-word}
 :focus-visible{outline:3px solid var(--el-500);outline-offset:2px}
 .band--deep :focus-visible,.band--grad :focus-visible,.band--blue :focus-visible,
 .bento :focus-visible,.topbar :focus-visible,.pubhero :focus-visible{outline-color:#fff}
@@ -311,7 +311,12 @@ a:hover .chev{transform:translateX(.2em)}
 .up__head--left{justify-items:start}
 .up__head--left .dek{width:100%;margin:0;text-align:left}
 .up__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2rem;align-items:start}
-.up__item{grid-column:span 2;display:grid;grid-template-rows:auto 1fr;gap:1.5rem;height:100%}
+/* min-width:0 — a grid item defaults to min-width:auto, so a word wider than
+   its track pushes the item out of the track instead of wrapping; the track
+   being minmax(0,1fr) does not prevent that on the item itself */
+.up__item{grid-column:span 2;display:grid;grid-template-rows:auto 1fr;gap:1.5rem;height:100%;min-width:0}
+.up__body{min-width:0}
+.ih{overflow-wrap:break-word}
 .up__item--half{grid-column:span 3}
 /* four items to a row — the draft sets out its principles and its outputs in fours */
 .up__grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -574,10 +579,15 @@ a:hover .chev{transform:translateX(.2em)}
 @media (max-width:1023px){
   .b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .up__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .up__grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lv__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
   .vd{grid-template-columns:1fr;gap:2.5rem}
 }
+/* The 4-up folds to two below 1100: at four across its track falls under
+   204px, narrower than «Предсказуемость», the longest label on Институт.
+   It has to sit after the .up__grid rule above — the two selectors carry
+   the same specificity, so source order decides which one a grid holding
+   both classes obeys. */
+@media (max-width:1100px){.up__grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){
   .up__item--half{grid-column:span 4}
 }

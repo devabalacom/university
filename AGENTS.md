@@ -34,3 +34,17 @@ size and colour contrast.
 
 A failing journey is a finding about the site, not about the script. The
 `contact` journey fails by design: there is no contact route yet.
+
+## Layout audit
+
+`node tools/layout-audit.mjs` walks the DOM of every built route at twelve
+widths and reports blocks wider than their container, text clipped by a hidden
+overflow, boxes reaching past the viewport, and any table spilling out of its
+column. It complements the simulation rather than repeating it: `body` carries
+`overflow-x:hidden`, so a block that spills is clipped silently and never shows
+up as page-level overflow.
+
+    astro build && node tools/layout-audit.mjs   # needs a server over ./dist
+    ORIGIN=http://localhost:4321 node tools/layout-audit.mjs
+
+Exits non-zero when it finds something.
