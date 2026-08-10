@@ -8,34 +8,37 @@ const title = "Публикации — PSAI";
 const description = "Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.";
 ---
 <Base title={title} description={description}>
-  {/* The draft opens this page on paper, not on a navy hero: an eyebrow, the
-      title, a standfirst and a rule — then straight into the groups. */}
+  {/* Opens the way Метод, Применение and Институт open — kicker, h-xl, lead on
+      a deep band — and lists the publications as the tiles the home uses, so
+      the same content type is not rendered in two card languages. */}
   <main id="content">
-    <section class="band band--white" aria-label="Публикации">
-      <div class="in in--reading">
-        <div class="phead">
-          <p class="kicker kicker--left">Публикации</p>
-          <h1 class="phead__title" id="h1">Исследования Института</h1>
-          <p class="phead__sub">Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.</p>
-        </div>
+    <section class="band band--deep" aria-labelledby="h1">
+      <div class="in">
+        <p class="kicker kicker--left">Публикации</p>
+        <h1 class="h-xl mt-3 w-56" id="h1">Исследования Института</h1>
+        <p class="lead mt-4 w-48">Аналитические статьи и научные обзоры. Каждое утверждение снабжено источником и уровнем доказательности.</p>
+      </div>
+    </section>
 
+    <section class="band band--deep" aria-label="Перечень публикаций">
+      <div class="in">
         {groups.map((group, gi) => (
-          <div class={gi === 0 ? "pubgroup" : "pubgroup mt-6"}>
+          <div class={gi === 0 ? "" : "mt-6"}>
             <h2 class="pubgroup__name">{group}</h2>
-            <ul class="publist">
+            <div class="b-grid mt-3">
               {inGroup(group).map((pub) => (
-                <li>
-                  <a class="pubitem" href={`${base}/publikacii/${pub.slug}/`}>
-                    <span class="pubitem__body">
-                      <span class="eyebrow-sm">Публикация {pub.no}</span>
+                <a class="b-card b-tile" href={`${base}/publikacii/${pub.slug}/`}>
+                  <div class="b-card__content">
+                    <div>
+                      <span class="b-eyebrow">Публикация {pub.no}</span>
                       <h3>{pub.title}</h3>
-                      <span class="desc">{pub.lede}</span>
-                    </span>
-                    <span class="pubitem__go">Читать<Icon name="arrow" /></span>
-                  </a>
-                </li>
+                      <p class="b-lead">{pub.lede}</p>
+                    </div>
+                    <span class="b-more">Читать<Icon name="arrow" /></span>
+                  </div>
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
         <p class="note mt-6">Следующая публикация выходит по мере вынесения результата за пределы Института. Расписания нет.</p>

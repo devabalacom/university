@@ -139,7 +139,7 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
 .b-promo .b-card__content{justify-content:space-between;padding:2rem}
 .b-promo ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;color:#fff;font-size:1.125rem;font-weight:300}
 .b-promo li{border-top:1px solid rgba(255,255,255,.22);padding-top:.75rem}
-.b-promo__h{margin:0;font-family:var(--fserif);font-weight:400;font-size:2rem;line-height:1.2;color:#fff}
+.b-promo__h{margin:0;font-weight:400;font-size:2rem;line-height:1.18;color:#fff}
 
 /* The intro carries the draft's epigraph, not a two-word title: at the display
    clamp above it would run past the fold, so it steps down to a reading size
@@ -156,12 +156,17 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
   border-bottom:2px solid var(--el-500);padding-bottom:.2rem}
 .b-more svg{width:1rem;height:1rem}
 
-/* The challenge tier below the first screen: the same tiles, evenly. */
+/* The challenge tier below the first screen: the same tiles, evenly. The head
+   is the kicker + .h-md pair every other section on the site opens with. */
 .b-head{max-width:52rem;margin:0 0 2.5rem}
-.b-head h2{font-family:var(--fserif);font-weight:400;font-size:2.5rem;line-height:1.2}
 .b-head p{margin:1rem 0 0;font-size:1.125rem;line-height:1.75rem;color:var(--deep-200)}
 .b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+/* a tile in an even grid holds its head at the top and its read cue at the
+   foot; only the bento cards sit their content on the bottom edge */
 .b-tile{min-height:15rem}
+.b-tile .b-card__content{justify-content:space-between}
+/* the group rule is set for paper; on a deep band it has to invert */
+.band--deep .pubgroup__name{color:var(--deep-200);border-bottom-color:rgba(255,255,255,.25)}
 
 /* ══════════════════ home tiers (hx) ══════════════════
    The draft's home is a portal: an epigraph, a row of three tiles, a tier of
