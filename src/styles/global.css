@@ -121,36 +121,48 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
   transform-origin:center;transition:transform 1s ease-in}
 .b-card__bg img{width:100%;height:100%;object-fit:cover;display:block}
 .b-card:hover .b-card__bg{transition:transform 4s cubic-bezier(.7,.5,.7,.5);transform:scale(1.1)}
+/* the scrim has to carry a standfirst as well as a title, so it holds full
+   strength further up the card than the reference's title-only one did */
 .b-card__bg::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(0deg,rgba(0,0,0,.72) 16.24%,rgba(0,0,0,.4) 47.97%,rgba(0,0,0,0) 116.24%)}
+  background:linear-gradient(0deg,rgba(0,0,0,.82) 30%,rgba(0,0,0,.55) 62%,rgba(0,0,0,0) 116.24%)}
 .b-card__content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
-  height:100%;width:100%;padding:1.5rem;gap:1.5rem}
+  height:100%;width:100%;padding:1.75rem;gap:1.5rem}
 .b-eyebrow{font-size:1rem;line-height:1.5rem;color:#fff;text-transform:uppercase;letter-spacing:.03em}
 .b-card h3{margin:0;color:#fff;font-family:var(--fsans);font-weight:600;font-size:1.5rem;line-height:2.25rem;letter-spacing:-.005em}
 .b-card h3 svg{display:inline-block;width:.55rem;height:.9rem;margin-left:.5rem;vertical-align:-.05em}
 .b-featured{grid-area:featured;min-height:47.75rem}
-.b-featured .b-card__content{justify-content:space-between;padding:2rem}
+.b-featured .b-card__content{justify-content:space-between;padding:2.25rem}
 .b-featured h2{margin:0;color:#fff;font-family:var(--fsans);font-weight:400;font-size:2.5rem;line-height:1.2;letter-spacing:-.01em}
 .b-item2{grid-area:item2;min-height:31.5rem}
 .b-item3{grid-area:item3;min-height:24.25rem;margin:3.5rem 0}
 .b-item4{grid-area:item4;min-height:21rem;margin-bottom:3rem}
 .b-item5{grid-area:item5;min-height:27.8rem;margin-top:-3.5rem;background:var(--deep-700)}
 .b-promo{grid-area:promo;min-height:21.875rem}
-.b-promo .b-card__content{justify-content:space-between;padding:2rem}
+.b-promo .b-card__content{justify-content:space-between;padding:2.25rem}
 .b-promo ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;color:#fff;font-size:1.125rem;font-weight:300}
 .b-promo li{border-top:1px solid rgba(255,255,255,.22);padding-top:.75rem}
 .b-promo__h{margin:0;font-weight:400;font-size:2rem;line-height:1.18;color:#fff}
 
 /* The intro carries the draft's epigraph, not a two-word title: at the display
    clamp above it would run past the fold, so it steps down to a reading size
-   and keeps the serif. The signature sits in the kicker, one line per language. */
-.b-title--epi{font-size:clamp(1.3rem,1.85vw,1.7rem);line-height:1.4;letter-spacing:0}
+   and keeps the serif. The signature sits in the kicker, one line per language.
+
+   Measured at 1440: at 1.7rem the epigraph set 8 lines of 42 characters — a
+   slab. Stepping the size down and the leading up puts it near 50 characters
+   a line at 1.55, which is what the same text reads like in the articles. */
+.b-title--epi{font-size:clamp(1.2rem,1.6vw,1.45rem);line-height:1.55;letter-spacing:0}
+.b-kicker{margin-bottom:1.75rem}
 .b-kicker span{display:block}
 .b-kicker span+span{color:var(--deep-200);letter-spacing:.06em;text-transform:uppercase;font-size:.875rem}
 
 /* A card carries the draft's standfirst under its question, and the read cue
-   the draft gives every card. */
-.b-lead{margin:.75rem 0 0;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--el-100)}
+   the draft gives every card.
+
+   A card head is a headline, not a paragraph: at 1.5 the three- and four-line
+   questions read as body copy and cost a card ~16px per head. The standfirst
+   goes the other way — 5 lines of 30 characters need more leading, not less. */
+.b-card h3,.b-featured h2,.b-promo__h{line-height:1.28;text-wrap:balance}
+.b-lead{margin:.9rem 0 0;font-size:1rem;line-height:1.6;font-weight:300;color:var(--el-100)}
 .b-more{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;color:#fff;
   font-size:.875rem;line-height:1.25rem;letter-spacing:1.2px;text-transform:uppercase;
   border-bottom:2px solid var(--el-500);padding-bottom:.2rem}
