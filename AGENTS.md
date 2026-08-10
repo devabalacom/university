@@ -49,11 +49,19 @@ up as page-level overflow.
 
 Exits non-zero when it finds something.
 
-## Scrim contrast
+## What is behind the text on a card
 
 `node tools/scrim-contrast.mjs` screenshots the home page with the text layer
-hidden, reads the pixels behind every line on a card that carries artwork, and
-reports any line whose **worst** pixel falls under 4.5:1. The average is not
-the measure that matters: a scrim can be dark over most of a card and still
-leave a heading lying across a bright ring. Silence means every line clears it
-at every width checked.
+hidden and reads the pixels behind every line on every card. It reports two
+things:
+
+- **contrast** — on a card carrying artwork, any line whose *worst* pixel falls
+  under 4.5:1. The average is not the measure that matters: a scrim can be dark
+  over most of a card and still leave a heading lying across a bright ring.
+- **a line on someone else's plate** — on a plain card, any line where the
+  pixels behind it are not that card's own background. The bento overlaps
+  `.b-item5` into `.b-item3` by 3.5rem, so a paint-order mistake puts the
+  bottom of one card's text onto the other's blue without moving it a pixel,
+  which no geometric check can see.
+
+Silence means every line clears both at every width checked.

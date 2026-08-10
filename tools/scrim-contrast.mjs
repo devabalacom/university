@@ -22,17 +22,20 @@ for (const w of [320,360,390,414,480,600,700,760,768,860,900,1000,1024,1100,1200
   const p = await ctx.newPage();
   await p.goto("http://localhost:8131/university/", { waitUntil: "networkidle" });
   const boxes = await p.evaluate(() =>
-    [...document.querySelectorAll(".b-card")]
-      .filter((c) => c.querySelector("img"))
-      .flatMap((c) =>
-        [...c.querySelectorAll("h2,h3,.b-lead,.b-more")].map((t) => {
-          const r = t.getBoundingClientRect();
-          return { cls: c.className.replace("b-card ", ""), tag: t.className || t.tagName,
-                   x: Math.round(r.x), y: Math.round(r.y + window.scrollY),
-                   w: Math.round(r.width), h: Math.round(r.height),
-                   color: getComputedStyle(t).color };
-        })
-      )
+    [...document.querySelectorAll(".b-card")].flatMap((c) =>
+      [...c.querySelectorAll("h2,h3,.b-lead,.b-more")].map((t) => {
+        const r = t.getBoundingClientRect();
+        return {
+          cls: c.className.replace("b-card ", ""),
+          tag: t.className || t.tagName,
+          art: !!c.querySelector("img"),
+          plate: getComputedStyle(c).backgroundColor,
+          x: Math.round(r.x), y: Math.round(r.y + window.scrollY),
+          w: Math.round(r.width), h: Math.round(r.height),
+          color: getComputedStyle(t).color,
+        };
+      })
+    )
   );
   await p.addStyleTag({ content: ".b-card__content{visibility:hidden}" });
   const png = (await p.screenshot({ fullPage: true })).toString("base64");
@@ -52,18 +55,25 @@ for (const w of [320,360,390,414,480,600,700,760,768,860,900,1000,1024,1100,1200
       const [tr, tg, tb] = t.color.match(/\d+/g).map(Number);
       const tl = L(tr, tg, tb);
       const d = g.getImageData(t.x, t.y, Math.min(t.w, c.width - t.x), Math.min(t.h, c.height - t.y)).data;
-      let worst = Infinity, sum = 0, n = 0;
+      let worst = Infinity, sum = 0, n = 0, foreign = 0;
+      const [pr, pg, pb] = (t.plate.match(/\d+/g) || [0, 0, 0]).map(Number);
       for (let i = 0; i < d.length; i += 4 * 2) {
         const r = ratio(tl, L(d[i], d[i + 1], d[i + 2]));
         if (r < worst) worst = r;
         sum += r; n++;
+        /* a plain card must show its own plate behind every line — anything else
+           means a neighbour is painting over it and the text has left its card */
+        if (!t.art && Math.abs(d[i] - pr) + Math.abs(d[i + 1] - pg) + Math.abs(d[i + 2] - pb) > 24) foreign++;
       }
-      return { ...t, worst: +worst.toFixed(2), avg: +(sum / n).toFixed(2) };
+      return { ...t, worst: +worst.toFixed(2), avg: +(sum / n).toFixed(2), foreign: Math.round((foreign / n) * 100) };
     }).filter(Boolean);
   }, { png, boxes });
-  for (const r of rows)
+  for (const r of rows) {
     if (r.worst < 4.5)
-      console.log(`${String(w).padStart(5)}px ${r.cls.padEnd(11)} ${String(r.tag).padEnd(8)} худший ${String(r.worst).padStart(5)}  средний ${r.avg}`);
+      console.log(`${String(w).padStart(5)}px ${r.cls.padEnd(11)} ${String(r.tag).padEnd(8)} контраст, худший ${String(r.worst).padStart(5)}  средний ${r.avg}`);
+    if (!r.art && r.foreign > 2)
+      console.log(`${String(w).padStart(5)}px ${r.cls.padEnd(11)} ${String(r.tag).padEnd(8)} ${r.foreign}% строки лежит не на своей подложке`);
+  }
   await ctx.close();
 }
 await b.close();

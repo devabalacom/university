@@ -146,6 +146,13 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
 .b-item2{grid-area:item2;min-height:31.5rem}
 .b-item3{grid-area:item3;min-height:24.25rem;margin:3.5rem 0}
 .b-item4{grid-area:item4;min-height:21rem;margin-bottom:3rem}
+/* item5 is pulled up 3.5rem so the column reads as one stepped run. It is
+   later in the DOM, so without this its plate painted over the bottom of
+   item3 — and item3's last two lines and its read cue ended up sitting on
+   item5's lighter blue instead of on their own card. item3 takes a stacking
+   order of its own; the overlap now tucks behind it, and the column still
+   runs unbroken. */
+.b-item3{position:relative;z-index:1}
 .b-item5{grid-area:item5;min-height:27.8rem;margin-top:-3.5rem;background:var(--deep-700)}
 .b-promo{grid-area:promo;min-height:21.875rem}
 .b-promo .b-card__content{justify-content:space-between;padding:2.25rem}
