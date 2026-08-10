@@ -10,111 +10,107 @@ const base = import.meta.env.BASE_URL;
 const title = "Институт предиктивной архитектуры систем — PSAI";
 const description = "PSAI делает наблюдаемой архитектуру исследуемой системы и модель её взаимодействия с другими системами — так, чтобы основания решений могли быть описаны, проверены и сопоставлены с производимым результатом.";
 
-/* The challenge tier of the draft: one flag card, six minis, one wide band.
-   Each entry keeps the draft's question and the target it points at. */
-const mid = [
+/* The challenge tier of the draft: six questions under one head. They carry no
+   standfirst there and carry none here; the tile is the whole card. */
+const challenges = [
   { t: "Почему цифровая трансформация часто не приносит ожидаемого результата?", href: `${base}/publikacii/ii-i-upravlencheskiy-haos/` },
   { t: "Почему компании тонут в данных, но принимают всё менее точные решения?", href: `${base}/publikacii/granicy-predskazuemosti/` },
   { t: "Почему дефицит кадров становится архитектурной проблемой?", href: `${base}/publikacii/deficit-kadrov/` },
-];
-const bot = [
   { t: "Почему масштабирование разрушает то, что сделало компанию успешной?", href: `${base}/publikacii/masshtabirovanie-razrushaet/` },
   { t: "Почему показатели начинают скрывать реальное положение дел?", href: `${base}/publikacii/mera-stavshaya-celyu/` },
   { t: "Почему скорость изменений становится выше способности организаций адаптироваться?", href: `${base}/publikacii/skorost-izmeneniy/` },
 ];
 ---
 <Base title={title} description={description}>
+  <section class="bento" aria-label="Главное">
+    <div class="bento__grid">
+      <div class="b-intro">
+        <p class="b-kicker">
+          <span>Институт предиктивной архитектуры систем</span>
+          <span>Predictive Systems Architecture Institute</span>
+        </p>
+        <h1 class="b-title b-title--epi" id="h1">В нашем мире всё одновременно упорядочено и хаотично. Хаосом человек называет порядок, который он пока не в состоянии распознать. PSAI делает наблюдаемой архитектуру исследуемой системы и модель её взаимодействия с другими системами — так, чтобы основания решений могли быть описаны, проверены и сопоставлены с производимым результатом.</h1>
+      </div>
+
+      <a class="b-card b-featured" href={`${base}/publikacii/verhniy-uroven-cherez-nizhniy/`}>
+        <span class="b-card__bg"><Image src={strata} alt="" widths={[720, 1080, 1376]} sizes="(max-width: 760px) 100vw, 46vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <h2>Почему система ломается не там, где появляются симптомы?</h2>
+            <p class="b-lead">Большинство заметных проблем возникают далеко от места их настоящей причины. Архитектурный анализ отделяет источник нарушения от его внешних проявлений.</p>
+          </div>
+          <span class="b-more">Читать далее<Icon name="arrow" /></span>
+        </div>
+      </a>
+
+      <a class="b-card b-item2" href={`${base}/publikacii/granicy-predskazuemosti/`}>
+        <span class="b-card__bg"><Image src={rings} alt="" widths={[480, 720, 1184]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <h3>Почему одинаковые решения дают разные результаты?</h3>
+            <p class="b-lead">Одни и те же действия способны привести к противоположным последствиям. Решающим фактором часто оказывается не само решение, а устройство системы.</p>
+          </div>
+          <span class="b-more">Читать далее<Icon name="arrow" /></span>
+        </div>
+      </a>
+
+      <a class="b-card b-item3" href={`${base}/publikacii/ii-i-upravlencheskiy-haos/`}>
+        <div class="b-card__content">
+          <div>
+            <h3>Почему искусственный интеллект не устраняет управленческий хаос?</h3>
+            <p class="b-lead">Чем мощнее становятся инструменты, тем заметнее проявляются ограничения самой архитектуры управления. Автоматизация ускоряет процессы, но не заменяет согласованность.</p>
+          </div>
+          <span class="b-more">Читать далее<Icon name="arrow" /></span>
+        </div>
+      </a>
+
+      <a class="b-card b-item4" href={`${base}/metod/#pair`}>
+        <span class="b-card__bg"><Image src={network} alt="" widths={[384, 640, 768]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
+        <div class="b-card__content">
+          <div>
+            <h3>Почему эффективность нельзя рассматривать отдельно от среды?</h3>
+            <p class="b-lead">Эффективность не существует сама по себе. Она возникает там, где возможности системы совпадают с требованиями её окружения.</p>
+          </div>
+          <span class="b-more">Читать далее<Icon name="arrow" /></span>
+        </div>
+      </a>
+
+      <a class="b-card b-item5" href={`${base}/publikacii/skorost-izmeneniy/`}>
+        <div class="b-card__content">
+          <div>
+            <h3>Почему сложность становится главным ограничением развития?<Icon name="chev" /></h3>
+          </div>
+        </div>
+      </a>
+
+      <div class="b-card b-promo">
+        <div class="b-card__content">
+          <div>
+            <h2 class="b-promo__h">Публикации</h2>
+            <p class="b-lead">Исследования, аналитические статьи и научные обзоры Института.</p>
+          </div>
+          <a class="btn" href={`${base}/publikacii/`}>Перейти к публикациям<Icon name="arrow" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main id="content">
-    <section class="band band--white" aria-labelledby="h1">
+    <section class="band band--deep" aria-labelledby="h-ch">
       <div class="in">
-        <div class="hx-epi">
-          <h1 class="q" id="h1">В нашем мире всё одновременно упорядочено и хаотично. Хаосом человек называет порядок, который он пока не в состоянии распознать. PSAI делает наблюдаемой архитектуру исследуемой системы и модель её взаимодействия с другими системами — так, чтобы основания решений могли быть описаны, проверены и сопоставлены с производимым результатом.</h1>
-          <p class="sig">
-            <span class="ru">Институт предиктивной архитектуры систем</span>
-            <span class="en">Predictive Systems Architecture Institute</span>
-          </p>
-        </div>
-
-        <div class="hx-row hx-3">
-          <a class="hx-tile" href={`${base}/publikacii/verhniy-uroven-cherez-nizhniy/`}>
-            <div class="hx-ph"><Image src={strata} alt="" widths={[420, 760]} sizes="(max-width: 767px) 92vw, 30vw" /></div>
-            <div class="hx-body">
-              <h3>Почему система ломается не там, где появляются симптомы?</h3>
-              <p>Большинство заметных проблем возникают далеко от места их настоящей причины. Архитектурный анализ отделяет источник нарушения от его внешних проявлений.</p>
-              <span class="hx-more">Читать далее →</span>
-            </div>
-          </a>
-          <a class="hx-tile" href={`${base}/publikacii/granicy-predskazuemosti/`}>
-            <div class="hx-ph"><Image src={rings} alt="" widths={[420, 760]} sizes="(max-width: 767px) 92vw, 30vw" /></div>
-            <div class="hx-body">
-              <h3>Почему одинаковые решения дают разные результаты?</h3>
-              <p>Одни и те же действия способны привести к противоположным последствиям. Решающим фактором часто оказывается не само решение, а устройство системы.</p>
-              <span class="hx-more">Читать далее →</span>
-            </div>
-          </a>
-          <a class="hx-tile" href={`${base}/metod/#pair`}>
-            <div class="hx-ph"><Image src={network} alt="" widths={[420, 760]} sizes="(max-width: 767px) 92vw, 30vw" /></div>
-            <div class="hx-body">
-              <h3>Почему эффективность нельзя рассматривать отдельно от среды?</h3>
-              <p>Эффективность не существует сама по себе. Она возникает там, где возможности системы совпадают с требованиями её окружения.</p>
-              <span class="hx-more">Читать далее →</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="hx-head">
-          <h2>Архитектура современных вызовов</h2>
+        <div class="b-head">
+          <h2 id="h-ch">Архитектура современных вызовов</h2>
           <p>Как фундаментальные закономерности сложных систем проявляются в проблемах сегодняшнего дня.</p>
         </div>
-
-        <div class="hx-row">
-          <a class="hx-flag" href={`${base}/publikacii/ii-i-upravlencheskiy-haos/`}>
-            <div class="hx-ph d"></div>
-            <div class="hx-body">
-              <h3>Почему искусственный интеллект не устраняет управленческий хаос?</h3>
-              <p>Чем мощнее становятся инструменты, тем заметнее проявляются ограничения самой архитектуры управления. Автоматизация ускоряет процессы, но не заменяет согласованность.</p>
-              <span class="hx-more">Читать далее →</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="hx-row hx-mid">
-          {mid.map((c) => (
-            <a class="hx-mini" href={c.href}>
-              <div class="hx-ph"></div>
-              <div class="hx-body">
-                <h3>{c.t}</h3>
-                <span class="hx-more">Читать далее →</span>
+        <div class="b-grid">
+          {challenges.map((c) => (
+            <a class="b-card b-tile" href={c.href}>
+              <div class="b-card__content">
+                <div><h3>{c.t}</h3></div>
+                <span class="b-more">Читать далее<Icon name="arrow" /></span>
               </div>
             </a>
           ))}
-        </div>
-
-        <div class="hx-row hx-bot">
-          {bot.map((c) => (
-            <a class="hx-mini" href={c.href}>
-              <div class="hx-ph"></div>
-              <div class="hx-body">
-                <h3>{c.t}</h3>
-                <span class="hx-more">Читать далее →</span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div class="hx-row">
-          <a class="hx-band" href={`${base}/publikacii/skorost-izmeneniy/`}>
-            <div class="hx-ph d"></div>
-            <h3>Почему сложность становится главным ограничением развития?</h3>
-          </a>
-        </div>
-
-        <div class="hx-pub">
-          <div>
-            <h2>Публикации</h2>
-            <p>Исследования, аналитические статьи и научные обзоры Института.</p>
-          </div>
-          <a class="btn2" href={`${base}/publikacii/`}>Перейти к публикациям<Icon name="arrow" /></a>
         </div>
       </div>
     </section>

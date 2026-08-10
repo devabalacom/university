@@ -139,6 +139,29 @@ h1,h2,h3,h4,h5{margin:0;color:var(--deep-900);font-weight:400;letter-spacing:-.0
 .b-promo .b-card__content{justify-content:space-between;padding:2rem}
 .b-promo ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem;color:#fff;font-size:1.125rem;font-weight:300}
 .b-promo li{border-top:1px solid rgba(255,255,255,.22);padding-top:.75rem}
+.b-promo__h{margin:0;font-family:var(--fserif);font-weight:400;font-size:2rem;line-height:1.2;color:#fff}
+
+/* The intro carries the draft's epigraph, not a two-word title: at the display
+   clamp above it would run past the fold, so it steps down to a reading size
+   and keeps the serif. The signature sits in the kicker, one line per language. */
+.b-title--epi{font-size:clamp(1.3rem,1.85vw,1.7rem);line-height:1.4;letter-spacing:0}
+.b-kicker span{display:block}
+.b-kicker span+span{color:var(--deep-200);letter-spacing:.06em;text-transform:uppercase;font-size:.875rem}
+
+/* A card carries the draft's standfirst under its question, and the read cue
+   the draft gives every card. */
+.b-lead{margin:.75rem 0 0;font-size:1rem;line-height:1.5rem;font-weight:300;color:var(--el-100)}
+.b-more{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;color:#fff;
+  font-size:.875rem;line-height:1.25rem;letter-spacing:1.2px;text-transform:uppercase;
+  border-bottom:2px solid var(--el-500);padding-bottom:.2rem}
+.b-more svg{width:1rem;height:1rem}
+
+/* The challenge tier below the first screen: the same tiles, evenly. */
+.b-head{max-width:52rem;margin:0 0 2.5rem}
+.b-head h2{font-family:var(--fserif);font-weight:400;font-size:2.5rem;line-height:1.2}
+.b-head p{margin:1rem 0 0;font-size:1.125rem;line-height:1.75rem;color:var(--deep-200)}
+.b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.b-tile{min-height:15rem}
 
 /* ══════════════════ home tiers (hx) ══════════════════
    The draft's home is a portal: an epigraph, a row of three tiles, a tier of
@@ -532,6 +555,7 @@ a:hover .chev{transform:translateX(.2em)}
   .art__rail div{position:static}
 }
 @media (max-width:1023px){
+  .b-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .up__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .up__grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lv__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
@@ -543,6 +567,8 @@ a:hover .chev{transform:translateX(.2em)}
 @media (max-width:767px){
   .band{padding:3rem 0}
   .in{width:min(90%,76.5rem)}
+  .b-grid{grid-template-columns:1fr}
+  .b-head h2{font-size:1.875rem}
   .up__grid{grid-template-columns:1fr;gap:2.5rem}
   .up__item,.up__item--half{grid-column:auto}
   .up__head .dek{width:100%}
