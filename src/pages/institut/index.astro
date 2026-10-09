@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import network from "../../assets/img/network.jpg";
 import rings from "../../assets/img/rings.jpg";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const title = "Институт — PSAI";
 const description = "Институт существует, чтобы вывод о системе перестал быть мнением. Объект исследования — согласованность систем.";
 ---

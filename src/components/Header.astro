@@ -1,7 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 /* Order follows the draft's menu: Главное · Публикации · Метод · Применение · Институт */
 const nav = [
   { href: `${base}/`, label: "Главное", exact: true },

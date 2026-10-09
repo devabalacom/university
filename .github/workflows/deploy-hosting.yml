@@ -1,0 +1,43 @@
+name: Deploy to hosting (FTP)
+
+# Runs once the repo variable SITE_URL is set (http://<ip> now, the domain later)
+# and the FTP_SERVER / FTP_USERNAME / FTP_PASSWORD secrets exist.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: hosting
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ vars.SITE_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Build for the site root
+        run: bun run build
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          BASE_PATH: /
+      - name: Serve 404.html for missing pages
+        run: echo 'ErrorDocument 404 /404.html' > dist/.htaccess
+      - name: Upload over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_SERVER_DIR || './public_html/' }}

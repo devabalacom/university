@@ -12,7 +12,7 @@ interface Props {
 
 const { title, description, ogType = "website" } = Astro.props;
 const site = Astro.site ?? new URL("https://devabalacom.github.io");
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, site).toString();
 const ogImage = new URL(`${base}/og.jpg`, site).toString();
 const siteName = "Институт предиктивной архитектуры систем";

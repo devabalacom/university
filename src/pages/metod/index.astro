@@ -4,7 +4,7 @@ import Icon from "../../components/Icon.astro";
 import { Image } from "astro:assets";
 import strata from "../../assets/img/strata.jpg";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const title = "Метод — PSAI";
 const description = "Компания. Рынок. Государство. Человек. Разные системы — устройство одно: девять уровней от границы до центра, девять функций на каждом, три режима у каждой.";
 

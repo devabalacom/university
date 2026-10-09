@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const title = "Страница не найдена — PSAI";
 const description = "Запрошенной страницы не существует. Разделы Института: Институт, Метод, Применение, Публикации.";
 ---
