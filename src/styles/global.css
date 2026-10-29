@@ -662,3 +662,144 @@ a:hover .chev{transform:translateX(.2em)}
   .b-card__content{padding:1.5rem;gap:1rem}
   .b-featured h2{font-size:1.9rem}
 }
+
+/* ---------------------------------------------------------------------------
+   Components from the owner's offline edit (2026-10): disclosures, the method
+   tables, level details, the institute principles and the application lists.
+   Ported from PSAI_Offline.html; values kept as the owner set them, mapped to
+   tokens where they are the same colour.
+   ------------------------------------------------------------------------- */
+section[id]{scroll-margin-top:7rem}
+a.b-card{cursor:pointer;isolation:isolate}
+.b-card__bg{pointer-events:none}
+.footer__nav{flex-wrap:wrap}
+.b-item5{margin:0;min-height:21rem;align-self:stretch}
+.b-item5 .b-card__bg img{object-position:75% center;transform:scaleX(-1)}
+.b-item5 .b-more{flex-shrink:0;white-space:nowrap}
+.b-promo .btn{align-self:flex-start;flex-shrink:0;max-width:100%;white-space:normal}
+
+.method-jumps{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2.5rem}
+.method-jumps a{font-size:1rem;border-bottom:1px solid #ffffff70;padding:.4rem 0}
+.method-jumps a:hover{border-color:var(--cyan);color:#cce1ff}
+.prose{max-width:61rem}
+.prose p+p{margin-top:1.25rem}
+.method-disclosure{border-top:1px solid var(--gray-30);margin-top:1.5rem}
+.method-disclosure:last-child{border-bottom:1px solid var(--gray-30)}
+.method-disclosure summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.4rem 0;font-size:1.3rem;font-weight:400;line-height:1.45}
+.method-disclosure summary::-webkit-details-marker{display:none}
+.method-disclosure summary:hover{color:var(--el-500)}
+.plus{width:1.1rem;height:1.1rem;flex-shrink:0;position:relative}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor;left:0;top:50%;width:100%;height:1.5px}
+.plus::after{transform:rotate(90deg);transition:transform .15s}
+.method-disclosure[open]>summary .plus::after{transform:rotate(0)}
+.disclosure-body{padding:0 0 2rem;max-width:none}
+.disclosure-body>.desc+.desc{margin-top:1.2rem}
+.detail-title{font-family:var(--fsans);font-size:1.25rem;font-weight:500!important;margin:2rem 0 1rem!important}
+.disclosure-body>.detail-title:first-child{margin-top:.3rem!important}
+.level-panels{margin-top:2.5rem}
+.level-detail{margin-top:0;border-bottom:1px solid #ffffff60}
+.band--deep .method-disclosure,.band--grad .method-disclosure{border-color:#ffffff50}
+.band--deep summary:hover,.band--grad summary:hover{color:#cce1ff}
+.source-note{margin:1.5rem 0}
+.source-bullet{padding-left:1.4rem;position:relative}
+.source-bullet::before{content:"—";position:absolute;left:0}
+.table-scroll{max-width:100%;overflow-x:auto;margin:1.5rem 0;-webkit-overflow-scrolling:touch}
+.method-table{width:100%;border-collapse:collapse;table-layout:auto;font-size:1rem;line-height:1.6;min-width:600px}
+.method-table th{text-align:left;vertical-align:bottom;font-size:.8rem;font-weight:500;letter-spacing:.03em;padding:1rem;border-bottom:2px solid var(--deep-200);color:var(--deep-900);background:#eaf0f5}
+.method-table td{text-align:left;vertical-align:top;padding:1.1rem;border-bottom:1px solid var(--gray-30);overflow-wrap:anywhere;min-width:130px}
+.method-table td:first-child{font-weight:500;min-width:155px}
+.method-table tr:last-child td{border-bottom:0}
+.band--deep .method-table th,.band--grad .method-table th{color:#fff;background:#ffffff12}
+.band--deep .method-table td,.band--grad .method-table td{border-bottom-color:#ffffff35}
+.band--deep .method-table td:first-child,.band--grad .method-table td:first-child{color:#fff}
+.band--deep .method-table,.band--grad .method-table{color:#d3e1f1}
+.detail-link{font-family:inherit;border:0;background:none;cursor:pointer;gap:.6rem}
+.detail-link:hover{color:var(--el-500)}
+.model-pair{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem}
+.model-pair>div{border-top:3px solid var(--el-500);padding-top:1.5rem}
+.model-pair h3{font-size:1.7rem;margin:.9rem 0 1.5rem}
+.model-pair .lead{font-size:1.45rem}
+.editorial-highlight{border-left:3px solid var(--el-500);padding:0 0 0 2rem;max-width:60rem}
+.flow-block{border-top:1px solid #ffffff40;border-bottom:1px solid #ffffff40;padding:1.5rem 0;display:grid;gap:1.5rem}
+.flow-block p{line-height:1.9}
+.function-intro{align-items:start}
+.function-list .method-disclosure{margin-top:0}
+.function-list summary{font-size:1.2rem;padding:1.1rem 0}
+.function-list .desc{font-size:1.125rem;line-height:1.75}
+.lv__card .desc{max-width:38rem}
+.lv__cardtop h3{margin-bottom:1.4rem}
+.tbl th{white-space:normal}
+.tbl .k{min-width:9rem}
+@media (min-width:1100px){
+  .method-table:has(th:nth-child(5)){font-size:.94rem}
+  .method-table:has(th:nth-child(5)) td{padding:.85rem;min-width:100px}
+}
+@media (max-width:767px){
+  .model-pair{grid-template-columns:1fr;gap:2rem}
+  .method-disclosure summary{font-size:1.125rem;padding:1.2rem 0}
+  .method-jumps{gap:.75rem 1.25rem}
+  .method-table{min-width:0;display:block}
+  .method-table thead{display:none}
+  .method-table tbody,.method-table tr,.method-table td{display:block}
+  .method-table tr{border-top:1px solid var(--gray-30);padding:1rem 0}
+  .method-table td{padding:.5rem 0!important;border:0!important;min-width:0!important}
+  .method-table td::before{content:attr(data-label);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--gray-60);font-weight:500;margin-bottom:.25rem}
+  .band--grad .method-table td::before,.band--deep .method-table td::before{color:var(--deep-200)}
+  .method-table tr:has(td[colspan]) td::before{display:none}
+  .editorial-highlight{padding-left:1.2rem}
+  .table-scroll{overflow:visible}
+  .model-pair h3{font-size:1.45rem}
+  .lv__list{grid-template-columns:1fr 1fr;gap:1rem}
+  .lv__btn span.t{font-size:.9rem}
+  .lv__side{display:none}
+  .band--grad .disclosure-body .desc{font-size:1.125rem;line-height:1.75}
+  .function-intro{gap:2rem}
+}
+.classes-layout{align-items:start}
+.application-class-list{margin:0}
+.application-class-list li{grid-template-columns:5rem 1fr;padding:1.4rem 1.2rem}
+.application-class-list .n{white-space:nowrap}
+.application-actions{list-style:none;padding:0;max-width:64rem}
+.application-actions li{border-top:1px solid #ffffff55;font-size:1.25rem;font-weight:300;line-height:1.7;padding:1.3rem 0}
+.application-actions strong{font-weight:500}
+.application-actions+details{margin-top:2rem}
+.direction-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 3rem;align-items:start}
+.direction-grid .method-disclosure{margin:0;border-bottom:1px solid #ffffff35}
+.direction-grid summary{font-size:1.2rem;padding:1.3rem 0}
+.direction-grid .desc{font-size:1.125rem;line-height:1.7}
+.direction-grid .disclosure-body{padding-bottom:1.5rem}
+.example-tools{display:flex;gap:1.5rem;justify-content:space-between;align-items:center}
+.example-tools button{font:inherit;font-size:1rem;cursor:pointer;border:0;border-bottom:1px solid var(--el-500);color:var(--deep-900);background:transparent;padding:.65rem 0}
+.example-tools button:hover{color:var(--el-500)}
+.example-group{margin-top:0}
+.example-group>summary{font-size:1.5rem}
+.example-group[open]>summary{color:var(--el-500)}
+.example-group .method-table{table-layout:fixed}
+.example-group .method-table th:first-child,.example-group .method-table td:first-child{width:38%}
+.example-group .disclosure-body>.desc{max-width:50rem}
+.example-group .method-table td{padding:1.3rem 1rem 1.3rem 0}
+@media (max-width:767px){
+  .direction-grid{grid-template-columns:1fr;gap:0}
+  .classes-layout{gap:2rem}
+  .application-class-list li{grid-template-columns:4rem 1fr;gap:.75rem;padding:1.15rem 0}
+  .application-actions li{font-size:1.125rem}
+  .example-tools{align-items:flex-start;gap:1rem}
+  .example-tools button{max-width:11rem;text-align:left}
+  .example-group>summary{font-size:1.2rem}
+  .example-group .method-table th:first-child,.example-group .method-table td:first-child{width:auto}
+  .example-group .method-table td{padding:.6rem 0}
+  .direction-grid summary{font-size:1.1rem}
+  .example-group .table-scroll{margin-bottom:.25rem}
+}
+.institute-principles{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.institute-principles article{border-top:2px solid #ffffff70;padding-top:1.5rem}
+.institute-principles h3{font-size:2rem;line-height:1.2;margin:1rem 0 1.6rem}
+.institute-principles .desc{max-width:33rem}
+.institute-principles .eyebrow-sm{color:#cce1ff}
+#object .method-disclosure,#purpose .method-disclosure{margin-top:2.5rem}
+#regulation .prose{max-width:56rem}
+#regulation .prose p+p{margin-top:1.5rem}
+@media (max-width:767px){
+  .institute-principles{grid-template-columns:1fr;gap:2.5rem}
+  .institute-principles h3{font-size:1.6rem}
+}
