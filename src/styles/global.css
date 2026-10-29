@@ -825,3 +825,10 @@ a.b-card{cursor:pointer;isolation:isolate}
   #levels:has(#lv-7:checked) #level-panel-7,#levels:has(#lv-8:checked) #level-panel-8,
   #levels:has(#lv-9:checked) #level-panel-9{display:block}
 }
+/* two columns of level names do not fit at the narrowest phones: «взаимодействия»
+   alone is wider than half of a 320px screen */
+@media (max-width:359px){.lv__list{grid-template-columns:1fr}}
+/* «Эффективность рождается во взаимодействии со средой» runs to four lines at
+   desktop widths, which lifts the title onto the brightest dots of the plate
+   (worst pixel 3.7:1). The full-strength part of the scrim reaches higher here. */
+.b-item4 .b-card__bg::after{background:linear-gradient(0deg,rgba(0,0,0,.9) 52%,rgba(0,0,0,.7) 80%,rgba(0,0,0,.2) 100%)}
