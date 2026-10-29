@@ -1,6 +1,4 @@
 ---
-import Icon from "./Icon.astro";
-
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const year = new Date().getFullYear();
 ---
@@ -8,29 +6,17 @@ const year = new Date().getFullYear();
   <div class="in">
     <p class="footer__mark"><span>Институт</span><span>ПСАИ</span></p>
 
-    <div class="footer__top">
-      <nav class="footer__nav" aria-label="Разделы сайта">
-        <a href={`${base}/institut/`}>Институт</a>
-        <a href={`${base}/publikacii/`}>Публикации</a>
-        <a href={`${base}/metod/`}>Метод</a>
-        <a href={`${base}/primenenie/#example`}>Разбор кейса</a>
-        <a href={`${base}/primenenie/`}>Применение</a>
-        <a href={`${base}/institut/#kanon`}>Версии канона</a>
-      </nav>
-
-      {/* The reference puts a newsletter signup here. There is no list to
-          subscribe to and no backend to receive it, so this says what is
-          actually true instead of collecting addresses into nothing. */}
-      <div class="footer__aside">
-        <b>Публикации</b>
-        <p>Институт публикует результаты по мере вынесения их за свои пределы — не по расписанию. Каждая указывает основание, уровень доказательности и границы применимости.</p>
-        <a class="btn2" href={`${base}/publikacii/`}>Перечень публикаций<Icon name="arrow" /></a>
-      </div>
-    </div>
+    <nav class="footer__nav" aria-label="Разделы сайта">
+      <a href={`${base}/`}>Главное</a>
+      <a href={`${base}/publikacii/`}>Публикации</a>
+      <a href={`${base}/metod/`}>Метод</a>
+      <a href={`${base}/primenenie/`}>Применение</a>
+      <a href={`${base}/institut/`}>Институт</a>
+    </nav>
 
     <div class="footer__rule"></div>
     <div class="footer__bot">
-      <span>Институт предиктивной архитектуры систем · Predictive Systems Architecture Institute</span>
+      <span>Институт предиктивной архитектуры систем</span>
       <span>© {year} PSAI</span>
     </div>
   </div>
