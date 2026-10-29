@@ -1,71 +1,79 @@
 ---
 import Base from "../../layouts/Base.astro";
-import Icon from "../../components/Icon.astro";
-import { Image } from "astro:assets";
-import network from "../../assets/img/network.jpg";
-import rings from "../../assets/img/rings.jpg";
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const title = "Институт — PSAI";
-const description = "Институт существует, чтобы вывод о системе перестал быть мнением. Объект исследования — согласованность систем.";
+const description = "Цель PSAI — способность регулярно восстанавливать различие между моделью системы и наблюдаемой реальностью и возвращать её функции к согласованию относительно общего основания.";
 ---
 <Base title={title} description={description}>
   <main id="content">
     <section class="band band--deep" aria-labelledby="h1">
       <div class="in">
         <p class="kicker kicker--left">Институт</p>
-        <h1 class="h-xl mt-3 w-60" id="h1">Институт существует, чтобы вывод о системе перестал быть мнением</h1>
-        <p class="lead mt-4 w-48">PSAI прогнозирует не события, а изменение вероятностной структуры системы. Чем сложнее система, тем менее предсказуемо отдельное событие — и тем отчётливее её структурная тенденция.</p>
-        <p class="lead mt-3 w-48">Объект исследования — согласованность систем.</p>
+        <h1 class="h-xl mt-3 w-60" id="h1">Любая система стремится к сохранению или восстановлению согласованности между своей структурой, процессами, средой и направлением движения</h1>
+        <p class="lead mt-4 w-60">Цель PSAI — способность регулярно восстанавливать различие между моделью системы и наблюдаемой реальностью и возвращать её функции к согласованию относительно общего основания.</p>
       </div>
     </section>
 
-    <section class="band band--white" id="object" aria-labelledby="h-what">
+    <section class="band band--white" id="purpose" aria-labelledby="h-purpose">
+      <div class="in">
+        <p class="kicker kicker--left">Цель PSAI</p>
+        <h2 class="h-md mt-2 w-60" id="h-purpose">Что означает эта цель</h2>
+        <div class="prose mt-4">
+          <p class="desc">PSAI рассматривает организацию не как набор изолированных блоков, а как единую систему, которая постоянно выражает себя в реальность, получает ответ среды, распознаёт расхождения и корректирует способ действия. Диагностика нужна прежде всего там, где система привыкла к собственным отклонениям и перестала различать, что она считает происходящим, что действительно происходит и что требуется для её цели.</p>
+        </div>
+        <details class="method-disclosure">
+          <summary>Бдительность согласованности<span class="plus" aria-hidden="true"></span></summary>
+          <div class="disclosure-body">
+            <p class="desc">Способность регулярно восстанавливать различие между собственной моделью и наблюдаемой реальностью, не позволяя привычке, компенсациям и удобным объяснениям превращать расхождение в невидимую норму.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="band band--grad" id="principles" aria-labelledby="h-principles">
+      <div class="in">
+        <p class="kicker kicker--left">Основание работы Института</p>
+        <h2 class="h-md mt-2 w-60" id="h-principles">Два корневых принципа</h2>
+        <div class="institute-principles mt-5">
+          <article>
+            <p class="eyebrow-sm">Принцип I</p>
+            <h3>Исполнимость архитектурного знания</h3>
+            <p class="desc">Архитектурное знание должно быть преобразуемо в спецификации функций для людей, организаций, программ и ИИ-агентов с проверяемыми требованиями, условиями и результатами.</p>
+          </article>
+          <article>
+            <p class="eyebrow-sm">Принцип II</p>
+            <h3>Обеспечение как конечный продукт</h3>
+            <p class="desc">Коммерческая цель PSAI — обеспечение функционирования систем в соответствии с определёнными требованиями, а не продажа знаний об этих системах.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--white" id="object" aria-labelledby="h-object">
       <div class="in">
         <p class="kicker kicker--left">Что исследует Институт</p>
-        <h2 class="h-md mt-2 w-56" id="h-what">Почему одни системы сохраняют способность к устойчивой реализации своих функций, а другие постепенно утрачивают эту способность?</h2>
-        <p class="desc mt-4 w-48">Объект — согласованность систем. Не люди, не организации и не рынки по отдельности.</p>
-        <p class="desc mt-3 w-48">Институт исследует расхождение между структурой, процессами, средой и направлением движения системы. Оно не находится ни в одной стороне и обнаруживается только между ними.</p>
-      </div>
-    </section>
-
-    <section class="band band--grad" id="theory" aria-labelledby="h-theory">
-      <div class="in up">
-        <div class="up__head up__head--left">
-          <p class="kicker kicker--left">Теория согласованности систем</p>
-          <p class="dek dek--left" id="h-theory">Любая система стремится к сохранению или восстановлению согласованности между своей структурой, процессами, средой и направлением движения</p>
+        <h2 class="h-md mt-2 w-60" id="h-object">Почему одни системы сохраняют способность к устойчивой реализации своих функций, а другие постепенно утрачивают эту способность?</h2>
+        <div class="prose mt-4">
+          <p class="desc">Институт исследует расхождение между структурой, процессами, средой и направлением движения системы. Оно не находится ни в одной стороне и обнаруживается только между ними.</p>
         </div>
-        <div class="up__grid up__grid--4">
-          <div class="up__item up__item--rule"><div class="up__body"><p class="eyebrow-sm">01</p><p class="ih">Устойчивость</p></div></div>
-          <div class="up__item up__item--rule"><div class="up__body"><p class="eyebrow-sm">02</p><p class="ih">Эффективность</p></div></div>
-          <div class="up__item up__item--rule"><div class="up__body"><p class="eyebrow-sm">03</p><p class="ih">Адаптивность</p></div></div>
-          <div class="up__item up__item--rule"><div class="up__body"><p class="eyebrow-sm">04</p><p class="ih">Предсказуемость результатов</p></div></div>
-        </div>
-        <div class="pair-cta mt-5">
-          <a class="ghost" href={`${base}/metod/`}>Метод<Icon name="arrow" /></a>
-          <a class="ghost" href={`${base}/primenenie/`}>Применение<Icon name="arrow" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band--blue" aria-labelledby="h-quote">
-      <div class="in">
-        <p class="dek measure-c" id="h-quote">Состояние частицы связано с состоянием частиц вокруг неё. Поймёшь состояние одной — поймёшь состояние другой</p>
-      </div>
-    </section>
-
-    <section class="band band--white" id="discipline" aria-labelledby="h-disc">
-      <div class="in">
-        <p class="kicker kicker--left">Исследовательская дисциплина</p>
-        <h2 class="h-md mt-2 w-52" id="h-disc">Институт устанавливает правила вывода</h2>
-        <p class="desc mt-3 w-48">Правило определяет переход от наблюдения к заключению и делает этот переход проверяемым третьей стороной.</p>
-        <ul class="cls mt-4">
-          <li><span class="n">01</span><span><b>Прослеживаемость</b><span class="d">Каждое утверждение имеет источник и уровень доказательности</span></span></li>
-          <li><span class="n">02</span><span><b>Разделение</b><span class="d">Факт, интерпретация и гипотеза не смешиваются</span></span></li>
-          <li><span class="n">03</span><span><b>Триангуляция</b><span class="d">Вывод силён при подтверждении тремя независимыми источниками</span></span></li>
-          <li><span class="n">04</span><span><b>Фальсифицируемость</b><span class="d">Каждый вывод указывает, что его опровергнет</span></span></li>
-        </ul>
-        <p class="mt-5"><a class="btn2" href={`${base}/metod/#evidence`}>Правила вывода<Icon name="arrow" /></a></p>
+        <details class="method-disclosure">
+          <summary>Что именно проверяем<span class="plus" aria-hidden="true"></span></summary>
+          <div class="disclosure-body">
+            <div class="table-scroll" tabindex="0" role="region" aria-label="Исследовательские гипотезы">
+              <table class="method-table">
+                <thead>
+                  <tr><th scope="col">Гипотеза</th><th scope="col">Что необходимо доказать</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td data-label="Гипотеза">Г1. Архитектурная полнота</td><td data-label="Что необходимо доказать">Универсальная функциональная архитектура позволяет определить необходимые функции и зависимости для выбранного результата</td></tr>
+                  <tr><td data-label="Гипотеза">Г2. Исполнимость</td><td data-label="Что необходимо доказать">Архитектурные требования можно преобразовать в спецификации для людей, программ и агентов</td></tr>
+                  <tr><td data-label="Гипотеза">Г3. Обеспечение</td><td data-label="Что необходимо доказать">Исполнение спецификации действительно позволяет достигать и поддерживать требуемый результат</td></tr>
+                  <tr><td data-label="Гипотеза">Г4. Масштабируемость</td><td data-label="Что необходимо доказать">Один и тот же функциональный модуль можно многократно применять без пропорционального увеличения трудозатрат</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -74,110 +82,18 @@ const description = "Институт существует, чтобы выво�
         <p class="kicker kicker--left">Единица измерения</p>
         <h2 class="h-md mt-2" id="h-unit">Единица измерения — пара</h2>
         <p class="desc mt-3 w-48">Расхождение между тем, что требует одна система, и тем, что умеет вторая.</p>
-        <p class="desc mt-3 w-48">Отраслевой бенчмарк измеряет отклонение от среднего. Среднее не является критерием ни для одной системы: соответствие ему не означает согласованности, отставание от него может не означать ничего.</p>
+        <p class="desc mt-3 w-48">Отраслевое сравнение измеряет отклонение от среднего. Среднее не является критерием ни для одной системы: соответствие ему не означает согласованности, отставание от него может не означать ничего.</p>
         <p class="desc mt-3 w-48">Измеримо другое — разрыв между двумя конкретными системами. Рынок, юрисдикция, отрасль — тоже системы, и описываются тем же стандартом, что и компания. Величина не берётся из отчёта: она вычисляется сопоставлением двух архитектур, сведённых к одним правилам описания.</p>
-        <div class="pair-cta mt-5">
-          <a class="ghost" href={`${base}/metod/#pair`}>Метод<Icon name="arrow" /></a>
-          <a class="ghost" href={`${base}/primenenie/`}>Применение<Icon name="arrow" /></a>
-        </div>
       </div>
     </section>
 
-    <section class="band band--deep tu" id="regulation" aria-labelledby="h-cond">
-      <div class="tu__strip">
-        <div class="tu__bg" style={`background-image:url('${base}/img/network.jpg')`}></div>
-        <div class="in tu__inner">
-          <div class="tu__col">
-            <p class="kicker kicker--left">Условие согласованности</p>
-            <h2 class="h-md" id="h-cond">Согласованность держится на балансе регуляции</h2>
-            <p class="desc">Обратная связь должна быть достаточной, но не тотальной: когда показатель становится целью, он перестаёт быть показателем.</p>
-            <p class="desc">Контроль, полностью управляющий функцией, рождает бюрократию; отсутствие контроля — хаос. Согласованность — там, где контроль обслуживает функцию, а не наоборот.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band--white" id="output" aria-labelledby="h-prod">
-      <div class="in up">
-        <div class="up__head up__head--left">
-          <p class="kicker kicker--left">Результат работы</p>
-          <p class="dek dek--left" id="h-prod">Что производит Институт</p>
-          <p class="desc w-48">Результат Института — знание. Закономерность входит в стандарт только после многократного подтверждения; единичный случай знанием не считается.</p>
-        </div>
-        <div class="up__grid up__grid--4">
-          <div class="up__item up__item--rule">
-            <div class="up__body">
-              <p class="ih">Стандарты</p>
-              <p class="desc">Правила описания систем, правила вывода, требования к исследовательской процедуре.</p>
-            </div>
-          </div>
-          <div class="up__item up__item--rule">
-            <div class="up__body">
-              <p class="ih">Библиотеки</p>
-              <p class="desc">Проверенные архитектурные паттерны, ограничения, компенсаторы, классы расхождения.</p>
-            </div>
-          </div>
-          <div class="up__item up__item--rule">
-            <div class="up__body">
-              <p class="ih">Исследования</p>
-              <p class="desc">Применение стандарта к конкретным системам. Каждое обязано вернуть новое архитектурное знание.</p>
-            </div>
-          </div>
-          <div class="up__item up__item--rule">
-            <div class="up__body">
-              <p class="ih">Публикации</p>
-              <p class="desc">Результаты, вынесенные за пределы Института и доступные проверке.</p>
-            </div>
-          </div>
-        </div>
-        <p class="mt-5"><a class="btn2" href={`${base}/publikacii/`}>Публикации<Icon name="arrow" /></a></p>
-      </div>
-    </section>
-
-    <section class="band band--grey" id="kanon" aria-labelledby="h-kanon">
+    <section class="band band--deep" id="regulation" aria-labelledby="h-regulation">
       <div class="in">
-        <p class="kicker kicker--left">Версии канона</p>
-        <h2 class="h-md mt-2 w-48" id="h-kanon">Канон — это то, что Институт считает установленным на сегодня. Он версионируется, потому что может измениться</h2>
-        <p class="desc mt-3 w-48">Каждый действующий стандарт проходит те же уровни доказательности, которые применяются к объекту исследования. Изменение канона фиксируется датой, источником и обоснованием — иначе изменить его нельзя.</p>
-        <table class="tbl">
-          <thead><tr><th>Обозначение</th><th>Канон</th><th>Состояние</th></tr></thead>
-          <tbody>
-            <tr><td class="n">AOS-001</td><td class="k">Стандарт архитектурного вывода</td><td class="v" data-m="Состояние">Девять полей вывода, четыре уровня доказательности. Действующая редакция</td></tr>
-            <tr><td class="n">9 × 9</td><td class="k">Архитектура системы</td><td class="v" data-m="Состояние">Девять уровней, девять функций. Действующая редакция</td></tr>
-            <tr><td class="n">7 × 5</td><td class="k">Регуляционная архитектура человека</td><td class="v" data-m="Состояние">Семь доменов регуляции, пять слоёв проявления. Действующая редакция</td></tr>
-            <tr><td class="n">Классы</td><td class="k">Классы расхождения</td><td class="v" data-m="Состояние">Четыре базовых класса. Открыт к расширению при подтверждённых основаниях</td></tr>
-          </tbody>
-        </table>
-        <p class="note mt-3">Перечень отражает состав действующего канона. Полные редакции с датами и обоснованием изменений публикуются по мере вынесения за пределы Института.</p>
-      </div>
-    </section>
-
-    <section class="band band--deep" id="bounds" aria-labelledby="h-bounds">
-      <div class="in">
-        <p class="kicker kicker--left">Границы</p>
-        <h2 class="h-md mt-2" id="h-bounds">Институт не является</h2>
-        <p class="lead mt-4 w-52">Консалтингом · HR-инструментом · системой оценки персонала · типологией личности · психологией · коучингом · эзотерической школой.</p>
-        <p class="desc mt-4 w-52">Институт разрабатывает онтологию, правила вывода и стандарты архитектурного описания систем.</p>
-        <p class="desc mt-3 w-52">Внутрь допускается то, что проходит проверку доказательности. Не допускается: единичный случай как знание, утверждение без источника, вывод без указания на то, что его опровергает.</p>
-        <p class="note mt-3 w-52">PSAI не предсказывает отдельное событие в сложной системе. Институт исследует структурную тенденцию: условия сохранения функции, конфигурацию расхождений, устойчивость компенсаторов и диапазон вероятных изменений. <a class="clink" href={`${base}/publikacii/granicy-predskazuemosti/`}>Публикация целиком<Icon name="chev" /></a></p>
-        <div class="pair-cta mt-5">
-          <a class="ghost" href={`${base}/metod/`}>Метод<Icon name="arrow" /></a>
-          <a class="ghost" href={`${base}/primenenie/`}>Применение<Icon name="arrow" /></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band--white" aria-label="Дальше">
-      <div class="in up">
-        <div class="up__grid">
-          <a class="up__item up__item--half" href={`${base}/metod/`}>
-            <span class="up__media"><Image src={rings} alt="Кольца, сходящиеся к общему центру" widths={[480, 720]} sizes="(max-width: 767px) 90vw, 45vw" /></span>
-            <span class="up__body"><span class="ih">Метод<Icon name="chev" /></span><span class="desc">Девять уровней, три режима, две модели и стандарт вывода.</span></span>
-          </a>
-          <a class="up__item up__item--half" href={`${base}/primenenie/`}>
-            <span class="up__media"><Image src={network} alt="Узлы, сходящиеся к точке согласования" widths={[480, 720]} sizes="(max-width: 767px) 90vw, 45vw" /></span>
-            <span class="up__body"><span class="ih">Применение<Icon name="chev" /></span><span class="desc">Четыре класса расхождения и разбор кейса целиком.</span></span>
-          </a>
+        <p class="kicker kicker--left">Условие согласованности</p>
+        <h2 class="h-md mt-2 w-60" id="h-regulation">Согласованность держится на балансе регуляции</h2>
+        <div class="prose mt-4">
+          <p class="desc">Обратная связь должна быть достаточной, но не тотальной: когда показатель становится целью, он перестаёт быть показателем.</p>
+          <p class="desc">Контроль, полностью управляющий функцией, рождает бюрократию; отсутствие контроля — хаос. Согласованность — там, где контроль обслуживает функцию, а не наоборот.</p>
         </div>
       </div>
     </section>
