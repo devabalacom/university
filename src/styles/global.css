@@ -803,3 +803,25 @@ a.b-card{cursor:pointer;isolation:isolate}
   .institute-principles{grid-template-columns:1fr;gap:2.5rem}
   .institute-principles h3{font-size:1.6rem}
 }
+
+/* The nine-levels selector as a radio group (no script needed): the checked
+   input shows its card and its detail panel. Without :has() every card and
+   panel stays visible, stacked, which still reads in order. */
+.lv__input{position:absolute;width:1px;height:1px;opacity:0}
+.lv__input:focus-visible+.lv__btn{outline:3px solid #fff;outline-offset:4px}
+.lv__input:checked+.lv__btn span.t{font-weight:500}
+.lv__input:checked+.lv__btn span.t::before{color:var(--cyan)}
+.lv__input:checked+.lv__btn .lv__bar{background:var(--cyan)}
+@supports selector(:has(*)){
+  #levels .lv__view,#levels .level-panel{display:none}
+  #levels:has(#lv-1:checked) .lv__view--1,#levels:has(#lv-2:checked) .lv__view--2,
+  #levels:has(#lv-3:checked) .lv__view--3,#levels:has(#lv-4:checked) .lv__view--4,
+  #levels:has(#lv-5:checked) .lv__view--5,#levels:has(#lv-6:checked) .lv__view--6,
+  #levels:has(#lv-7:checked) .lv__view--7,#levels:has(#lv-8:checked) .lv__view--8,
+  #levels:has(#lv-9:checked) .lv__view--9{display:grid}
+  #levels:has(#lv-1:checked) #level-panel-1,#levels:has(#lv-2:checked) #level-panel-2,
+  #levels:has(#lv-3:checked) #level-panel-3,#levels:has(#lv-4:checked) #level-panel-4,
+  #levels:has(#lv-5:checked) #level-panel-5,#levels:has(#lv-6:checked) #level-panel-6,
+  #levels:has(#lv-7:checked) #level-panel-7,#levels:has(#lv-8:checked) #level-panel-8,
+  #levels:has(#lv-9:checked) #level-panel-9{display:block}
+}
