@@ -10,15 +10,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const title = "Институт предиктивной архитектуры систем — PSAI";
 const description = "PSAI делает наблюдаемой архитектуру исследуемой системы и модель её взаимодействия с другими системами — так, чтобы основания решений могли быть описаны, проверены и сопоставлены с производимым результатом.";
 
-/* The challenge tier of the draft: six questions under one head. They carry no
+/* The challenge tier of the draft: six statements under one head. They carry no
    standfirst there and carry none here; the tile is the whole card. */
 const challenges = [
-  { t: "Почему цифровая трансформация часто не приносит ожидаемого результата?", href: `${base}/publikacii/ii-i-upravlencheskiy-haos/` },
-  { t: "Почему компании тонут в данных, но принимают всё менее точные решения?", href: `${base}/publikacii/granicy-predskazuemosti/` },
-  { t: "Почему дефицит кадров становится архитектурной проблемой?", href: `${base}/publikacii/deficit-kadrov/` },
-  { t: "Почему масштабирование разрушает то, что сделало компанию успешной?", href: `${base}/publikacii/masshtabirovanie-razrushaet/` },
-  { t: "Почему показатели начинают скрывать реальное положение дел?", href: `${base}/publikacii/mera-stavshaya-celyu/` },
-  { t: "Почему скорость изменений становится выше способности организаций адаптироваться?", href: `${base}/publikacii/skorost-izmeneniy/` },
+  { t: "Цифровая трансформация: разрыв между внедрением и результатом", href: `${base}/publikacii/ii-i-upravlencheskiy-haos/` },
+  { t: "Избыток данных и потеря точности решений", href: `${base}/publikacii/granicy-predskazuemosti/` },
+  { t: "Дефицит кадров: когда причина в конструкции системы", href: `${base}/publikacii/deficit-kadrov/` },
+  { t: "Ловушка масштабирования: рост разрушает основу успеха", href: `${base}/publikacii/masshtabirovanie-razrushaet/` },
+  { t: "Показатели, за которыми исчезает реальность", href: `${base}/publikacii/mera-stavshaya-celyu/` },
+  { t: "Изменения быстрее адаптации: нарастающий разрыв", href: `${base}/publikacii/skorost-izmeneniy/` },
 ];
 ---
 <Base title={title} description={description}>
@@ -36,7 +36,7 @@ const challenges = [
         <span class="b-card__bg"><Image src={strata} alt="" widths={[720, 1080, 1376]} sizes="(max-width: 760px) 100vw, 46vw" /></span>
         <div class="b-card__content">
           <div>
-            <h2>Почему система ломается не там, где появляются симптомы?</h2>
+            <h2>Сбой системы: источник проблемы за пределами симптомов</h2>
             <p class="b-lead">Большинство заметных проблем возникают далеко от места их настоящей причины. Архитектурный анализ отделяет источник нарушения от его внешних проявлений.</p>
           </div>
           <span class="b-more">Читать далее<Icon name="arrow" /></span>
@@ -47,7 +47,7 @@ const challenges = [
         <span class="b-card__bg"><Image src={rings} alt="" widths={[480, 720, 1184]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
         <div class="b-card__content">
           <div>
-            <h3>Почему одинаковые решения дают разные результаты?</h3>
+            <h3>Одинаковые решения — разные результаты</h3>
             <p class="b-lead">Одни и те же действия способны привести к противоположным последствиям. Решающим фактором часто оказывается не само решение, а устройство системы.</p>
           </div>
           <span class="b-more">Читать далее<Icon name="arrow" /></span>
@@ -57,18 +57,18 @@ const challenges = [
       <a class="b-card b-item3" href={`${base}/publikacii/ii-i-upravlencheskiy-haos/`}>
         <div class="b-card__content">
           <div>
-            <h3>Почему искусственный интеллект не устраняет управленческий хаос?</h3>
+            <h3>Управленческий хаос в эпоху искусственного интеллекта</h3>
             <p class="b-lead">Чем мощнее становятся инструменты, тем заметнее проявляются ограничения самой архитектуры управления. Автоматизация ускоряет процессы, но не заменяет согласованность.</p>
           </div>
           <span class="b-more">Читать далее<Icon name="arrow" /></span>
         </div>
       </a>
 
-      <a class="b-card b-item4" href={`${base}/metod/#pair`}>
+      <a class="b-card b-item4" href={`${base}/institut/#unit`}>
         <span class="b-card__bg"><Image src={network} alt="" widths={[384, 640, 768]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
         <div class="b-card__content">
           <div>
-            <h3>Почему эффективность нельзя рассматривать отдельно от среды?</h3>
+            <h3>Эффективность рождается во взаимодействии со средой</h3>
             <p class="b-lead">Эффективность не существует сама по себе. Она возникает там, где возможности системы совпадают с требованиями её окружения.</p>
           </div>
           <span class="b-more">Читать далее<Icon name="arrow" /></span>
@@ -76,10 +76,12 @@ const challenges = [
       </a>
 
       <a class="b-card b-item5" href={`${base}/publikacii/skorost-izmeneniy/`}>
+        <span class="b-card__bg"><Image src={network} alt="" widths={[384, 640, 768]} sizes="(max-width: 760px) 100vw, 26vw" /></span>
         <div class="b-card__content">
           <div>
-            <h3>Почему сложность становится главным ограничением развития?</h3>
+            <h3>Сложность как предел развития</h3>
           </div>
+          <span class="b-more">Читать далее<Icon name="arrow" /></span>
         </div>
       </a>
 
